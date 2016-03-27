@@ -4,7 +4,6 @@ import {HeaderMenuComponent} from './header-menu.component';
 @Component({
     selector: 'comic-cloud-app',
     template: `
-        <h1>My First Angular 2 App</h1>
         <header-menu></header-menu>
         <comic-stack></comic-stack>
     `,
