@@ -1,19 +1,30 @@
 import {Component, Input} from 'angular2/core';
 import {Series} from "./series";
-
+import {ROUTER_DIRECTIVES} from "angular2/router";
+//import {RouteParams, RouterLink} from "angular2/router";
+//ROUTER_DIRECTIVES,
 @Component({
     selector: 'series-stack',
     template: `
-        <div class="series-stack">{{seriesObject.title}}</div>
+        <a [routerLink]="['Series', {id: seriesObject.id}]">
+             <img [src]="seriesObject.image_url ">
+             <div>{{seriesObject.title}}</div>
+        </a>
     `,
+    host: {
+        'class': 'stack'
+    },
     styles: [`
-        .series-stack{
-            width: 100%;
-            border: 1px solid;
-        }
-    `]
+
+    `],
+    directives: [ROUTER_DIRECTIVES]
+    //providers: [RouteParams, RouterLink]
 })
 export class SeriesStackComponent {
-    @Input()
+    @Input()//Declares a data-bound input property.
     seriesObject: Series;
 }
+/*<a [routerLink]="['Series'] [router-params]="{'id':1}">
+ <img [src]="seriesObject.image_url ">
+ {{seriesObject.title}}
+ </a>*/

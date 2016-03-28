@@ -9,3 +9,58 @@ body{
  * See https://github.com/angular/angular.io/blob/master/public/docs/_examples/styles.css
  * for the full set of master styles used by the documentation samples
  */
+
+
+.shelf{
+    padding: 75px 0;
+    display: inline-flex;
+    width: 100%;
+    justify-content: center space-around;
+    flex-flow: row wrap ;
+}
+.stack{
+    flex-basis: 20%;
+    margin: 0 1% 0 1%;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+    background-color: white;
+    text-align: center;
+}
+.stack img{
+    width: 100%;
+}
+
+/*.shelf{
+    display: inline-flex;
+    width: 100%;
+}
+.shelf *{
+    width: 100%;
+}
+
+.shelf .stack{
+ width: 25%;
+}
+
+
+.shelf .stack img{
+    width:100%;
+}*/
+/*#seriesStack {
+    margin: 0;
+    padding: 0;
+    padding-top: 75px;
+}
+#seriesStack li {
+    width: 25%;
+    display:inline-block;
+    margin: 0 1% 0 1%;
+}
+
+
+.series-stack{
+    width: 100%;
+    border: 1px solid;
+}
+.series-stack img{
+    width:100%;
+}*/
