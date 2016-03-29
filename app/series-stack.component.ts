@@ -7,7 +7,7 @@ import {ROUTER_DIRECTIVES} from "angular2/router";
     selector: 'series-stack',
     template: `
         <a [routerLink]="['Series', {id: seriesObject.id}]">
-             <img [src]="seriesObject.image_url ">
+             <img [src]="seriesObject.cover_image ">
              <div>{{seriesObject.title}}</div>
         </a>
     `,
@@ -24,7 +24,3 @@ export class SeriesStackComponent {
     @Input()//Declares a data-bound input property.
     seriesObject: Series;
 }
-/*<a [routerLink]="['Series'] [router-params]="{'id':1}">
- <img [src]="seriesObject.image_url ">
- {{seriesObject.title}}
- </a>*/

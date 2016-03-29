@@ -11,22 +11,30 @@ body{
  */
 
 
-.shelf{
+.shelf {
     padding: 75px 0;
-    display: inline-flex;
-    width: 100%;
-    justify-content: center space-around;
-    flex-flow: row wrap ;
+    display: flex;
+    width: 80%;
+    margin: auto;
+    flex-wrap: wrap;
+    align-items: flex-start;
 }
-.stack{
-    flex-basis: 20%;
-    margin: 0 1% 0 1%;
+.stack {
+    margin: 10px 1% 10px 1%;
     box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
     background-color: white;
     text-align: center;
+    min-width: 23%;
+    max-width: 23%;
+    flex-basis: auto;
+    flex-grow: 1;
 }
 .stack img{
     width: 100%;
+}
+.stack a{
+    text-decoration: none;
+    color: black;
 }
 
 /*.shelf{

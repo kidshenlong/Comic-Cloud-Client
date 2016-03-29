@@ -4,16 +4,11 @@ import {Router} from "angular2/router";
 import {SeriesStackComponent} from './series-stack.component';
 //import {HeaderMenuComponent} from './header-menu.component';
 import {Series} from "./series";
+import {SeriesService} from "./series.service";
+import {HTTP_PROVIDERS} from "angular2/http";
 
 @Component({
     selector: 'library',
-    /*template: `
-        <ul id="seriesStack">
-            <li *ngFor="#thisSeries of series">
-                <series-stack [seriesObject]="thisSeries"></series-stack>
-            </li>
-        </ul>
-    `,*/
     host: {
         'class' : "shelf"
     },
@@ -21,13 +16,14 @@ import {Series} from "./series";
         <series-stack *ngFor="#thisSeries of series" [seriesObject]="thisSeries"></series-stack>
     `,
     styles :[``],
-    providers: [Title],
+    providers: [Title, HTTP_PROVIDERS, SeriesService],
     directives: [SeriesStackComponent]
 })
 export class LibraryComponent implements OnInit {
-    public series: Series[];
 
-    constructor(title:Title) {
+    series: Series[];
+
+    constructor(private _seriesService: SeriesService, title:Title) {
         title.setTitle("Comic Cloud - Library");//http://stackoverflow.com/questions/34602806/how-to-change-page-title-in-angular2-router
     }
 
@@ -37,15 +33,7 @@ export class LibraryComponent implements OnInit {
 
     getSeries(){
         console.log("series call");
-        this.series = [
-            new Series("123", "Superman", "https://placekitten.com/400/585"),
-            new Series("123", "Superman", "https://placekitten.com/400/585"),
-            new Series("123", "Superman", "https://placekitten.com/400/585"),
-            new Series("123", "Superman", "https://placekitten.com/400/585"),
-            new Series("123", "Superman", "https://placekitten.com/400/585"),
-            new Series("123", "Superman", "https://placekitten.com/400/585"),
-            new Series("123", "Superman", "https://placekitten.com/400/585"),
-            new Series("124", "Spider-man", "https://placekitten.com/400/585")
-        ];
+        this._seriesService.getAllSeries().subscribe(series => this.series = series);
+                //error =>  this.errorMessage = <any>error);
     }
 }
