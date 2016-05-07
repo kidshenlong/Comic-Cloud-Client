@@ -1,4 +1,5 @@
-import {Component, Input} from 'angular2/core';
+//import {Component, Input} from '../../node_modules/angular2/core.d';
+import {Component, Input} from "angular2/core";
 
 @Component({
     selector: 'header-menu',

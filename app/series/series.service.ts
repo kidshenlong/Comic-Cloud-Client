@@ -1,7 +1,7 @@
-import {Injectable}     from 'angular2/core';
-import {Http, Response} from 'angular2/http';
+import {Injectable}     from '../../node_modules/angular2/core.d';
+import {Http, Response} from '../../node_modules/angular2/http.d';
 import {Series}           from './series';
-import {Observable}     from 'rxjs/Observable';
+import {Observable}     from '../../node_modules/rxjs/Observable.d';
 
 @Injectable()
 export class SeriesService {
