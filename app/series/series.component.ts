@@ -7,6 +7,7 @@ import {Router} from "angular2/router";
 import {HTTP_PROVIDERS} from "angular2/http";
 import {SeriesService} from "./series.service";
 import {Series} from "./series";
+import {SeriesStackComponent} from "./series-stack/series-stack.component";
 
 @Component({
     selector: 'library',
@@ -18,7 +19,7 @@ import {Series} from "./series";
     `,
     styles :[``],
     providers: [Title, HTTP_PROVIDERS, SeriesService],
-    //directives: [SeriesStackComponent]
+    directives: [SeriesStackComponent]
 })
 
 export class SeriesComponent implements OnInit {
@@ -31,12 +32,20 @@ export class SeriesComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.getSeries();
+        this.series = this.getSeries();
+        console.log(this.getSeries());
     }
 
     getSeries(){
         console.log("series call");
-        this._seriesService.getAllSeries().subscribe(series => this.series = series);
+        //this._seriesService.getAllSeries().subscribe(series => this.series = series);
+        return [
+            new Series("8C3D3E48-155D-11E6-8248-564E36676F51", "Spider-Man", 2014, "Marvel", "1", "http://cdn1-www.superherohype.com/assets/uploads/2014/01/file_181109_0_amazingspidey1.jpg"),
+            new Series("8C3D3E48-155D-11E6-8248-564E36676F51", "Spider-Man", 2014, "Marvel", "1", "http://cdn1-www.superherohype.com/assets/uploads/2014/01/file_181109_0_amazingspidey1.jpg"),
+            new Series("8C3D3E48-155D-11E6-8248-564E36676F51", "Spider-Man", 2014, "Marvel", "1", "http://cdn1-www.superherohype.com/assets/uploads/2014/01/file_181109_0_amazingspidey1.jpg"),
+            new Series("8C3D3E48-155D-11E6-8248-564E36676F51", "Spider-Man", 2014, "Marvel", "1", "http://cdn1-www.superherohype.com/assets/uploads/2014/01/file_181109_0_amazingspidey1.jpg"),
+            new Series("8C3D3E48-155D-11E6-8248-564E36676F51", "Spider-Man", 2014, "Marvel", "1", "http://cdn1-www.superherohype.com/assets/uploads/2014/01/file_181109_0_amazingspidey1.jpg"),
+        ];
         //error =>  this.errorMessage = <any>error);
     }
 }
