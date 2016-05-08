@@ -2,12 +2,13 @@ import {Injectable}     from 'angular2/core';
 import {Http, Response} from 'angular2/http';
 import {Series}           from './series';
 import {Observable}     from 'rxjs/Observable';
+import {SERIES_URL} from "../shared/data.service";
 
 @Injectable()
 export class SeriesService {
     constructor (private http: Http) {}
 
-    private _seriesUrl = 'http://localhost:3004/series';  // URL to web api
+    private _seriesUrl = SERIES_URL;  // URL to web api
 
     getAllSeries(){
         return this.http.get(this._seriesUrl)
