@@ -1,4 +1,6 @@
-System.register(["../../node_modules/angular2/core.d", "../../node_modules/angular2/src/platform/browser/title.d", './series-stack.component.ts', "./series.service.ts", "../../node_modules/angular2/http.d"], function(exports_1) {
+System.register(["angular2/core", "angular2/platform/browser", './series-stack.component', "./series.service", "angular2/http"], function(exports_1, context_1) {
+    "use strict";
+    var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,24 +10,24 @@ System.register(["../../node_modules/angular2/core.d", "../../node_modules/angul
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_d_1, title_d_1, series_stack_component_ts_1, series_service_ts_1, http_d_1;
+    var core_1, browser_1, series_stack_component_1, series_service_1, http_1;
     var LibraryComponent;
     return {
         setters:[
-            function (core_d_1_1) {
-                core_d_1 = core_d_1_1;
+            function (core_1_1) {
+                core_1 = core_1_1;
             },
-            function (title_d_1_1) {
-                title_d_1 = title_d_1_1;
+            function (browser_1_1) {
+                browser_1 = browser_1_1;
             },
-            function (series_stack_component_ts_1_1) {
-                series_stack_component_ts_1 = series_stack_component_ts_1_1;
+            function (series_stack_component_1_1) {
+                series_stack_component_1 = series_stack_component_1_1;
             },
-            function (series_service_ts_1_1) {
-                series_service_ts_1 = series_service_ts_1_1;
+            function (series_service_1_1) {
+                series_service_1 = series_service_1_1;
             },
-            function (http_d_1_1) {
-                http_d_1 = http_d_1_1;
+            function (http_1_1) {
+                http_1 = http_1_1;
             }],
         execute: function() {
             LibraryComponent = (function () {
@@ -43,20 +45,20 @@ System.register(["../../node_modules/angular2/core.d", "../../node_modules/angul
                     //error =>  this.errorMessage = <any>error);
                 };
                 LibraryComponent = __decorate([
-                    core_d_1.Component({
+                    core_1.Component({
                         selector: 'library',
                         host: {
                             'class': "shelf"
                         },
                         template: "\n        <series-stack *ngFor=\"#thisSeries of series\" [seriesObject]=\"thisSeries\"></series-stack>\n    ",
                         styles: [""],
-                        providers: [title_d_1.Title, http_d_1.HTTP_PROVIDERS, series_service_ts_1.SeriesService],
-                        directives: [series_stack_component_ts_1.SeriesStackComponent]
+                        providers: [browser_1.Title, http_1.HTTP_PROVIDERS, series_service_1.SeriesService],
+                        directives: [series_stack_component_1.SeriesStackComponent]
                     }), 
-                    __metadata('design:paramtypes', [series_service_ts_1.SeriesService, title_d_1.Title])
+                    __metadata('design:paramtypes', [series_service_1.SeriesService, browser_1.Title])
                 ], LibraryComponent);
                 return LibraryComponent;
-            })();
+            }());
             exports_1("LibraryComponent", LibraryComponent);
         }
     }

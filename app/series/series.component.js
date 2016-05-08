@@ -1,4 +1,6 @@
-System.register(["../../node_modules/angular2/core.d", "../../node_modules/angular2/src/platform/browser/title.d"], function(exports_1) {
+System.register(["angular2/core", "angular2/platform/browser"], function(exports_1, context_1) {
+    "use strict";
+    var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,15 +10,15 @@ System.register(["../../node_modules/angular2/core.d", "../../node_modules/angul
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_d_1, title_d_1;
+    var core_1, browser_1;
     var SeriesComponent;
     return {
         setters:[
-            function (core_d_1_1) {
-                core_d_1 = core_d_1_1;
+            function (core_1_1) {
+                core_1 = core_1_1;
             },
-            function (title_d_1_1) {
-                title_d_1 = title_d_1_1;
+            function (browser_1_1) {
+                browser_1 = browser_1_1;
             }],
         execute: function() {
             SeriesComponent = (function () {
@@ -25,15 +27,15 @@ System.register(["../../node_modules/angular2/core.d", "../../node_modules/angul
                     title.setTitle("Comic Cloud - Library");
                 }
                 SeriesComponent = __decorate([
-                    core_d_1.Component({
+                    core_1.Component({
                         selector: 'series',
                         template: "<div>test!!</div>",
-                        providers: [title_d_1.Title]
+                        providers: [browser_1.Title]
                     }), 
-                    __metadata('design:paramtypes', [title_d_1.Title])
+                    __metadata('design:paramtypes', [browser_1.Title])
                 ], SeriesComponent);
                 return SeriesComponent;
-            })();
+            }());
             exports_1("SeriesComponent", SeriesComponent);
         }
     }

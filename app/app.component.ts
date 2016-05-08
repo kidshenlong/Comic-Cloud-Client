@@ -1,8 +1,8 @@
 import {Component} from 'angular2/core';
 import {HeaderMenuComponent} from './shared/header-menu.component';
-import {LibraryComponent} from './series/library.component.ts';
+import {LibraryComponent} from './series/library.component';
 import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from 'angular2/router';
-import {SeriesComponent} from "./series/series.component.ts";
+import {SeriesComponent} from "./series/series.component";
 
 @Component({
     selector: 'comic-cloud-app',

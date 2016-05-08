@@ -1,4 +1,4 @@
-System.register(['../../node_modules/angular2/core.d', "./series", "../../node_modules/angular2/router.d"], function(exports_1) {
+System.register(['angular2/core', "./series", "angular2/router"], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,18 +8,18 @@ System.register(['../../node_modules/angular2/core.d', "./series", "../../node_m
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_d_1, series_1, router_d_1;
+    var core_1, series_1, router_1;
     var SeriesStackComponent;
     return {
         setters:[
-            function (core_d_1_1) {
-                core_d_1 = core_d_1_1;
+            function (core_1_1) {
+                core_1 = core_1_1;
             },
             function (series_1_1) {
                 series_1 = series_1_1;
             },
-            function (router_d_1_1) {
-                router_d_1 = router_d_1_1;
+            function (router_1_1) {
+                router_1 = router_1_1;
             }],
         execute: function() {
             //import {RouteParams, RouterLink} from "angular2/router";
@@ -28,18 +28,18 @@ System.register(['../../node_modules/angular2/core.d', "./series", "../../node_m
                 function SeriesStackComponent() {
                 }
                 __decorate([
-                    core_d_1.Input(), 
+                    core_1.Input(), 
                     __metadata('design:type', series_1.Series)
                 ], SeriesStackComponent.prototype, "seriesObject", void 0);
                 SeriesStackComponent = __decorate([
-                    core_d_1.Component({
+                    core_1.Component({
                         selector: 'series-stack',
-                        template: "\n        <a [routerLink]=\"['Series', {id: seriesObject.id}]\">\n             <img [src]=\"seriesObject.cover_image \">\n             <div class=\"information\" *ngIf=\"seriesObject\">{{seriesObject.pretty_title()}}</div>\n        </a>\n    ",
+                        template: "\n        <a [routerLink]=\"['Series', {id: seriesObject.id}]\">\n             <img [src]=\"seriesObject.cover_image \">\n             <div class=\"information\" *ngIf=\"seriesObject\">{{seriesObject.title}}</div>\n        </a>\n    ",
                         host: {
                             'class': 'stack'
                         },
                         styles: ["\n\n    "],
-                        directives: [router_d_1.ROUTER_DIRECTIVES]
+                        directives: [router_1.ROUTER_DIRECTIVES]
                     }), 
                     __metadata('design:paramtypes', [])
                 ], SeriesStackComponent);

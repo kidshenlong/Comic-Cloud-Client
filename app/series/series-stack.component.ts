@@ -1,6 +1,6 @@
-import {Component, Input} from '../../node_modules/angular2/core.d';
+import {Component, Input} from 'angular2/core';
 import {Series} from "./series";
-import {ROUTER_DIRECTIVES} from "../../node_modules/angular2/router.d";
+import {ROUTER_DIRECTIVES} from "angular2/router";
 //import {RouteParams, RouterLink} from "angular2/router";
 //ROUTER_DIRECTIVES,
 @Component({
@@ -8,7 +8,7 @@ import {ROUTER_DIRECTIVES} from "../../node_modules/angular2/router.d";
     template: `
         <a [routerLink]="['Series', {id: seriesObject.id}]">
              <img [src]="seriesObject.cover_image ">
-             <div class="information" *ngIf="seriesObject">{{seriesObject.pretty_title()}}</div>
+             <div class="information" *ngIf="seriesObject">{{seriesObject.title}}</div>
         </a>
     `,
     host: {
