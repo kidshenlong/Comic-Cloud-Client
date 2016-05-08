@@ -29,6 +29,9 @@ body{
     flex-basis: auto;
     flex-grow: 1;
 }
+.stack .information {
+    padding: 20px;
+}
 .stack img{
     width: 100%;
 }
