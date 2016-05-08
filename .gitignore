@@ -3,7 +3,6 @@
 # compiled output
 /dist
 /tmp
-/app/*.js
 
 # dependencies
 /node_modules
@@ -16,3 +15,10 @@
 /libpeerconnection.log
 npm-debug.log
 testem.log
+
+#angular2
+typings
+app/**/*.js
+app/**/*.map
+jspm_packages
+bower_components
