@@ -1,6 +1,6 @@
 import {Injectable}     from 'angular2/core';
 import {Http, Response} from 'angular2/http';
-import {Series}           from './series';
+import {Series}           from './series.model';
 import {Observable}     from 'rxjs/Observable';
 import {SERIES_URL} from "../shared/data.service";
 

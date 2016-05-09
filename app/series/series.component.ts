@@ -5,47 +5,47 @@ import {Component, OnInit} from "angular2/core";
 import {Title} from "angular2/platform/browser";
 import {Router} from "angular2/router";
 import {HTTP_PROVIDERS} from "angular2/http";
+import {Comic} from "./../comic/comic.model";
+import {RouteParams} from "angular2/router";
+import {ComicStackComponent} from "../comic-stack/comic-stack.component";
 import {SeriesService} from "./series.service";
-import {Series} from "./series";
-import {SeriesStackComponent} from "./series-stack/series-stack.component";
+import {Series} from "./series.model";
 
 @Component({
     selector: 'library',
-    host: {
-        'class' : "shelf"
-    },
+    host: { 'class' : "shelf" },
     template: `
-        <series-stack *ngFor="#thisSeries of series" [seriesObject]="thisSeries"></series-stack>
+        <comic-stack *ngFor="#comic of comics" [comicObject]="comic"></comic-stack>
     `,
     styles :[``],
     providers: [Title, HTTP_PROVIDERS, SeriesService],
-    directives: [SeriesStackComponent]
+    directives: [ComicStackComponent]
 })
 
 export class SeriesComponent implements OnInit {
 
-    series: Series[];
+    comics: Comic[];
+    parentSeries: Series;
 
-    constructor(private _seriesService: SeriesService, title:Title) {
-        //http://stackoverflow.com/questions/34602806/how-to-change-page-title-in-angular2-router
-        title.setTitle("Comic Cloud - Library");
+    constructor(private routeParams: RouteParams, private _seriesService: SeriesService, title:Title) {
+        this.parentSeries = this.getComicsParentSeries(routeParams.get('id'));
+        title.setTitle("Comic Cloud - " + this.parentSeries.title + " (" + this.parentSeries.start_year + ")"); //todo extract to method
     }
 
     ngOnInit() {
-        this.series = this.getSeries();
-        console.log(this.getSeries());
+        this.comics = this.getComics(this.routeParams.get('id'));
     }
 
-    getSeries(){
-        console.log("series call");
-        //this._seriesService.getAllSeries().subscribe(series => this.series = series);
+    getComics(series_id: string){
+        console.log("series_id  " + series_id);
+        console.log("comic call");
         return [
-            new Series("8C3D3E48-155D-11E6-8248-564E36676F51", "Spider-Man", 2014, "Marvel", "1", "http://cdn1-www.superherohype.com/assets/uploads/2014/01/file_181109_0_amazingspidey1.jpg"),
-            new Series("8C3D3E48-155D-11E6-8248-564E36676F51", "Spider-Man", 2014, "Marvel", "1", "http://cdn1-www.superherohype.com/assets/uploads/2014/01/file_181109_0_amazingspidey1.jpg"),
-            new Series("8C3D3E48-155D-11E6-8248-564E36676F51", "Spider-Man", 2014, "Marvel", "1", "http://cdn1-www.superherohype.com/assets/uploads/2014/01/file_181109_0_amazingspidey1.jpg"),
-            new Series("8C3D3E48-155D-11E6-8248-564E36676F51", "Spider-Man", 2014, "Marvel", "1", "http://cdn1-www.superherohype.com/assets/uploads/2014/01/file_181109_0_amazingspidey1.jpg"),
-            new Series("8C3D3E48-155D-11E6-8248-564E36676F51", "Spider-Man", 2014, "Marvel", "1", "http://cdn1-www.superherohype.com/assets/uploads/2014/01/file_181109_0_amazingspidey1.jpg"),
+            new Comic("905B5C64-1560-11E6-A89C-564E36676F51", 1, null,["http://cdn1-www.superherohype.com/assets/uploads/2014/01/file_181109_0_amazingspidey1.jpg"], "8C3D3E48-155D-11E6-8248-564E36676F51", "1", "complete"),
         ];
-        //error =>  this.errorMessage = <any>error);
+    }
+
+    getComicsParentSeries(series_id: string){
+        //var series_name = _seriesService.getSeries(this.routeParams.get('id'))...
+        return new Series(series_id, "Spider-Man", 2014, "Marvel", "1", "http://cdn1-www.superherohype.com/assets/uploads/2014/01/file_181109_0_amazingspidey1.jpg");
     }
 }

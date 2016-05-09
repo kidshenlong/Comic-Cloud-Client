@@ -1,10 +1,10 @@
 import {Component, Input} from 'angular2/core';
-import {Comic} from "../comic";
+import {Comic} from "../comic/comic.model";
 import {ROUTER_DIRECTIVES} from "angular2/router";
 
 @Component({
     selector: 'comic-stack',
-    templateUrl: '/app/comic/comic-stack/comic-stack.component.html',//todo Refactor to be relative
+    templateUrl: '/app/comic-stack/comic-stack.component.html',//todo Refactor to be relative
     host: {
         'class': 'stack'
     },
