@@ -1,6 +1,6 @@
-import {Component, Input} from 'angular2/core';
+import {Component, Input} from '@angular/core';
 import {Comic} from "../comic/comic.model";
-import {ROUTER_DIRECTIVES} from "angular2/router";
+import {ROUTER_DIRECTIVES} from "@angular/router";
 
 @Component({
     selector: 'comic-stack',

@@ -1,10 +1,10 @@
 /**
  * Created by Michael on 08/05/2016.
  */
-import {Component, OnInit} from "angular2/core";
-import {Title} from "angular2/platform/browser";
-import {Router} from "angular2/router";
-import {HTTP_PROVIDERS} from "angular2/http";
+import {Component, OnInit} from "@angular/core";
+import {Title} from "@angular/platform-browser";
+import {Router} from "@angular/router";
+import {HTTP_PROVIDERS} from "@angular/http";
 import {SeriesService} from "../series/series.service";
 import {Series} from "../series/series.model";
 import {SeriesStackComponent} from "../series-stack/series-stack.component";
@@ -15,7 +15,7 @@ import {SeriesStackComponent} from "../series-stack/series-stack.component";
         'class' : "shelf"
     },
     template: `
-        <series-stack *ngFor="#thisSeries of series" [seriesObject]="thisSeries"></series-stack>
+        <series-stack *ngFor="let thisSeries of series" [seriesObject]="thisSeries"></series-stack>
     `,
     styles :[``],
     providers: [Title, HTTP_PROVIDERS, SeriesService],

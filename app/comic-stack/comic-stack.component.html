@@ -1,4 +1,4 @@
-<a [routerLink]="['Comic', {id: comicObject.id}]">
+<a [routerLink]="['/comic', comicObject.id]">
     <img [src]="comicObject.comic_book_archive_contents[0]">
     <div class="information" *ngIf="comicObject">#{{comicObject.issue}}</div>
 </a>

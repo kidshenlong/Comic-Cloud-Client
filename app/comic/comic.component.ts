@@ -1,10 +1,10 @@
 /**
  * Created by Michael on 08/05/2016.
  */
-import {Component, OnInit} from "angular2/core";
-import {Title} from "angular2/platform/browser";
-import {Router} from "angular2/router";
-import {HTTP_PROVIDERS} from "angular2/http";
+import {Component, OnInit} from "@angular/core";
+import {Title} from '@angular/platform-browser';
+import {Router} from "@angular/router";
+import {HTTP_PROVIDERS} from "@angular/http";
 
 @Component({
     selector: 'comic',

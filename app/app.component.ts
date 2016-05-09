@@ -1,6 +1,8 @@
-import {Component} from 'angular2/core';
-import {HeaderMenuComponent} from './shared/header-menu.component';
-import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from 'angular2/router';
+import { Component, OnInit }   from '@angular/core';
+import {NavigationComponent} from './shared/navigation/navigation.component';
+//import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/router-deprecated';
+import { Router, ROUTER_DIRECTIVES, Routes, ROUTER_PROVIDERS } from '@angular/router';
+
 import {ComicComponent} from "./comic/comic.component";
 import {LibraryComponent} from "./library/library.component";
 import {SeriesComponent} from "./series/series.component";
@@ -8,17 +10,22 @@ import {Series} from "./series/series.model";
 
 @Component({
     selector: 'comic-cloud-app',
-    template: "<header-menu></header-menu><router-outlet></router-outlet>",
-    directives: [ROUTER_DIRECTIVES, HeaderMenuComponent],
-    providers: []
+    template: "<navigation></navigation><router-outlet></router-outlet>",
+    directives: [ROUTER_DIRECTIVES, NavigationComponent],
+    providers: [ROUTER_PROVIDERS]
 })
-@RouteConfig([
-    { path: '/library', name: 'Lbrary', component: LibraryComponent },
-    { path: '/series/:id', name: 'Series', component: SeriesComponent },
+
+@Routes([
+    { path: '/library', component: LibraryComponent },
+    { path: '/series/:id', component: SeriesComponent },
     //{ path: '/series/:id/edit', name: 'SeriesEdit', component: ComicComponent },
-    { path: '/comic/:id', name: 'Comic', component: ComicComponent },
+    { path: '/comic/:id', component: ComicComponent },
     //{ path: '/comic/:id/edit', name: 'Comic', component: ComicReaderComponent },
 ])
 
 
-export class AppComponent { }
+export class AppComponent  implements OnInit {
+    constructor(private router: Router) {}
+
+    ngOnInit() {}
+}
