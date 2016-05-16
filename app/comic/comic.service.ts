@@ -1,14 +1,14 @@
 import {Injectable}     from '@angular/core';
 import {Http, Response} from '@angular/http';
-import {Series}           from './series.model';
+import {Comic}           from './comic.model';
 import {Observable}     from 'rxjs/Observable';
-import {SERIES_URL} from "../shared/data.service";
+import {COMICS_URL} from "../shared/data.service";
 
 @Injectable()
-export class SeriesService {
+export class ComicService {
     constructor (private http: Http) {}
 
-    private _seriesUrl = SERIES_URL;  // URL to web api
+    private _comicsUrl = COMICS_URL;// URL to web api
 
     /*getAllSeries(){
         return this.http.get(this._seriesUrl)
