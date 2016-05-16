@@ -15,17 +15,14 @@ import {StackComponent} from "../shared/stack/stack.component";
     host: {
         'class' : "shelf"
     },
-    template: `
-        <!--<series-stack *ngFor="let thisSeries of series" [seriesObject]="thisSeries"></series-stack>-->
-        <stack *ngFor="let thisSeries of series" [stackType]="'series'" [stackData]="thisSeries"></stack>
-    `,
+    templateUrl: "/app/library/library.component.html",
     providers: [Title, HTTP_PROVIDERS, SeriesService],
     directives: [SeriesStackComponent, StackComponent]
 })
 
 export class LibraryComponent implements OnInit {
 
-    stackType = "series";
+    //stackType = "series";//todo consider making stack type a parameter set by component
 
     series: Series[];
 
