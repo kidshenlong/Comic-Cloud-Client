@@ -8,6 +8,7 @@ import {HTTP_PROVIDERS} from "@angular/http";
 import {SeriesService} from "../series/series.service";
 import {Series} from "../series/series.model";
 import {SeriesStackComponent} from "../series-stack/series-stack.component";
+import {StackComponent} from "../shared/stack/stack.component";
 
 @Component({
     selector: 'library',
@@ -15,14 +16,16 @@ import {SeriesStackComponent} from "../series-stack/series-stack.component";
         'class' : "shelf"
     },
     template: `
-        <series-stack *ngFor="let thisSeries of series" [seriesObject]="thisSeries"></series-stack>
+        <!--<series-stack *ngFor="let thisSeries of series" [seriesObject]="thisSeries"></series-stack>-->
+        <stack *ngFor="let thisSeries of series" [stackType]="'series'" [stackData]="thisSeries"></stack>
     `,
-    styles :[``],
     providers: [Title, HTTP_PROVIDERS, SeriesService],
-    directives: [SeriesStackComponent]
+    directives: [SeriesStackComponent, StackComponent]
 })
 
 export class LibraryComponent implements OnInit {
+
+    stackType = "series";
 
     series: Series[];
 
