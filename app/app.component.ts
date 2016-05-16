@@ -25,7 +25,12 @@ import {Series} from "./series/series.model";
 
 
 export class AppComponent  implements OnInit {
-    constructor(private router: Router) {}
+
+    constructor(private router: Router) {
+        router.changes.subscribe(() => {
+            window.scrollTo(0, 0);
+        });
+    }
 
     ngOnInit() {}
 }
