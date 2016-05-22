@@ -33,7 +33,10 @@ export class NavigationComponent {//implements OnActivate {
 
 
         navigationService.navigationMode$.subscribe(newMode => {
-            this.mode = <NavigationType>newMode
+            // Type assertions: ttps://github.com/Microsoft/TypeScript/blob/master/doc/spec.md#416-type-assertions
+            //this.mode = <NavigationType>newMode
+            //this.mode = <NavigationType>newMode
+            this.mode = newMode as NavigationType //todo revisit why this is an error
         })
     }
 }
