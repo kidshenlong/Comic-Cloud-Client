@@ -7,6 +7,8 @@ import {OnActivate, Router, RouteSegment} from "@angular/router";
 import {HTTP_PROVIDERS} from "@angular/http";
 import {Comic} from "./comic.model";
 import {ComicService} from "./comic.service";
+import {NavigationService} from "../shared/navigation/navigation.service";
+import {NavigationType} from "../shared/navigation/navigation.type";
 
 @Component({
     selector: 'comic',
@@ -20,8 +22,9 @@ export class ComicComponent implements OnActivate {
     comic: Comic;
     title: Title;
 
-    constructor(private _comicsService: ComicService, title:Title) {
+    constructor(private _comicsService: ComicService, title:Title, navigationService: NavigationService) {
         this.title = title;
+        navigationService.changeMode(NavigationType.Reader);
     }
 
     routerOnActivate(curr: RouteSegment): void {

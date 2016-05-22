@@ -1,7 +1,7 @@
 /**
  * Created by Michael on 08/05/2016.
  */
-import {Component, OnInit} from "@angular/core";
+import {Component, OnInit, OnDestroy} from "@angular/core";
 import {Title} from "@angular/platform-browser";
 import {OnActivate, Router, RouteSegment} from "@angular/router";
 import {HTTP_PROVIDERS} from "@angular/http";
@@ -9,7 +9,8 @@ import {Comic} from "./../comic/comic.model";
 import {SeriesService} from "./series.service";
 import {Series} from "./series.model";
 import {StackComponent} from "../shared/stack/stack.component";
-
+import {NavigationService} from "../shared/navigation/navigation.service";
+import {NavigationType} from "../shared/navigation/navigation.type";
 
 @Component({
     selector: 'library',
@@ -19,14 +20,15 @@ import {StackComponent} from "../shared/stack/stack.component";
     directives: [StackComponent]
 })
 
-export class SeriesComponent implements OnActivate {
-
+export class SeriesComponent implements OnActivate{
     currentSeries: Series;
     comics: Comic[];
     title: Title;
 
-    constructor(private _seriesService: SeriesService, title:Title) {
+
+    constructor(private _seriesService: SeriesService, title:Title, navigationService: NavigationService) {
         this.title = title;
+        navigationService.changeMode(NavigationType.Library);
     }
 
     routerOnActivate(curr: RouteSegment): void {
@@ -55,4 +57,5 @@ export class SeriesComponent implements OnActivate {
     getSeries(series_id: string){
         return new Series(series_id, "Spider-Man", 2014, "Marvel", "1", "http://cdn1-www.superherohype.com/assets/uploads/2014/01/file_181109_0_amazingspidey1.jpg");
     }
+
 }

@@ -10,9 +10,9 @@ import {Series} from "./series/series.model";
 
 @Component({
     selector: 'comic-cloud-app',
-    template: "<navigation></navigation><router-outlet></router-outlet>",
+    template: '<navigation></navigation><router-outlet></router-outlet>',
     directives: [ROUTER_DIRECTIVES, NavigationComponent],
-    providers: [ROUTER_PROVIDERS]
+    //providers: [ROUTER_PROVIDERS]
 })
 
 @Routes([
@@ -26,6 +26,8 @@ import {Series} from "./series/series.model";
 
 export class AppComponent  implements OnInit {
 
+    //currentPage;
+
     constructor(private router: Router) {
         router.changes.subscribe(() => {
             window.scrollTo(0, 0);
@@ -33,4 +35,8 @@ export class AppComponent  implements OnInit {
     }
 
     ngOnInit() {}
+
+    /*public isRouteActive(route) {
+        return this.router.isRouteActive(this.router.generate(route))
+    }*/
 }

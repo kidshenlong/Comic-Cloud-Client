@@ -8,6 +8,8 @@ import {HTTP_PROVIDERS} from "@angular/http";
 import {SeriesService} from "../series/series.service";
 import {Series} from "../series/series.model";
 import {StackComponent} from "../shared/stack/stack.component";
+import {NavigationService} from "../shared/navigation/navigation.service";
+import {NavigationType} from "../shared/navigation/navigation.type";
 
 @Component({
     selector: 'library',
@@ -24,8 +26,9 @@ export class LibraryComponent implements OnInit {
 
     series: Series[];
 
-    constructor(private _seriesService: SeriesService, title:Title) {
+    constructor(private _seriesService: SeriesService, title:Title, navigationService: NavigationService) {
         title.setTitle("Comic Cloud - Library");
+        navigationService.changeMode(NavigationType.Library);
     }
 
     ngOnInit() {
