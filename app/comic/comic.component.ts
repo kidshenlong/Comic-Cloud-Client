@@ -10,12 +10,13 @@ import {ComicService} from "./comic.service";
 import {NavigationService} from "../shared/navigation/navigation.service";
 import {NavigationType} from "../shared/navigation/navigation.type";
 import {ComicNavigationComponent} from "./comic-navigation/comic-navigation.component";
+import {ComicImageComponent} from "./comic-image/comic-image.component";
 
 @Component({
     selector: 'comic',
     templateUrl: "/app/comic/comic.component.html",
-    styleUrls: [`app/comic/comic.component.css`],
-    directives: [ComicNavigationComponent],
+    styleUrls: ['app/comic/comic.component.css'],
+    directives: [ComicNavigationComponent, ComicImageComponent],
     providers: [Title, ComicService, HTTP_PROVIDERS]
 })
 
