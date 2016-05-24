@@ -2,6 +2,8 @@ import { Component, OnInit }   from '@angular/core';
 import {NavigationComponent} from './shared/navigation/navigation.component';
 //import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/router-deprecated';
 import { Router, ROUTER_DIRECTIVES, Routes, ROUTER_PROVIDERS } from '@angular/router';
+// Add the RxJS Observable operators we need in this app.
+import './rxjs-operators';
 
 import {ComicComponent} from "./comic/comic.component";
 import {LibraryComponent} from "./library/library.component";
@@ -24,7 +26,7 @@ import {Series} from "./series/series.model";
 ])
 
 
-export class AppComponent  implements OnInit {
+export class AppComponent implements OnInit {
 
     //currentPage;
 
