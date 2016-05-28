@@ -5,6 +5,7 @@ import {Component, OnInit, ElementRef, Renderer} from "@angular/core";
 import {Title} from '@angular/platform-browser';
 import {HTTP_PROVIDERS} from "@angular/http";
 import {ComicImageService} from "./comic-image.service";
+import {imagesloaded} from "imagesloaded"
 
 @Component({
     selector: 'comic-image',
