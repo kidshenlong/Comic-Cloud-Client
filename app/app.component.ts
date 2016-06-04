@@ -28,7 +28,7 @@ import {Series} from "./series/series.model";
 
 export class AppComponent implements OnInit {
 
-    //currentPage;
+    //_currentPage;
 
     constructor(private router: Router) {
         router.changes.subscribe(() => {

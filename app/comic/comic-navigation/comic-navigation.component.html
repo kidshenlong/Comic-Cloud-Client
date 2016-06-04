@@ -1,4 +1,5 @@
 <div *ngIf="menuIsVisible">
-    <input type="range" id="myRange" max="{{comic}}">
-    {{comic | json}}
+    <!--<input (input)="changeVal($event)" type="range" id="range_navigation" [value]="_currentPage" max="20">-->
+    <input type="range" [(ngModel)]="currentPage" id="range_navigation" [max]="20">
+
 </div>

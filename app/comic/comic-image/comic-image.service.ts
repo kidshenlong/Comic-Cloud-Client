@@ -12,10 +12,29 @@ export class ComicImageService {
     getComicImage(uuid: string): Observable<any> {
         //return this.http.get(IMAGES_URL + "/" + uuid)
         //var thing;
-        return this.http.get("http://static5.comicvine.com/uploads/scale_small/" +
+        /*return this.http.get("http://static5.comicvine.com/uploads/scale_small/" +
             "6/66303/2734164-legendluther01_cover.jpeg")
             .map(res => <Response> res.blob())
-            .catch(this.handleError);
+            .catch(this.handleError);*/
+        return this.loadImage("http://static5.comicvine.com/uploads/scale_small/" +
+            "6/66303/2734164-legendluther01_cover.jpeg");
+    }
+
+
+    loadImage(image) {
+        return Observable
+            .create(observer => {
+                const img = new Image();
+                img.src = image;
+                img.onload = () => {
+                    observer.next(img);
+                    observer.complete();
+                };
+                img.onerror = err => {
+                    observer.error(err);
+                    observer.complete();
+                };
+            });
     }
 
     private handleError (error: any) {

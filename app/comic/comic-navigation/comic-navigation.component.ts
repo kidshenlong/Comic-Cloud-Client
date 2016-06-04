@@ -2,11 +2,13 @@
  * Created by Michael on 23/05/2016.
  */
 import {Component, OnInit, ElementRef} from "@angular/core";
+import {ComicStateService} from "../comic-state/comic-state.service";
 
 @Component({
     selector: 'comic-navigation',
     templateUrl: '/app/comic/comic-navigation/comic-navigation.component.html',
     styleUrls: ['app/comic/comic-navigation/comic-navigation.component.css'],
+    providers: [ComicStateService],
     host: {
         '(mouseenter)': 'onMouseEnter()',
         '(mouseleave)': 'onMouseLeave()'
@@ -16,8 +18,24 @@ import {Component, OnInit, ElementRef} from "@angular/core";
 export class ComicNavigationComponent {
 
     menuIsVisible:boolean;
+    comicStateService: ComicStateService;
 
-    constructor(private elementRef: ElementRef) {
+    private _currentPage: number = 0;
+
+    get currentPage() {
+        console.log(`getting value for text "${this._currentPage}"`);
+        //navigationService.navigationMode$.subscribe(
+        this.comicStateService.currentPage$.subscribe( cp => this._currentPage = cp);
+        return this._currentPage;
+    }
+    set currentPage(value) {
+        this.comicStateService.setCurrentPage(value);
+        this._currentPage = value;
+    }
+
+    constructor(private elementRef: ElementRef, comicStateService: ComicStateService) {
+        //this._currentPage = currentPage
+        this.comicStateService = comicStateService;
     }
 
     onMouseEnter() {

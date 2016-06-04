@@ -11,6 +11,7 @@ import {NavigationService} from "../shared/navigation/navigation.service";
 import {NavigationType} from "../shared/navigation/navigation.type";
 import {ComicNavigationComponent} from "./comic-navigation/comic-navigation.component";
 import {ComicImageComponent} from "./comic-image/comic-image.component";
+//import {ComicStateService} from "./comic-state/comic-state.service";
 
 @Component({
     selector: 'comic',
@@ -25,7 +26,7 @@ export class ComicComponent implements OnActivate {
     comic: Comic;
     title: Title;
 
-    constructor(private _comicsService: ComicService, title:Title, navigationService: NavigationService) {
+    constructor(private _comicService: ComicService, title:Title, navigationService: NavigationService) {
         this.title = title;
         navigationService.changeMode(NavigationType.Reader);
     }
@@ -35,7 +36,6 @@ export class ComicComponent implements OnActivate {
         this.title.setTitle("Comic Cloud - ");
 
         this.comic = this.getComic(comic_id);
-        this.comic
     }
 
     getComic(comic_id: string){
