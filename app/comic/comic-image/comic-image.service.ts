@@ -9,15 +9,17 @@ export class ComicImageService {
 
     }
 
-    getComicImage(uuid: string): Observable<any> {
+    getComicImage(url: string): Observable<any> {
         //return this.http.get(IMAGES_URL + "/" + uuid)
         //var thing;
         /*return this.http.get("http://static5.comicvine.com/uploads/scale_small/" +
             "6/66303/2734164-legendluther01_cover.jpeg")
             .map(res => <Response> res.blob())
             .catch(this.handleError);*/
-        return this.loadImage("http://static5.comicvine.com/uploads/scale_small/" +
-            "6/66303/2734164-legendluther01_cover.jpeg");
+        /*return this.loadImage("http://static5.comicvine.com/uploads/scale_small/" +
+            "6/66303/2734164-legendluther01_cover.jpeg");*/
+
+        return this.loadImage(url);
     }
 
 

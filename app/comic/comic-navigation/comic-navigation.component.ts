@@ -24,10 +24,10 @@ export class ComicNavigationComponent {
 
     get currentPage() {
         console.log(`getting value for text "${this._currentPage}"`);
-        //navigationService.navigationMode$.subscribe(
         this.comicStateService.currentPage$.subscribe( cp => this._currentPage = cp);
         return this._currentPage;
     }
+
     set currentPage(value) {
         this.comicStateService.setCurrentPage(value);
         this._currentPage = value;

@@ -1,7 +1,7 @@
 /**
  * Created by Michael on 08/05/2016.
  */
-import {Component, OnInit, ElementRef, Renderer} from "@angular/core";
+import {Component, OnInit, ElementRef, Renderer, Input} from "@angular/core";
 import {Title} from '@angular/platform-browser';
 import {HTTP_PROVIDERS} from "@angular/http";
 import {ComicImageService} from "./comic-image.service";
@@ -15,27 +15,47 @@ import {ComicImageService} from "./comic-image.service";
 
 export class ComicImageComponent {
 
+    @Input() srcToLoad: string;
     imageSrc = null;//"http://placehold.it/1000x1000";
 
-    elementRef: ElementRef;
+    visible = false;
 
-    constructor(private comicImageService: ComicImageService, el: ElementRef, renderer: Renderer) {
-        //console.log(this.comicImageService.getComicImage(""));
-        this.elementRef = el;
-        this.comicImageService.getComicImage("").map(() => this.setImage(""))
-            .subscribe(() => console.log("well"));
+    //elementRef: ElementRef;
+    //private comicImageService: ComicImageService;
+
+    constructor(private comicImageService: ComicImageService, public element: ElementRef, renderer: Renderer) {
+        //this.elementRef = el;
+        /*this.comicImageService.getComicImage("").map(() => this.setImage(""))
+            .subscribe(() => console.log("well"));*/
         /*this.comicImageService.getComicImage("").subscribe(
             resp => renderer.setElementAttribute(el.nativeElement, 'src', resp)
         );*/
     }
 
-    setImage(image){
+    /*loadImage(url: string){
+        this.comicImageService.getComicImage("").map(() => this.setImage(""))
+            .subscribe(() => console.log("well"));
+    }*/
+
+    toggleVisibility(){
+        console.log('toggle');
+        this.visible = !this.visible;
+    }
+
+    loadImage(){
+        console.log("lolz");
+        this.comicImageService.getComicImage(this.srcToLoad)
+            .map(() => this.setImage(this.srcToLoad)).subscribe();
+    }
+
+    setImage(imageUrl){
         console.log("complete");
-        console.log(this.elementRef.nativeElement.src);
         //this.elementRef.nativeElement.src = "http://static5.comicvine.com/uploads/scale_small/6/66303/2734164-legendluther01_cover.jpeg"
-        setTimeout(() => {
+        /*setTimeout(() => {
             this.imageSrc = "http://static5.comicvine.com/uploads/scale_small/6/66303/2734164-legendluther01_cover.jpeg"
-        }, 2000);
+        }, 2000);*/
+
+        this.imageSrc = imageUrl;
 
     }
 }
