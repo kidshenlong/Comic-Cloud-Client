@@ -1,1 +1,2 @@
 <img *ngIf="visible" [src]="imageSrc">
+<img (load)="loaded($event)" [src]="imageSrc2">

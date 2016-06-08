@@ -17,6 +17,7 @@ export class ComicImageComponent {
 
     @Input() srcToLoad: string;
     imageSrc = null;//"http://placehold.it/1000x1000";
+    imageSrc2 = "http://static5.comicvine.com/uploads/scale_small/6/66303/2734164-legendluther01_cover.jpeg";
 
     visible = false;
 
@@ -36,6 +37,11 @@ export class ComicImageComponent {
         this.comicImageService.getComicImage("").map(() => this.setImage(""))
             .subscribe(() => console.log("well"));
     }*/
+
+    loaded(event){
+        console.log(event);
+        console.log("loaded");
+    }
 
     toggleVisibility(){
         console.log('toggle');
