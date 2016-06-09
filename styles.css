@@ -15,3 +15,7 @@ body{
     flex-wrap: wrap;
     align-items: flex-start;
 }
+
+[hidden] {
+    display: none !important;
+}

@@ -49,7 +49,7 @@ export class ComicComponent implements OnActivate, AfterViewInit {
         });*/
 
         //this.comicImageComponents.toArray()[0].toggleVisibility();
-        //this.comicImageComponents.toArray()[0].visible = true;
+        this.comicImageComponents.toArray()[0].hidden = false;
         var from = 0;
         var to = 3;
         if(this.comic.comic_book_archive_contents.length < 3) {

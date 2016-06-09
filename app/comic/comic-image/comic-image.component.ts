@@ -19,49 +19,17 @@ export class ComicImageComponent {
     imageSrc = null;//"http://placehold.it/1000x1000";
     imageSrc2 = "http://static5.comicvine.com/uploads/scale_small/6/66303/2734164-legendluther01_cover.jpeg";
 
-    visible = false;
+    hidden = true;
 
     //elementRef: ElementRef;
     //private comicImageService: ComicImageService;
 
     constructor(private comicImageService: ComicImageService, public element: ElementRef, renderer: Renderer) {
-        //this.elementRef = el;
-        /*this.comicImageService.getComicImage("").map(() => this.setImage(""))
-            .subscribe(() => console.log("well"));*/
-        /*this.comicImageService.getComicImage("").subscribe(
-            resp => renderer.setElementAttribute(el.nativeElement, 'src', resp)
-        );*/
-    }
 
-    /*loadImage(url: string){
-        this.comicImageService.getComicImage("").map(() => this.setImage(""))
-            .subscribe(() => console.log("well"));
-    }*/
+    }
 
     loaded(event){
         console.log(event);
         console.log("loaded");
-    }
-
-    toggleVisibility(){
-        console.log('toggle');
-        this.visible = !this.visible;
-    }
-
-    loadImage(){
-        console.log("lolz");
-        this.comicImageService.getComicImage(this.srcToLoad)
-            .map(() => this.setImage(this.srcToLoad)).subscribe();
-    }
-
-    setImage(imageUrl){
-        console.log("complete");
-        //this.elementRef.nativeElement.src = "http://static5.comicvine.com/uploads/scale_small/6/66303/2734164-legendluther01_cover.jpeg"
-        /*setTimeout(() => {
-            this.imageSrc = "http://static5.comicvine.com/uploads/scale_small/6/66303/2734164-legendluther01_cover.jpeg"
-        }, 2000);*/
-
-        this.imageSrc = imageUrl;
-
     }
 }

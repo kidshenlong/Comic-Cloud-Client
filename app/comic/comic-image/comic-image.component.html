@@ -1,2 +1,1 @@
-<img *ngIf="visible" [src]="imageSrc">
-<img (load)="loaded($event)" [src]="imageSrc2">
+<img (load)="loaded($event)" [src]="srcToLoad" [hidden]="hidden">
