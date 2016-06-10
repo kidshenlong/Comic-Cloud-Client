@@ -13,6 +13,8 @@ import {ComicNavigationComponent} from "./comic-navigation/comic-navigation.comp
 import {ComicImageComponent} from "./comic-image/comic-image.component";
 //import {ComicStateService} from "./comic-state/comic-state.service";
 import {ViewChildren, AfterViewInit } from '@angular/core';
+import {ComicStateService} from "./comic-state/comic-state.service";
+import {ComicStatusType} from "./comic-status/comic-status.type";
 
 
 @Component({
@@ -20,46 +22,37 @@ import {ViewChildren, AfterViewInit } from '@angular/core';
     templateUrl: "/app/comic/comic.component.html",
     styleUrls: ['app/comic/comic.component.css'],
     directives: [ComicNavigationComponent, ComicImageComponent],
-    providers: [Title, ComicService, HTTP_PROVIDERS]
+    providers: [Title, ComicService, HTTP_PROVIDERS, ComicStateService]
 })
 
-export class ComicComponent implements OnActivate, AfterViewInit {
+export class ComicComponent implements OnActivate, OnInit, AfterViewInit {
 
     comic: Comic;
     title: Title;
-
+    comicStatus: ComicStatusType = ComicStatusType.Waiting;
     @ViewChildren(ComicImageComponent) private comicImageComponents:QueryList<ComicImageComponent>;
 
-    constructor(private comicService: ComicService, title:Title, navigationService: NavigationService) {
+
+    constructor(private comicService: ComicService, title:Title, private comicStateService: ComicStateService, navigationService: NavigationService) {
         this.title = title;
         navigationService.changeMode(NavigationType.Reader);
+        comicStateService.comicStatus$.subscribe(newStatus => this.comicStatus = newStatus);
+    }
+
+    ngOnInit(){
 
     }
 
     ngAfterViewInit() {
-        //console.log(this.comicImageComponents[0].loadImage())
-        //console.log(this.comicImageComponents)
-        //this.comicImageComponents.toArray().forEach((child)=>console.log(child));
-        //this.comicImageComponents.toArray()[0].loadImage();
-        /*console.log(this.comicImageComponents.toArray()[0]);
+        //Delay a second to avoid one-time devMode unidirectional-data-flow-violation error
+        setTimeout(() => {
 
-        this.comicImageComponents.toArray().forEach((child)=> {
-            console.log(child);
-            //child.loadImage();
-        });*/
+            var from = 0;
+            var to = 3;//todo (mpm) 10/06/2016 Add constraint for if 3 doesn't exist
 
-        //this.comicImageComponents.toArray()[0].toggleVisibility();
-        this.comicImageComponents.toArray()[0].hidden = false;
-        var from = 0;
-        var to = 3;
-        if(this.comic.comic_book_archive_contents.length < 3) {
-            to = this.comic.comic_book_archive_contents.length;
-        }
-        
-        /*var to = (if(this.comic.comic_book_archive_contents.count >= 3){
-          3  
-        } else this.comic.comic_book_archive_contents[2])*/
+            this.loadImages(from, to);
 
+        }, 0);
     }
 
     routerOnActivate(curr: RouteSegment): void {
@@ -77,6 +70,8 @@ export class ComicComponent implements OnActivate, AfterViewInit {
     }
 
     loadImages(from: number, to: number){
+        //this.comicImageComponents.toArray()[0].enable();
+        this.comicStateService.setComicStatus(ComicStatusType.Loading);
 
     }
 

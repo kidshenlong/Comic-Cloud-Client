@@ -16,16 +16,20 @@ import {ComicImageService} from "./comic-image.service";
 export class ComicImageComponent {
 
     @Input() srcToLoad: string;
-    imageSrc = null;//"http://placehold.it/1000x1000";
-    imageSrc2 = "http://static5.comicvine.com/uploads/scale_small/6/66303/2734164-legendluther01_cover.jpeg";
 
     hidden = true;
+
+    enabled = false;
 
     //elementRef: ElementRef;
     //private comicImageService: ComicImageService;
 
     constructor(private comicImageService: ComicImageService, public element: ElementRef, renderer: Renderer) {
 
+    }
+
+    enable(){
+        this.enabled = true;
     }
 
     loaded(event){
