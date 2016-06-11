@@ -31,12 +31,15 @@ export class ComicComponent implements OnActivate, OnInit, AfterViewInit {
     title: Title;
     comicStatus: ComicStatusType = ComicStatusType.Waiting;
     @ViewChildren(ComicImageComponent) private comicImageComponents:QueryList<ComicImageComponent>;
+    private _currentPage: number = 0;
 
+    //currentPage: number = 0;
 
     constructor(private comicService: ComicService, title:Title, private comicStateService: ComicStateService, navigationService: NavigationService) {
         this.title = title;
         navigationService.changeMode(NavigationType.Reader);
         comicStateService.comicStatus$.subscribe(newStatus => this.comicStatus = newStatus);
+        comicStateService.currentPage$.subscribe(page => this._currentPage = page);
     }
 
     ngOnInit(){
@@ -44,13 +47,16 @@ export class ComicComponent implements OnActivate, OnInit, AfterViewInit {
     }
 
     ngAfterViewInit() {
-        //Delay a second to avoid one-time devMode unidirectional-data-flow-violation error
+        //Delay to avoid one-time devMode unidirectional-data-flow-violation error
         setTimeout(() => {
 
+            //this.comicImageComponents.toArray();
+
             var from = 0;
-            var to = 3;//todo (mpm) 10/06/2016 Add constraint for if 3 doesn't exist
+            var to = 2;//todo (mpm) 10/06/2016 Add constraint for if 3 doesn't exist
 
             this.loadImages(from, to);
+            console.log(this.comicImageComponents);
 
         }, 0);
     }
@@ -70,10 +76,27 @@ export class ComicComponent implements OnActivate, OnInit, AfterViewInit {
     }
 
     loadImages(from: number, to: number){
-        //this.comicImageComponents.toArray()[0].enable();
+        var componentsArray = this.comicImageComponents.toArray();
+
         this.comicStateService.setComicStatus(ComicStatusType.Loading);
 
+        for(var i = from; i <= to; i++){
+            componentsArray[i].enable();
+        }
+
     }
+
+
+    get currentPage() {
+        console.log(`[comic.component]getting value for text "${this._currentPage}"`);
+        return this._currentPage;
+    }
+
+    set currentPage(value) {
+        this.comicStateService.setCurrentPage(value);
+        this._currentPage = value;
+    }
+
 
 
 }
