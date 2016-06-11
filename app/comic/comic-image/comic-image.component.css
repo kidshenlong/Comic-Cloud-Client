@@ -4,4 +4,5 @@
 
 :host img{
     height: 100%;
+    transition: all 3s ease-out;/*todo vendor prefix*/
 }

@@ -33,13 +33,14 @@ export class ComicComponent implements OnActivate, OnInit, AfterViewInit {
     @ViewChildren(ComicImageComponent) private comicImageComponents:QueryList<ComicImageComponent>;
     private _currentPage: number = 0;
 
-    //currentPage: number = 0;
-
     constructor(private comicService: ComicService, title:Title, private comicStateService: ComicStateService, navigationService: NavigationService) {
         this.title = title;
         navigationService.changeMode(NavigationType.Reader);
         comicStateService.comicStatus$.subscribe(newStatus => this.comicStatus = newStatus);
-        comicStateService.currentPage$.subscribe(page => this._currentPage = page);
+        comicStateService.currentPage$.subscribe(page => {
+            this._currentPage = page;
+            this.viewPage(page);
+        });
     }
 
     ngOnInit(){
@@ -56,6 +57,7 @@ export class ComicComponent implements OnActivate, OnInit, AfterViewInit {
             var to = 2;//todo (mpm) 10/06/2016 Add constraint for if 3 doesn't exist
 
             this.loadImages(from, to);
+            this.viewPage(0);
             console.log(this.comicImageComponents);
 
         }, 0);
@@ -65,13 +67,15 @@ export class ComicComponent implements OnActivate, OnInit, AfterViewInit {
         var comic_id = curr.getParam('id');
         this.title.setTitle("Comic Cloud - ");
         this.comic = this.getComic(comic_id);
+        //this.comicStateService.setCurrentComic(this.comic);
+        this.comicStateService.setPageCount(this.comic.comic_book_archive_contents.length);
     }
 
     getComic(comic_id: string){
         return new Comic("905B5C64-1560-11E6-A89C-564E36676F51", 1, null, [
             "http://cdn1-www.superherohype.com/assets/uploads/2014/01/file_181109_0_amazingspidey1.jpg",
-            "http://cdn1-www.superherohype.com/assets/uploads/2014/01/file_181109_0_amazingspidey1.jpg",
-            "http://cdn1-www.superherohype.com/assets/uploads/2014/01/file_181109_0_amazingspidey1.jpg"
+            "http://www.comicbookresources.com/imgsrv/preview/0/0/1/ASM2015001-DC16-LR-6fdc0.jpg",
+            "http://www.comicbookresources.com/imgsrv/preview/0/0/1/ASM2015001-DC17-LR-70864.jpg"
         ], "8C3D3E48-155D-11E6-8248-564E36676F51", "1", "complete");
     }
 
@@ -88,13 +92,27 @@ export class ComicComponent implements OnActivate, OnInit, AfterViewInit {
 
 
     get currentPage() {
-        console.log(`[comic.component]getting value for text "${this._currentPage}"`);
+        //console.log(`[comic.component]getting value for text "${this._currentPage}"`);
         return this._currentPage;
     }
 
     set currentPage(value) {
         this.comicStateService.setCurrentPage(value);
         this._currentPage = value;
+    }
+
+    viewPage(page: number){
+        console.log("change page to: " + page);
+        var pageCount = this.comic.comic_book_archive_contents.length;
+        var componentsArray = this.comicImageComponents.toArray();
+        console.log(componentsArray);
+
+        /*for (let component of componentsArray) {
+            //component.visible = true;
+            console.log(component.visible);
+        }*/
+        for (let component of componentsArray) component.hidden = true;
+        componentsArray[page].hidden = false;
     }
 
 

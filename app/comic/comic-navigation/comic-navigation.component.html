@@ -1,5 +1,7 @@
-<div *ngIf="menuIsVisible">
+<!--<div>-->
+<!--<div *ngIf="menuIsVisible">-->
+<div [hidden]="hidden">
     <!--<input (input)="changeVal($event)" type="range" id="range_navigation" [value]="_currentPage" max="20">-->
-    <input type="range" [(ngModel)]="currentPage" id="range_navigation" [max]="20">
+    <input type="range" [(ngModel)]="currentPage" id="range_navigation" [max]="pageCount">
 
 </div>

@@ -6,28 +6,34 @@ import {ComicStatusType} from "../comic-status/comic-status.type";
 @Injectable()
 export class ComicStateService {
 
-    private currentComic: Comic;
+    currentComic: Comic;//todo (mpm) 11/06/2016 access modifiers
+    pageCount: number;
 
     private currentPageSource = new Subject<number>();
-
     private comicStatusSource = new Subject<ComicStatusType>();
+    private pageCountSource = new Subject<number>();
 
     currentPage$ = this.currentPageSource.asObservable();
     comicStatus$ = this.comicStatusSource.asObservable();
+    pageCount$ = this.pageCountSource.asObservable();
 
     constructor(){}
 
-    setCurrentComic(currentComic: Comic){
+    /*setCurrentComic(currentComic: Comic){
         this.currentComic = currentComic;
+    }*/
+
+    setPageCount(max: number){
+        this.pageCountSource.next(max);
     }
 
     setCurrentPage(page: number){
-        console.log("setting page to " + page);
+        //console.log("setting page to " + page);
         this.currentPageSource.next(page);
     }
 
     setComicStatus(status: ComicStatusType){
-        console.log("New Status: " + status);
+        //console.log("New Status: " + status);
         this.comicStatusSource.next(status);
     }
 
