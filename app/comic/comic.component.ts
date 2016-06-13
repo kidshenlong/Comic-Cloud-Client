@@ -12,7 +12,7 @@ import {NavigationType} from "../shared/navigation/navigation.type";
 import {ComicNavigationComponent} from "./comic-navigation/comic-navigation.component";
 import {ComicImageComponent} from "./comic-image/comic-image.component";
 //import {ComicStateService} from "./comic-state/comic-state.service";
-import {ViewChildren, AfterViewInit } from '@angular/core';
+import {ViewChildren, AfterViewInit, ElementRef} from '@angular/core';
 import {ComicStateService} from "./comic-state/comic-state.service";
 import {ComicStatusType} from "./comic-status/comic-status.type";
 
@@ -22,7 +22,10 @@ import {ComicStatusType} from "./comic-status/comic-status.type";
     templateUrl: "/app/comic/comic.component.html",
     styleUrls: ['app/comic/comic.component.css'],
     directives: [ComicNavigationComponent, ComicImageComponent],
-    providers: [Title, ComicService, HTTP_PROVIDERS, ComicStateService]
+    providers: [Title, ComicService, HTTP_PROVIDERS, ComicStateService],
+    host: {
+        '(document:keyup)': '_keyup($event)'
+    },
 })
 
 export class ComicComponent implements OnActivate, OnInit, AfterViewInit {
@@ -33,7 +36,7 @@ export class ComicComponent implements OnActivate, OnInit, AfterViewInit {
     @ViewChildren(ComicImageComponent) private comicImageComponents:QueryList<ComicImageComponent>;
     private _currentPage: number = 0;
 
-    constructor(private comicService: ComicService, title:Title, private comicStateService: ComicStateService, navigationService: NavigationService) {
+    constructor(private comicService: ComicService, title:Title, private elementRef: ElementRef, private comicStateService: ComicStateService, navigationService: NavigationService) {
         this.title = title;
         navigationService.changeMode(NavigationType.Reader);
         comicStateService.comicStatus$.subscribe(newStatus => this.comicStatus = newStatus);
@@ -50,6 +53,8 @@ export class ComicComponent implements OnActivate, OnInit, AfterViewInit {
     ngAfterViewInit() {
         //Delay to avoid one-time devMode unidirectional-data-flow-violation error
         setTimeout(() => {
+
+            this.elementRef.nativeElement.focus();
 
             //this.comicImageComponents.toArray();
 
@@ -98,7 +103,12 @@ export class ComicComponent implements OnActivate, OnInit, AfterViewInit {
 
     set currentPage(value) {
         this.comicStateService.setCurrentPage(value);
-        this._currentPage = value;
+        var pageCount = this.comic.comic_book_archive_contents.length;
+        console.log("[New Page]" + value);
+        console.log("[Page Count]" + pageCount);
+        if(value >= 0 || value < (pageCount - 1)) {
+            this._currentPage = value;
+        }
     }
 
     viewPage(page: number){
@@ -107,12 +117,21 @@ export class ComicComponent implements OnActivate, OnInit, AfterViewInit {
         var componentsArray = this.comicImageComponents.toArray();
         console.log(componentsArray);
 
-        /*for (let component of componentsArray) {
-            //component.visible = true;
-            console.log(component.visible);
-        }*/
-        for (let component of componentsArray) component.hidden = true;
-        componentsArray[page].hidden = false;
+        if((page - 1) < pageCount || page >= 0) {
+            for (let component of componentsArray) component.hidden = true;
+            componentsArray[page].hidden = false;
+        }
+    }
+
+    private _keyup(event: KeyboardEvent) {
+        if (event.keyCode === 37){
+            console.log("left");
+            this.currentPage--;
+        } else if (event.keyCode === 39){
+            console.log("right");
+            this.currentPage++;
+        }
+
     }
 
 
