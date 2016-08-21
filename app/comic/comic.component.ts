@@ -102,11 +102,14 @@ export class ComicComponent implements OnActivate, OnInit, AfterViewInit {
     }
 
     set currentPage(value) {
-        this.comicStateService.setCurrentPage(value);
+        //console.log("[New Page]" + value);
+        //console.log("[Page Count]" + pageCount);
         var pageCount = this.comic.comic_book_archive_contents.length;
-        console.log("[New Page]" + value);
-        console.log("[Page Count]" + pageCount);
+
         if(value >= 0 || value < (pageCount - 1)) {
+
+            this.comicStateService.setCurrentPage(value);
+
             this._currentPage = value;
         }
     }
@@ -117,10 +120,10 @@ export class ComicComponent implements OnActivate, OnInit, AfterViewInit {
         var componentsArray = this.comicImageComponents.toArray();
         console.log(componentsArray);
 
-        if((page - 1) < pageCount || page >= 0) {
+        //if((page - 1) < pageCount || page >= 0) {
             for (let component of componentsArray) component.hidden = true;
             componentsArray[page].hidden = false;
-        }
+        //}
     }
 
     private _keyup(event: KeyboardEvent) {

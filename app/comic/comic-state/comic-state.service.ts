@@ -23,7 +23,7 @@ export class ComicStateService {
         this.currentComic = currentComic;
     }*/
 
-    setPageCount(max: number){
+    setPageCount(max: number){//todo (mpm) getter/setter
         this.pageCountSource.next(max);
     }
 
