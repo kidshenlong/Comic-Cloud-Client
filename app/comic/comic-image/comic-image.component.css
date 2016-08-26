@@ -1,11 +1,14 @@
 :host {
-    text-align: center;
+    /*text-align: center;
     width: 100%;
     height: 100%;
-    display: block;
+    display: block;*/
 }
 
 :host img{
-    height: 100%;
+    height:100%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
     transition: all 3s ease-out;/*todo vendor prefix*/
 }

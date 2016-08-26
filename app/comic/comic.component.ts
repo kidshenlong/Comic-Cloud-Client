@@ -12,7 +12,7 @@ import {NavigationType} from "../shared/navigation/navigation.type";
 import {ComicNavigationComponent} from "./comic-navigation/comic-navigation.component";
 import {ComicImageComponent} from "./comic-image/comic-image.component";
 //import {ComicStateService} from "./comic-state/comic-state.service";
-import {ViewChildren, AfterViewInit, ElementRef} from '@angular/core';
+import {ViewChildren, AfterViewInit, ElementRef, QueryList} from '@angular/core';
 import {ComicStateService} from "./comic-state/comic-state.service";
 import {ComicStatusType} from "./comic-status/comic-status.type";
 
@@ -33,7 +33,7 @@ export class ComicComponent implements OnActivate, OnInit, AfterViewInit {
     comic: Comic;
     title: Title;
     comicStatus: ComicStatusType = ComicStatusType.Waiting;
-    @ViewChildren(ComicImageComponent) private comicImageComponents:QueryList<ComicImageComponent>;
+    @ViewChildren(ComicImageComponent) private comicImageComponents: QueryList<ComicImageComponent>;
     private _currentPage: number = 0;
 
     constructor(private comicService: ComicService, title:Title, private elementRef: ElementRef, private comicStateService: ComicStateService, navigationService: NavigationService) {
@@ -79,8 +79,8 @@ export class ComicComponent implements OnActivate, OnInit, AfterViewInit {
     getComic(comic_id: string){
         return new Comic("905B5C64-1560-11E6-A89C-564E36676F51", 1, null, [
             "http://cdn1-www.superherohype.com/assets/uploads/2014/01/file_181109_0_amazingspidey1.jpg",
-            "http://www.comicbookresources.com/imgsrv/preview/0/0/1/ASM2015001-DC16-LR-6fdc0.jpg",
-            "http://www.comicbookresources.com/imgsrv/preview/0/0/1/ASM2015001-DC17-LR-70864.jpg"
+            "http://static7.comicvine.com/uploads/scale_super/3/39001/3818661-amazingfantasy15.jpg",
+            "https://s-media-cache-ak0.pinimg.com/236x/c6/2d/68/c62d689f3644b94165505215724d691d.jpg"
         ], "8C3D3E48-155D-11E6-8248-564E36676F51", "1", "complete");
     }
 

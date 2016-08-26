@@ -36,7 +36,9 @@ export class NavigationComponent {//implements OnActivate {
             // Type assertions: ttps://github.com/Microsoft/TypeScript/blob/master/doc/spec.md#416-type-assertions
             //this.mode = <NavigationType>newMode
             //this.mode = <NavigationType>newMode
-            this.mode = newMode as NavigationType //todo revisit why this is an error
+            //this.mode = newMode as NavigationType //todo revisit why this is an error
+            //http://stackoverflow.com/questions/17380845/how-to-convert-string-to-enum-in-typescript
+            this.mode = <NavigationType>NavigationType[newMode];
         })
     }
 }

@@ -4,6 +4,5 @@
     "jasmine": "github:DefinitelyTyped/DefinitelyTyped/jasmine/jasmine.d.ts#7de6c3dd94feaeb21f20054b9f30d5dabc5efabd"
   },
   "globalDependencies": {
-    "imagesloaded": "registry:dt/imagesloaded#3.1.8+20160317120654"
   }
 }

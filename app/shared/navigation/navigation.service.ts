@@ -9,7 +9,11 @@ export class NavigationService {
     navigationMode$ = this.navigationModeSource.asObservable();
 
     changeMode(mode: NavigationType){
-        this.navigationModeSource.next(mode as string);//todo revisit why this is an error
+
+        //this.mode = <NavigationType>NavigationType[newMode];
+
+
+        this.navigationModeSource.next(NavigationType[mode]);
         //console.log("change mode called");
         //console.log(this.navigationModeSource);
     }
