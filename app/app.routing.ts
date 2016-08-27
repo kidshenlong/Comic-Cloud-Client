@@ -4,14 +4,13 @@
 
 import { ModuleWithProviders }  from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import {LibraryComponent} from "./library/library.component";
 
 const appRoutes: Routes = [
-
-    //{ path: '/library', component: LibraryComponent },
-    /*{ path: '/series/:id', component: SeriesComponent },
-    //{ path: '/series/:id/edit', name: 'SeriesEdit', component: ComicComponent },
-    { path: '/comic/:id', component: ComicComponent },*/
-
+    { 
+        path: 'library', 
+        component: LibraryComponent 
+    }
 ];
 
 export const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes);
