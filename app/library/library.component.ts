@@ -16,8 +16,7 @@ import {NavigationType} from "../shared/navigation/navigation.type";
     host: { 'class' : "shelf" },
     templateUrl: "/app/library/library.component.html",
     styleUrls: ['app/library/library.component.css'],
-    providers: [Title, HTTP_PROVIDERS, SeriesService],
-    //todo move title to bootstrap https://angular.io/docs/ts/latest/cookbook/set-document-title.html
+    providers: [HTTP_PROVIDERS, SeriesService],
     directives: [StackComponent]
 })
 

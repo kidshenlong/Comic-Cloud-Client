@@ -1,5 +1,4 @@
-import {Component, Input} from "@angular/core";
-import {OnActivate, Router, RouteSegment, ROUTER_DIRECTIVES, ROUTER_PROVIDERS} from "@angular/router";
+import {Component} from "@angular/core";
 import {NavigationService} from "./navigation.service";
 import {NavigationType} from "./navigation.type";
 
@@ -7,7 +6,6 @@ import {NavigationType} from "./navigation.type";
     selector: 'navigation',
     templateUrl: "/app/shared/navigation/navigation.component.html",
     styleUrls: ["app/shared/navigation/navigation.component.css"], //todo styleUrls doesn't currently support absolute paths.
-    providers: [ROUTER_PROVIDERS]//, NavigationService]
 })
 export class NavigationComponent {//implements OnActivate {
     //private _currentPage;
