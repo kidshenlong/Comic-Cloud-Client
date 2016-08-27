@@ -5,11 +5,30 @@
 import { ModuleWithProviders }  from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {LibraryComponent} from "./library/library.component";
+import {SeriesComponent} from "./series/series.component";
+import {ComicComponent} from "./comic/comic.component";
+import {HomeComponent} from "./home/home.component";
+import {AuthenticationGuard} from "./shared/authentication/authentication-guard.service";
 
 const appRoutes: Routes = [
+    {
+        path: '',
+        component: HomeComponent
+    },
     { 
         path: 'library', 
-        component: LibraryComponent 
+        component: LibraryComponent,
+        canActivate: [AuthenticationGuard]
+    },
+    {
+        path: 'series/:id',
+        component: SeriesComponent,
+        canActivate: [AuthenticationGuard]
+    },
+    {
+        path: 'comic/:id',
+        component: ComicComponent,
+        canActivate: [AuthenticationGuard]
     }
 ];
 

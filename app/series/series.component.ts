@@ -3,7 +3,7 @@
  */
 import {Component, OnInit, OnDestroy} from "@angular/core";
 import {Title} from "@angular/platform-browser";
-import {OnActivate, Router, RouteSegment} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {HTTP_PROVIDERS} from "@angular/http";
 import {Comic} from "./../comic/comic.model";
 import {SeriesService} from "./series.service";
@@ -20,23 +20,33 @@ import {NavigationType} from "../shared/navigation/navigation.type";
     directives: [StackComponent]
 })
 
-export class SeriesComponent implements OnActivate{
+export class SeriesComponent implements OnInit{
     currentSeries: Series;
     comics: Comic[];
     title: Title;
 
 
-    constructor(private _seriesService: SeriesService, title:Title, navigationService: NavigationService) {
+    constructor(private _seriesService: SeriesService, title:Title, navigationService: NavigationService, private route: ActivatedRoute, private router: Router) {
         this.title = title;
-        navigationService.changeMode(NavigationType.Library);
+        navigationService.changeMode(NavigationType.Nonreader);
     }
 
-    routerOnActivate(curr: RouteSegment): void {
+    ngOnInit(){
+        this.route.params.subscribe(params => {
+            let id = params['id'];
+            this.currentSeries = this.getSeries(id);
+            this.title.setTitle("Comic Cloud - " + this.currentSeries.title + " (" + this.currentSeries.start_year + ")");
+            this.comics = this.getComics(id);
+        });
+
+    }
+
+    /*routerOnActivate(curr: RouteSegment): void {
         var series_id = curr.getParam('id');
         this.currentSeries = this.getSeries(series_id);
         this.title.setTitle("Comic Cloud - " + this.currentSeries.title + " (" + this.currentSeries.start_year + ")");
         this.comics = this.getComics(series_id);
-    }
+    }*/
 
     getComics(series_id: string){
         console.log("series_id " + series_id);
