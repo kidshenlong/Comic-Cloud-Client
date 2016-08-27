@@ -6,13 +6,19 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent }  from './app.component';
 import { routing }       from './app.routing';
+import {NavigationService} from "./shared/navigation/navigation.service";
 
 @NgModule({
     imports:      [
         BrowserModule,
         routing
     ],
-    declarations: [ AppComponent ],
+    declarations: [
+        AppComponent
+    ],
+    providers: [
+        NavigationService
+    ],
     bootstrap:    [ AppComponent ]
 })
 export class AppModule { }
