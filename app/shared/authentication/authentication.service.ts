@@ -10,17 +10,26 @@ import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/delay';
 
 @Injectable()
-export class AuthService {
+export class AuthenticationService {
     isLoggedIn: boolean = false;
 
     // store the URL so we can redirect after logging in
     redirectUrl: string;
 
-    login() {
+    /*login() {
         return Observable.of(true).delay(1000).do(val => this.isLoggedIn = true);
-    }
+    }*/
 
     logout() {
         this.isLoggedIn = false;
+    }
+
+
+    login(event, username, password) {
+        event.preventDefault();
+        let body = JSON.stringify({username, password});
+
+        console.log(body);
+
     }
 }

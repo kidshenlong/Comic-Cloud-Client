@@ -41,13 +41,6 @@ export class SeriesComponent implements OnInit{
 
     }
 
-    /*routerOnActivate(curr: RouteSegment): void {
-        var series_id = curr.getParam('id');
-        this.currentSeries = this.getSeries(series_id);
-        this.title.setTitle("Comic Cloud - " + this.currentSeries.title + " (" + this.currentSeries.start_year + ")");
-        this.comics = this.getComics(series_id);
-    }*/
-
     getComics(series_id: string){
         console.log("series_id " + series_id);
         console.log("comic call");

@@ -1,0 +1,14 @@
+<h1>Login</h1>
+
+<form (submit)="authenticationService.login($event, username.value, password.value)">
+    <div class="">
+        <label for="username">Username</label>
+        <input type="text" #username class="" id="username" placeholder="Username">
+    </div>
+    <div class="">
+        <label for="password">Password</label>
+        <input type="password" #password class="" id="password" placeholder="Password">
+    </div>
+    <button type="submit" class=" ">Submit</button>
+    <a [routerLink]="['/register']">Click here to Signup</a>
+</form>

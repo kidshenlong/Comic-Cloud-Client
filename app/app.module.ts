@@ -14,6 +14,9 @@ import {SeriesComponent} from "./series/series.component";
 import {ComicComponent} from "./comic/comic.component";
 import {HomeComponent} from "./home/home.component";
 import {AuthenticationGuard} from "./shared/authentication/authentication-guard.service";
+import {AuthenticationService} from "./shared/authentication/authentication.service";
+import {LoginComponent} from "./login/login.component";
+import {RegisterComponent} from "./register/register.component";
 
 
 @NgModule({
@@ -27,11 +30,14 @@ import {AuthenticationGuard} from "./shared/authentication/authentication-guard.
         LibraryComponent,
         SeriesComponent,
         ComicComponent,
-        HomeComponent
+        HomeComponent,
+        LoginComponent,
+        RegisterComponent
     ],
     providers: [
         Title,
         NavigationService,
+        AuthenticationService,
         AuthenticationGuard
     ],
     bootstrap:    [ AppComponent ]
