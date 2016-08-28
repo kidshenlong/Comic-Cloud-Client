@@ -1,0 +1,35 @@
+/**
+ * Created by Michael on 27/08/2016.
+ */
+
+import { Injectable } from '@angular/core';
+
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/of';
+import 'rxjs/add/operator/do';
+import 'rxjs/add/operator/delay';
+
+@Injectable()
+export class AuthenticationService {
+    isLoggedIn: boolean = false;
+
+    // store the URL so we can redirect after logging in
+    redirectUrl: string;
+
+    /*login() {
+        return Observable.of(true).delay(1000).do(val => this.isLoggedIn = true);
+    }*/
+
+    logout() {
+        this.isLoggedIn = false;
+    }
+
+
+    login(event, username, password) {
+        event.preventDefault();
+        let body = JSON.stringify({username, password});
+
+        console.log(body);
+
+    }
+}

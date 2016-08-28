@@ -28,7 +28,7 @@ export class LibraryComponent implements OnInit {
 
     constructor(private _seriesService: SeriesService, title:Title, navigationService: NavigationService) {
         title.setTitle("Comic Cloud - Library");
-        navigationService.changeMode(NavigationType.Library);
+        navigationService.changeMode(NavigationType.Nonreader);
     }
 
     ngOnInit() {
