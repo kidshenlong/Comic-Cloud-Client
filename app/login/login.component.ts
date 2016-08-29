@@ -28,9 +28,8 @@ export class LoginComponent{
         event.preventDefault();
 
         this.authenticationService.login(username, password).subscribe(
-            response => console.log("complete"),
-            error => alert(error),
-            complete => this.router.navigate(['/library'])
+            response => this.router.navigate(['/library']),
+            error => alert(error)
         );
 
 
