@@ -27,9 +27,11 @@ export class LoginComponent{
     login(event, username, password){
         event.preventDefault();
 
-        //this.authenticationService.login(username, password);
-
-        this.authenticationService.login(username, password).subscribe( val => this.router.navigate(['/library']));
+        this.authenticationService.login(username, password).subscribe(
+            response => console.log("complete"),
+            error => alert(error),
+            complete => this.router.navigate(['/library'])
+        );
 
 
 

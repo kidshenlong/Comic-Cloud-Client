@@ -15,14 +15,10 @@ import { Router } from '@angular/router';
 export class AuthenticationService {
 
     //based on: https://github.com/auth0-blog/angular2-authentication-sample/blob/master/src/login/login.ts
-    //isLoggedIn: boolean = false;
 
     // store the URL so we can redirect after logging in
-    redirectUrl: string;
 
-    /*login() {
-        return Observable.of(true).delay(1000).do(val => this.isLoggedIn = true);
-    }*/
+    redirectUrl: string;
 
     constructor(public router: Router) {}
 
@@ -35,11 +31,14 @@ export class AuthenticationService {
     login(username, password) {
         let body = JSON.stringify({username, password});
         console.log(body);
-        return Observable.of(true).delay(1000).do(val => localStorage.setItem('loggedIn', true));
+        return Observable.of(true).delay(1000).do(val => localStorage.setItem('loggedIn', 'true'));
+        //return Observable.of(true).delay(1000).do(val => throw new Error("error!"));
+        //return Observable.throw(new Error('error!'));
+        //return Observable.throwError(new Error('error!'));
 
     }
 
     isLoggedIn(){
-        return localStorage.getItem('loggedIn') || false;
+        return Boolean(localStorage.getItem('loggedIn')) || false;
     }
 }
