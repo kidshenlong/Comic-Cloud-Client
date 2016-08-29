@@ -24,7 +24,7 @@ export class ComicImageService {
 
 
     loadImage(image) {
-        Observable.fromEvent
+        //Observable.fromEvent
         return Observable
             .create(observer => {
                 const img = new Image();

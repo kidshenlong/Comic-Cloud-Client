@@ -19,7 +19,8 @@ const appRoutes: Routes = [
     },
     {
         path: 'login',
-        component: LoginComponent
+        component: LoginComponent,
+        canActivate: [AuthenticationGuard]
     },
     {
         path: 'register',

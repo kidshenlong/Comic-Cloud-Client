@@ -3,7 +3,7 @@
  */
 import {Component, OnInit} from "@angular/core";
 import {Title} from '@angular/platform-browser';
-import {OnActivate, Router, RouteSegment} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {HTTP_PROVIDERS} from "@angular/http";
 import {Comic} from "./comic.model";
 import {ComicService} from "./comic.service";
@@ -28,7 +28,7 @@ import {ComicStatusType} from "./comic-status/comic-status.type";
     },
 })
 
-export class ComicComponent implements OnActivate, OnInit, AfterViewInit {
+export class ComicComponent implements OnInit, AfterViewInit {
 
     comic: Comic;
     title: Title;
@@ -36,7 +36,7 @@ export class ComicComponent implements OnActivate, OnInit, AfterViewInit {
     @ViewChildren(ComicImageComponent) private comicImageComponents: QueryList<ComicImageComponent>;
     private _currentPage: number = 0;
 
-    constructor(private comicService: ComicService, title:Title, private elementRef: ElementRef, private comicStateService: ComicStateService, navigationService: NavigationService) {
+    constructor(private comicService: ComicService, title:Title, private elementRef: ElementRef, private comicStateService: ComicStateService, navigationService: NavigationService, private route: ActivatedRoute, private router: Router) {
         this.title = title;
         navigationService.changeMode(NavigationType.Reader);
         comicStateService.comicStatus$.subscribe(newStatus => this.comicStatus = newStatus);
@@ -44,10 +44,6 @@ export class ComicComponent implements OnActivate, OnInit, AfterViewInit {
             this._currentPage = page;
             this.viewPage(page);
         });
-    }
-
-    ngOnInit(){
-
     }
 
     ngAfterViewInit() {
@@ -68,12 +64,16 @@ export class ComicComponent implements OnActivate, OnInit, AfterViewInit {
         }, 0);
     }
 
-    routerOnActivate(curr: RouteSegment): void {
-        var comic_id = curr.getParam('id');
-        this.title.setTitle("Comic Cloud - ");
-        this.comic = this.getComic(comic_id);
-        //this.comicStateService.setCurrentComic(this.comic);
-        this.comicStateService.setPageCount(this.comic.comic_book_archive_contents.length);
+ 
+
+    ngOnInit(){
+        this.route.params.subscribe(params => {
+            let id = params['id'];
+            this.title.setTitle("Comic Cloud - ");
+            this.comic = this.getComic(id);
+            this.comicStateService.setPageCount(this.comic.comic_book_archive_contents.length);
+        });
+
     }
 
     getComic(comic_id: string){
