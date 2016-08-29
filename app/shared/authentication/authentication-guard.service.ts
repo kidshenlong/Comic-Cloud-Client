@@ -12,17 +12,16 @@ export class AuthenticationGuard implements CanActivate {
     redirectToLibrary: string[] = ["login", "register"];
     redirectToLogin: string[] = ["series", "comic", "library"];
 
-
     constructor(private authenticationService: AuthenticationService, private router: Router) {}
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
 
         var attemptedPath = route.url[0].path;
 
-        if(this.authenticationService.isLoggedIn){
-            this.redirectTo(attemptedPath, this.redirectToLibrary, '/library');
+        if(this.authenticationService.isLoggedIn()){
+            return this.redirectTo(attemptedPath, this.redirectToLibrary, '/library');
         } else {
-            this.redirectTo(attemptedPath, this.redirectToLogin, '/login');
+            return this.redirectTo(attemptedPath, this.redirectToLogin, '/login');
         }
 
     }

@@ -1,6 +1,6 @@
 <h1>Login</h1>
 
-<form (submit)="authenticationService.login($event, username.value, password.value)">
+<form (submit)="login($event, username.value, password.value)">
     <div class="">
         <label for="username">Username</label>
         <input type="text" #username class="" id="username" placeholder="Username">

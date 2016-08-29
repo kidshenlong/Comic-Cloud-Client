@@ -6,6 +6,8 @@ import {NavigationService} from "../shared/navigation/navigation.service";
 import {NavigationType} from "../shared/navigation/navigation.type";
 import {Title} from "@angular/platform-browser";
 import {AuthenticationService} from "../shared/authentication/authentication.service";
+import { CanActivate, Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+
 
 @Component({
     selector: 'login',
@@ -17,9 +19,20 @@ import {AuthenticationService} from "../shared/authentication/authentication.ser
 
 export class LoginComponent{
 
-    constructor(title:Title, navigationService: NavigationService, public authenticationService: AuthenticationService) {
+    constructor(title:Title, navigationService: NavigationService, public authenticationService: AuthenticationService, private router: Router) {
         title.setTitle("Comic Cloud - Login");
         navigationService.changeMode(NavigationType.Hidden);
+    }
+    
+    login(event, username, password){
+        event.preventDefault();
+
+        //this.authenticationService.login(username, password);
+
+        this.authenticationService.login(username, password).subscribe( val => this.router.navigate(['/library']));
+
+
+
     }
 
 
