@@ -4,7 +4,6 @@
 import {Component, OnInit, OnDestroy} from "@angular/core";
 import {Title} from "@angular/platform-browser";
 import {ActivatedRoute, Router} from "@angular/router";
-import {HTTP_PROVIDERS} from "@angular/http";
 import {Comic} from "./../comic/comic.model";
 import {SeriesService} from "./series.service";
 import {Series} from "./series.model";
@@ -16,7 +15,7 @@ import {NavigationType} from "../shared/navigation/navigation.type";
     selector: 'library',
     host: { 'class' : "shelf" },
     templateUrl: "/app/series/series.component.html",
-    providers: [Title, HTTP_PROVIDERS, SeriesService],
+    providers: [Title, SeriesService],
     directives: [StackComponent]
 })
 

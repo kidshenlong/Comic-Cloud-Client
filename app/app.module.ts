@@ -17,12 +17,14 @@ import {AuthenticationGuard} from "./shared/authentication/authentication-guard.
 import {AuthenticationService} from "./shared/authentication/authentication.service";
 import {LoginComponent} from "./login/login.component";
 import {RegisterComponent} from "./register/register.component";
+import {HttpModule} from "@angular/http";
 
 
 @NgModule({
     imports:      [
         BrowserModule,
         FormsModule,
+        HttpModule,
         routing
     ],
     declarations: [

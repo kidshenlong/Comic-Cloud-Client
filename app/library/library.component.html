@@ -1,1 +1,18 @@
-<stack *ngFor="let thisSeries of series" [stackType]="'series'" [stackData]="thisSeries"></stack>
+<div class="shelf" ng2FileDrop [uploader]="uploader"
+     (fileOver)="fileOver($event)">
+    <stack *ngFor="let thisSeries of series" [stackType]="'series'" [stackData]="thisSeries"></stack>
+
+</div>
+
+
+<!--
+<div ng2FileDrop
+     [ngClass]="{'nv-file-over': hasBaseDropZoneOver}"
+     [uploader]="uploader"
+     (fileOver)="fileOver($event)"
+     class="my-drop-zone">
+    Base drop zone
+</div>
+-->
+
+<pre>{{uploader.isUploading | json}}</pre>

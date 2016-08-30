@@ -3,21 +3,20 @@
  */
 import {Component, OnInit} from "@angular/core";
 import {Title} from "@angular/platform-browser";
-import {Router} from "@angular/router";
-import {HTTP_PROVIDERS} from "@angular/http";
 import {SeriesService} from "../series/series.service";
 import {Series} from "../series/series.model";
 import {StackComponent} from "../shared/stack/stack.component";
 import {NavigationService} from "../shared/navigation/navigation.service";
 import {NavigationType} from "../shared/navigation/navigation.type";
+import {FILE_UPLOAD_DIRECTIVES, FileUploader} from 'ng2-file-upload';
 
 @Component({
     selector: 'library',
-    host: { 'class' : "shelf" },
+    host: { 'class' : "shelf2" },
     templateUrl: "/app/library/library.component.html",
     styleUrls: ['app/library/library.component.css'],
-    providers: [HTTP_PROVIDERS, SeriesService],
-    directives: [StackComponent]
+    providers: [SeriesService],
+    directives: [StackComponent, FILE_UPLOAD_DIRECTIVES]
 })
 
 export class LibraryComponent implements OnInit {
@@ -25,6 +24,17 @@ export class LibraryComponent implements OnInit {
     //stackType = "series";//todo consider making stack type a parameter set by component
 
     series: Series[];
+
+
+    public uploader:FileUploader = new FileUploader(
+        {url: 'https://evening-anchorage-3159.herokuapp.com/api/', autoUpload: true}
+    );
+
+    fileOver(e){
+
+        console.log(e);
+
+    }
 
     constructor(private _seriesService: SeriesService, title:Title, navigationService: NavigationService) {
         title.setTitle("Comic Cloud - Library");
