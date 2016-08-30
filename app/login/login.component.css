@@ -1,0 +1,25 @@
+.input_container{
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+    background-color: white;
+    text-align: center;
+    width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    margin-top: 60px;
+}
+
+.input_seperator {
+    margin: 20px;
+}
+
+.input_element {
+    -webkit-box-sizing: border-box;/* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;/* Firefox, other Gecko */
+    box-sizing: border-box;/* Opera/IE 8+ */
+    width: 200px;
+    text-align: center;
+}
+
+button.input_element {
+    border: 1px black;
+}

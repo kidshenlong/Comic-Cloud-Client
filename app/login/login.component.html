@@ -1,16 +1,16 @@
-<h1>Login</h1>
+<!--new login: https://jsfiddle.net/psdoojzw/-->
+<form class="input_container" (submit)="login($event, username.value, password.value)">
 
-//new login: https://jsfiddle.net/psdoojzw/
-
-<form (submit)="login($event, username.value, password.value)">
-    <div class="">
-        <label for="username">Username</label>
-        <input type="text" #username class="" id="username" placeholder="Username">
+    <div class="input_seperator">
+        <input #username id="username" class="input_element" placeholder="Username">
     </div>
-    <div class="">
-        <label for="password">Password</label>
-        <input type="password" #password class="" id="password" placeholder="Password">
+    <div class="input_seperator">
+        <input #password id="password" class="input_element" placeholder="Password">
     </div>
-    <button type="submit" class=" ">Submit</button>
-    <a [routerLink]="['/register']">Click here to Signup</a>
+    <div class="input_seperator">
+        <button class="input_element" type="submit">Login</button>
+    </div>
+    <div class="input_seperator">
+        <a [routerLink]="['/register']">Click here to Signup</a>
+    </div>
 </form>
