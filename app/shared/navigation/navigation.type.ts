@@ -2,10 +2,8 @@
  * Created by Michael on 22/05/2016.
  */
 export enum NavigationType {
-    /*Home,
+    Disabled,
     Library,
-    Reader*/
-    Hidden,
     Reader,
-    Nonreader
+    Home
 }

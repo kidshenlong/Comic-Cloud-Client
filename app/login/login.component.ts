@@ -21,7 +21,7 @@ export class LoginComponent{
 
     constructor(title:Title, navigationService: NavigationService, public authenticationService: AuthenticationService, private router: Router) {
         title.setTitle("Comic Cloud - Login");
-        navigationService.changeMode(NavigationType.Hidden);
+        navigationService.changeMode(NavigationType.Disabled);
     }
     
     login(event, username, password){
@@ -32,9 +32,6 @@ export class LoginComponent{
             error => alert(error)
         );
 
-
-
     }
-
 
 }

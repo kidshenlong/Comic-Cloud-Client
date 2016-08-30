@@ -19,7 +19,7 @@ export class RegisterComponent{
 
     constructor(title:Title, navigationService: NavigationService, public authenticationService: AuthenticationService) {
         title.setTitle("Comic Cloud - Register");
-        navigationService.changeMode(NavigationType.Hidden);
+        navigationService.changeMode(NavigationType.Disabled);
     }
 
 

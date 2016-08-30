@@ -28,7 +28,7 @@ export class SeriesComponent implements OnInit{
 
     constructor(private _seriesService: SeriesService, title:Title, navigationService: NavigationService, private route: ActivatedRoute, private router: Router) {
         this.title = title;
-        navigationService.changeMode(NavigationType.Nonreader);
+        navigationService.changeMode(NavigationType.Library);
     }
 
     ngOnInit(){

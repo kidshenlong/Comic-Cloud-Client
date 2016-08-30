@@ -18,7 +18,7 @@ export class HomeComponent{
 
     constructor(title:Title, navigationService: NavigationService) {
         title.setTitle("Comic Cloud");
-        navigationService.changeMode(NavigationType.Hidden);
+        navigationService.changeMode(NavigationType.Disabled);
     }
 
 }
