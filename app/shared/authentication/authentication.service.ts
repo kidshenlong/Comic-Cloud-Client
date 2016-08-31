@@ -24,7 +24,8 @@ export class AuthenticationService {
 
 
     logout() {
-        localStorage.removeItem('loggedIn')
+        //localStorage.removeItem('loggedIn')
+        return Observable.of(true).delay(1000).do(val => localStorage.removeItem('loggedIn'));
     }
 
 
