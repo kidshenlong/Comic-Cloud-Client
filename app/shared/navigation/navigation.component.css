@@ -19,3 +19,9 @@
     margin: 0 10px;
     float: left;
 }
+
+#navigation ul li a{
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+}
