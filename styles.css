@@ -18,3 +18,8 @@ body{
 [hidden] {
     display: none !important;
 }
+
+
+.transparent {
+    opacity: 0.1;
+}

@@ -15,14 +15,17 @@ import {ComicComponent} from "./comic/comic.component";
 import {HomeComponent} from "./home/home.component";
 import {AuthenticationGuard} from "./shared/authentication/authentication-guard.service";
 import {AuthenticationService} from "./shared/authentication/authentication.service";
+import {UploadService} from "./shared/upload/upload.service";
 import {LoginComponent} from "./login/login.component";
 import {RegisterComponent} from "./register/register.component";
+import {HttpModule} from "@angular/http";
 
 
 @NgModule({
     imports:      [
         BrowserModule,
         FormsModule,
+        HttpModule,
         routing
     ],
     declarations: [
@@ -38,7 +41,8 @@ import {RegisterComponent} from "./register/register.component";
         Title,
         NavigationService,
         AuthenticationService,
-        AuthenticationGuard
+        AuthenticationGuard,
+        UploadService
     ],
     bootstrap:    [ AppComponent ]
 })
