@@ -7,3 +7,15 @@
     z-index: 90;
     background-color: white;
 }
+
+#navigation ul {
+    padding: 0;
+    width: 200px;
+    float: right;
+    list-style: none;
+}
+
+#navigation ul li {
+    margin: 0 10px;
+    float: left;
+}
