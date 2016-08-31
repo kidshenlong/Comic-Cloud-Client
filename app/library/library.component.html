@@ -1,7 +1,5 @@
-<div class="shelf" ng2FileDrop [uploader]="uploader"
-     (fileOver)="fileOver($event)">
+<div class="shelf" ng2FileDrop [uploader]="uploadService.uploader" (fileOver)="fileOver($event)" [class.transparent]="isTransparent">
     <stack *ngFor="let thisSeries of series" [stackType]="'series'" [stackData]="thisSeries"></stack>
-
 </div>
 
 
@@ -15,4 +13,8 @@
 </div>
 -->
 
-<pre>{{uploader.isUploading | json}}</pre>
+<!--<pre>{{uploader.queue| json}}</pre>-->
+
+<div *ngFor="let item of uploadService.uploader.queue">
+    <pre>{{item.progress | json}}</pre>
+</div>
