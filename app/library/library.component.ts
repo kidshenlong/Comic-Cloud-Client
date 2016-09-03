@@ -10,6 +10,7 @@ import {NavigationService} from "../shared/navigation/navigation.service";
 import {NavigationType} from "../shared/navigation/navigation.type";
 import {FILE_UPLOAD_DIRECTIVES, FileUploader} from 'ng2-file-upload';
 import {UploadService} from "../shared/upload/upload.service";
+import {ContextMenuComponent} from "../shared/context-menu/context-menu.component";
 
 @Component({
     selector: 'library',

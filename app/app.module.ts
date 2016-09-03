@@ -19,6 +19,7 @@ import {UploadService} from "./shared/upload/upload.service";
 import {LoginComponent} from "./login/login.component";
 import {RegisterComponent} from "./register/register.component";
 import {HttpModule} from "@angular/http";
+import {ContextMenuService} from "./shared/context-menu/context-menu.service";
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import {HttpModule} from "@angular/http";
         NavigationService,
         AuthenticationService,
         AuthenticationGuard,
-        UploadService
+        UploadService,
+        ContextMenuService
     ],
     bootstrap:    [ AppComponent ]
 })

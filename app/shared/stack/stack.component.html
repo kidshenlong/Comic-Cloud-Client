@@ -1,4 +1,5 @@
-<a [routerLink]="['/' + stackType, stackData.id]">
+<a [routerLink]="['/' + stackType, stackData.id]"
+   (contextmenu)="onContextMenu($event, stackData)">
     <img *ngIf="stackType=='series'" [src]="stackData.cover_image">
     <img *ngIf="stackType=='comic'" [src]="stackData.comic_book_archive_contents[0]">
     <div class="information" *ngIf="stackType=='series'">{{stackData.title}} ({{stackData.start_year}})</div>
