@@ -1,4 +1,10 @@
 <div id="reader">
-    <comic-image *ngFor="let image of comic.comic_book_archive_contents" [srcToLoad]="image"></comic-image>
+    <comic-image
+            *ngFor="let image of comic.comic_book_archive_contents"
+            [srcToLoad]="image"
+            (onLoaded)="onLoaded($event)"
+    ></comic-image>
     <!--<comic-navigation></comic-navigation>-->
 </div>
+
+<div style="font-size:72px;">{{loadedImages}}</div>

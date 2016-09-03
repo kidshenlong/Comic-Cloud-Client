@@ -20,6 +20,9 @@ export class ComicImageComponent {
 
     enabled = false;
 
+    @Output() onLoaded = new EventEmitter<boolean>();
+    isLoaded: boolean = false;
+
     //elementRef: ElementRef;
     //private comicImageService: ComicImageService;
 
@@ -34,5 +37,7 @@ export class ComicImageComponent {
     loaded(event){
         console.log(event);
         console.log("loaded");
+        this.onLoaded.emit(true);
+        this.isLoaded = true;
     }
 }
