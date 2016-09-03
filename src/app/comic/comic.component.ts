@@ -31,11 +31,30 @@ export class ComicComponent implements OnInit, AfterViewInit {
     @ViewChildren(ComicImageComponent) private comicImageComponents: QueryList<ComicImageComponent>;
     private _currentPage: number = 0;
 
+    private currentPageSource = new Subject<number>();
+    currentPage$ = this.currentPageSource.asObservable();
+
+    //currentPageNew: number = 0;
+
+
+
+    @ViewChildren(ComicImageComponent) private comicImageComponents: QueryList<ComicImageComponent>;
+
     constructor(private comicService: ComicService, title:Title, private elementRef: ElementRef, private comicStateService: ComicStateService, navigationService: NavigationService, private route: ActivatedRoute, private router: Router) {
         this.title = title;
+        navigationService.changeMode(NavigationType.Disabled);
+        //this.currentPageSource.next(0);
+
+        //console.log(this.currentPageSource.complete());
+        /*comicStateService.comicStatus$.subscribe(newStatus => this.comicStatus = newStatus);
         navigationService.changeMode(Navigation.Reader);
         comicStateService.comicStatus$.subscribe(newStatus => this.comicStatus = newStatus);
         comicStateService.currentPage$.subscribe(page => {
+            this._currentPage = page;
+            this.viewPage(page);
+        });*/
+
+        this.currentPage$.subscribe(page => {
             this._currentPage = page;
             this.viewPage(page);
         });
@@ -66,7 +85,7 @@ export class ComicComponent implements OnInit, AfterViewInit {
             let id = params['id'];
             this.title.setTitle("Comic Cloud - ");
             this.comic = this.getComic(id);
-            this.comicStateService.setPageCount(this.comic.comic_book_archive_contents.length);
+            this.comicLength = this.comic.comic_book_archive_contents.length;
         });
 
     }
@@ -82,7 +101,7 @@ export class ComicComponent implements OnInit, AfterViewInit {
     loadImages(from: number, to: number){
         var componentsArray = this.comicImageComponents.toArray();
 
-        this.comicStateService.setComicStatus(ComicStatus.Loading);
+        //this.comicStateService.setComicStatus(ComicStatusType.Loading);
 
         for(var i = from; i <= to; i++){
             componentsArray[i].enable();
@@ -97,15 +116,12 @@ export class ComicComponent implements OnInit, AfterViewInit {
     }
 
     set currentPage(value) {
-        //console.log("[New Page]" + value);
-        //console.log("[Page Count]" + pageCount);
-        var pageCount = this.comic.comic_book_archive_contents.length;
 
-        if(value >= 0 || value < (pageCount - 1)) {
+        if(value >= 0 && value < this.comicLength) {
 
-            this.comicStateService.setCurrentPage(value);
+            this.currentPageSource.next(value);
 
-            this._currentPage = value;
+            //this._currentPage = value;
         }
     }
 
@@ -113,12 +129,11 @@ export class ComicComponent implements OnInit, AfterViewInit {
         console.log("change page to: " + page);
         var pageCount = this.comic.comic_book_archive_contents.length;
         var componentsArray = this.comicImageComponents.toArray();
-        console.log(componentsArray);
+        //console.log(componentsArray);
 
-        //if((page - 1) < pageCount || page >= 0) {
-            for (let component of componentsArray) component.hidden = true;
-            componentsArray[page].hidden = false;
-        //}
+        for (let component of componentsArray) component.hidden = true;
+        componentsArray[page].hidden = false;
+
     }
 
     private _keyup(event: KeyboardEvent) {
