@@ -4,7 +4,6 @@
 import {Component, OnInit} from "@angular/core";
 import {Title} from '@angular/platform-browser';
 import {ActivatedRoute, Router} from "@angular/router";
-import {HTTP_PROVIDERS} from "@angular/http";
 import {Comic} from "./comic.model";
 import {ComicService} from "./comic.service";
 import {NavigationService} from "../shared/navigation/navigation.service";
@@ -21,8 +20,8 @@ import {ComicStatusType} from "./comic-status/comic-status.type";
     selector: 'comic',
     templateUrl: "/app/comic/comic.component.html",
     styleUrls: ['app/comic/comic.component.css'],
-    directives: [ComicNavigationComponent, ComicImageComponent],
-    providers: [Title, ComicService, HTTP_PROVIDERS, ComicStateService],
+    //directives: [ComicNavigationComponent, ComicImageComponent],
+    providers: [Title, ComicService, ComicStateService],
     host: {
         '(document:keyup)': '_keyup($event)'
     },

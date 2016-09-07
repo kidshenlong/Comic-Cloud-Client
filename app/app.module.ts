@@ -19,6 +19,7 @@ import {UploadService} from "./shared/upload/upload.service";
 import {LoginComponent} from "./login/login.component";
 import {RegisterComponent} from "./register/register.component";
 import {HttpModule} from "@angular/http";
+import FILE_UPLOAD_DIRECTIVES from "ng2-file-upload/ng2-file-upload";
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import {HttpModule} from "@angular/http";
         ComicComponent,
         HomeComponent,
         LoginComponent,
-        RegisterComponent
+        RegisterComponent,
+        //FILE_UPLOAD_DIRECTIVES
     ],
     providers: [
         Title,

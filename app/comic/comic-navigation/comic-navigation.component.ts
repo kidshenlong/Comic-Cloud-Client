@@ -1,6 +1,3 @@
-/**
- * Created by Michael on 23/05/2016.
- */
 import {Component, OnInit, ElementRef} from "@angular/core";
 import {ComicStateService} from "../comic-state/comic-state.service";
 import {ComicStatusType} from "../comic-status/comic-status.type";

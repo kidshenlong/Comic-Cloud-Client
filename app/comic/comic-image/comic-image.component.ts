@@ -3,7 +3,6 @@
  */
 import {Component, OnInit, ElementRef, Renderer, Input} from "@angular/core";
 import {Title} from '@angular/platform-browser';
-import {HTTP_PROVIDERS} from "@angular/http";
 import {ComicImageService} from "./comic-image.service";
 
 @Component({

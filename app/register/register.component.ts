@@ -12,7 +12,7 @@ import {AuthenticationService} from "../shared/authentication/authentication.ser
     templateUrl: "/app/register/register.component.html",
     styleUrls: ['app/register/register.component.css'],
     providers: [],
-    directives: []
+    //directives: []
 })
 
 export class RegisterComponent{

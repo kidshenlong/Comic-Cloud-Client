@@ -1,5 +1,4 @@
 import {Component, Input} from '@angular/core';
-import {ROUTER_DIRECTIVES} from "@angular/router";
 
 @Component({
     selector: 'stack',
@@ -8,7 +7,7 @@ import {ROUTER_DIRECTIVES} from "@angular/router";
     host: {
         'class': 'stack'
     },
-    directives: [ROUTER_DIRECTIVES]
+    //directives: [ROUTER_DIRECTIVES]
     //providers: [RouteParams, RouterLink]
 })
 export class StackComponent {

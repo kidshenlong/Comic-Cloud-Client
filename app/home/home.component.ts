@@ -11,7 +11,7 @@ import {Title} from "@angular/platform-browser";
     templateUrl: "/app/home/home.component.html",
     styleUrls: ['app/home/home.component.css'],
     providers: [],
-    directives: []
+    //directives: []
 })
 
 export class HomeComponent{

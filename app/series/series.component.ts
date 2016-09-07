@@ -16,7 +16,7 @@ import {NavigationType} from "../shared/navigation/navigation.type";
     host: { 'class' : "shelf" },
     templateUrl: "/app/series/series.component.html",
     providers: [Title, SeriesService],
-    directives: [StackComponent]
+    //directives: [StackComponent]
 })
 
 export class SeriesComponent implements OnInit{

@@ -14,7 +14,7 @@ import { CanActivate, Router, ActivatedRouteSnapshot, RouterStateSnapshot } from
     templateUrl: "/app/login/login.component.html",
     styleUrls: ['app/login/login.component.css'],
     providers: [],
-    directives: []
+    //directives: []
 })
 
 export class LoginComponent{

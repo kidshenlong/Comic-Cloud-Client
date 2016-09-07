@@ -17,7 +17,7 @@ import {UploadService} from "../shared/upload/upload.service";
     templateUrl: "/app/library/library.component.html",
     styleUrls: ['app/library/library.component.css'],
     providers: [SeriesService, UploadService],
-    directives: [StackComponent, FILE_UPLOAD_DIRECTIVES]
+    //directives: [StackComponent, FILE_UPLOAD_DIRECTIVES]
 })
 
 export class LibraryComponent implements OnInit {
