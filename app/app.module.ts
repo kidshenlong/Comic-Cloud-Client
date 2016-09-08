@@ -20,6 +20,10 @@ import {LoginComponent} from "./login/login.component";
 import {RegisterComponent} from "./register/register.component";
 import {HttpModule} from "@angular/http";
 import FILE_UPLOAD_DIRECTIVES from "ng2-file-upload/ng2-file-upload";
+import {NavigationComponent} from "./shared/navigation/navigation.component";
+import {StackComponent} from "./shared/stack/stack.component";
+import {ComicImageComponent} from "./comic/comic-image/comic-image.component";
+import {ComicNavigationComponent} from "./comic/comic-navigation/comic-navigation.component";
 
 
 @NgModule({
@@ -37,6 +41,10 @@ import FILE_UPLOAD_DIRECTIVES from "ng2-file-upload/ng2-file-upload";
         HomeComponent,
         LoginComponent,
         RegisterComponent,
+        NavigationComponent,
+        StackComponent,
+        ComicImageComponent,
+        ComicNavigationComponent
         //FILE_UPLOAD_DIRECTIVES
     ],
     providers: [
