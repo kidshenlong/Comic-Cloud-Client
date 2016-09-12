@@ -76,7 +76,8 @@ export class ContextMenuComponent {
     }
 
     //Source: http://stackoverflow.com/a/4770179/1877109
-    keys = {37: 1, 38: 1, 39: 1, 40: 1};
+    //keys = {37: 1, 38: 1, 39: 1, 40: 1};
+    keys = [37, 38, 39, 40];
 
     private preventDefault(e) {
         e = e || window.event;
@@ -86,6 +87,7 @@ export class ContextMenuComponent {
     }
 
     private preventDefaultForScrollKeys(e) {
+        console.log("keycode: " + e.keyCode);
         if (this.keys[e.keyCode]) {
             this.preventDefault(e);
             return false;
@@ -99,6 +101,8 @@ export class ContextMenuComponent {
         window.onmousewheel = document.onmousewheel = this.preventDefault; // older browsers, IE
         window.ontouchmove = this.preventDefault; // mobile
         document.onkeydown = this.preventDefaultForScrollKeys;
+        document.documentElement.style.overflow = 'hidden';  // firefox, chrome
+        document.body.scroll = "no"; // ie only
     }
 
     private enableScroll() {
@@ -108,6 +112,8 @@ export class ContextMenuComponent {
         window.onwheel = null;
         window.ontouchmove = null;
         document.onkeydown = null;
+        document.documentElement.style.overflow = 'auto';  // firefox, chrome
+        document.body.scroll = "yes"; // ie only
     }
 
     /* consider removing scroll bar*/
