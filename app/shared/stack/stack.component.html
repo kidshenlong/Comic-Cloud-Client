@@ -1,6 +1,6 @@
 <a [routerLink]="['/' + stackType, stackData.id]">
-    <img *ngIf="stackType=='series'" [src]="stackData.cover_image">
-    <img *ngIf="stackType=='comic'" [src]="stackData.comic_book_archive_contents[0]">
+    <img [hidden]="!isStackImageLoaded" [src]="stackImage" (load)="stackImageLoaded($event)">
+    <img *ngIf="!isStackImageLoaded" src="/images/comic-cloud-image-holder.png">
     <div class="information" *ngIf="stackType=='series'">{{stackData.title}} ({{stackData.start_year}})</div>
     <div class="information" *ngIf="stackType=='comic'" >#{{stackData.issue}}</div>
 </a>
