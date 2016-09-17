@@ -4,30 +4,23 @@
 import {Component, OnInit} from "@angular/core";
 import {Title} from '@angular/platform-browser';
 import {ActivatedRoute, Router} from "@angular/router";
-import {ComicService} from "./comic.service";
-import {NavigationService} from "../shared/navigation/navigation.service";
-import {NavigationType} from "../shared/navigation/navigation.type";
-import {ComicNavigationComponent} from "./comic-navigation/comic-navigation.component";
+import {Navigation, NavigationService} from "../shared";
 import {ViewChildren, AfterViewInit, ElementRef, QueryList} from '@angular/core';
-import {ComicStateService} from "./comic-state/comic-state.service";
-import {Comic} from "./comic/comic";
-import {ComicStatus} from "./comic/comic-status/comic-status.enum";
-import {ComicImageComponent} from "./comic/comic-image/comic-image.component";
-import {ComicStateService} from "./comic/comic-state/comic-state.service";
-import {ComicService} from "./comics.service";
+
+import {ComicsService, ComicStateService, Comic, ComicStatus, ComicNavigationComponent, ComicImageComponent} from "../comics"
 
 
 @Component({
-    selector: 'comic',
-    templateUrl: "/app/comic/comic.component.html",
-    styleUrls: ['app/comic/comic.component.css'],
-    providers: [Title, ComicService, ComicStateService],
+    selector: 'comics',
+    templateUrl: "app/comics/comics.component.html",
+    styleUrls: ['app/comics/comics.component.css'],
+    providers: [Title, ComicsService, ComicStateService],
     host: {
         '(document:keyup)': '_keyup($event)'
     },
 })
 
-export class ComicComponent implements OnInit, AfterViewInit {
+export class ComicsComponent implements OnInit, AfterViewInit {
 
     comic: Comic;
     title: Title;
@@ -35,9 +28,9 @@ export class ComicComponent implements OnInit, AfterViewInit {
     @ViewChildren(ComicImageComponent) private comicImageComponents: QueryList<ComicImageComponent>;
     private _currentPage: number = 0;
 
-    constructor(private comicService: ComicService, title:Title, private elementRef: ElementRef, private comicStateService: ComicStateService, navigationService: NavigationService, private route: ActivatedRoute, private router: Router) {
+    constructor(private comicService: ComicsService, title:Title, private elementRef: ElementRef, private comicStateService: ComicStateService, navigationService: NavigationService, private route: ActivatedRoute, private router: Router) {
         this.title = title;
-        navigationService.changeMode(NavigationType.Reader);
+        navigationService.changeMode(Navigation.Reader);
         comicStateService.comicStatus$.subscribe(newStatus => this.comicStatus = newStatus);
         comicStateService.currentPage$.subscribe(page => {
             this._currentPage = page;

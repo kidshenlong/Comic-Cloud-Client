@@ -5,11 +5,9 @@ import {Component, OnInit} from "@angular/core";
 import {Title} from "@angular/platform-browser";
 import {SeriesService} from "../series/series.service";
 import {Series} from "../series/series.model";
-import {StackComponent} from "../shared/stack/stack.component";
-import {NavigationService} from "../shared/navigation/navigation.service";
-import {NavigationType} from "../shared/navigation/navigation.type";
 import {FILE_UPLOAD_DIRECTIVES, FileUploader} from 'ng2-file-upload';
 import {UploadService} from "../shared/upload/upload.service";
+import {Navigation, NavigationService, StackComponent} from '../shared'
 
 @Component({
     selector: 'library',
@@ -29,12 +27,6 @@ export class LibraryComponent implements OnInit {
     isTransparent: boolean = false;
 
 
-    /*public uploader:FileUploader = new FileUploader(
-        {url: 'https://evening-anchorage-3159.herokuapp.com/api/', autoUpload: true}
-    );
-*/
-
-
     fileOver(e){
         this.isTransparent = e;
 
@@ -42,7 +34,7 @@ export class LibraryComponent implements OnInit {
 
     constructor(private _seriesService: SeriesService, title:Title, navigationService: NavigationService, public uploadService: UploadService) {
         title.setTitle("Comic Cloud - Library");
-        navigationService.changeMode(NavigationType.Library);
+        navigationService.changeMode(Navigation.Library);
 
         uploadService.uploader.onCompleteAll = () => {
             console.log('complete');

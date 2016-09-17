@@ -4,12 +4,10 @@
 import {Component, OnInit, OnDestroy} from "@angular/core";
 import {Title} from "@angular/platform-browser";
 import {ActivatedRoute, Router} from "@angular/router";
-import {Comic} from "./../comic/comic.model";
+import {Comic} from "../comics";
 import {SeriesService} from "./series.service";
 import {Series} from "./series.model";
-import {StackComponent} from "../shared/stack/stack.component";
-import {NavigationService} from "../shared/navigation/navigation.service";
-import {NavigationType} from "../shared/navigation/navigation.type";
+import {Navigation, NavigationService, StackComponent} from "../shared";
 
 @Component({
     selector: 'library',
@@ -27,7 +25,7 @@ export class SeriesComponent implements OnInit{
 
     constructor(private _seriesService: SeriesService, title:Title, navigationService: NavigationService, private route: ActivatedRoute, private router: Router) {
         this.title = title;
-        navigationService.changeMode(NavigationType.Library);
+        navigationService.changeMode(Navigation.Library);
     }
 
     ngOnInit(){

@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core'
 import { Subject }    from 'rxjs/Subject';
-import {Comic} from "../comic.model";
-import {ComicStatusType} from "../comic-status/comic-status.type";
+import {Comic, ComicStatus} from '../../comic';
 
 @Injectable()
 export class ComicStateService {
@@ -10,7 +9,7 @@ export class ComicStateService {
     pageCount: number;
 
     private currentPageSource = new Subject<number>();
-    private comicStatusSource = new Subject<ComicStatusType>();
+    private comicStatusSource = new Subject<ComicStatus>();
     private pageCountSource = new Subject<number>();
 
     currentPage$ = this.currentPageSource.asObservable();
@@ -32,7 +31,7 @@ export class ComicStateService {
         this.currentPageSource.next(page);
     }
 
-    setComicStatus(status: ComicStatusType){
+    setComicStatus(status: ComicStatus){
         //console.log("New Status: " + status);
         this.comicStatusSource.next(status);
     }

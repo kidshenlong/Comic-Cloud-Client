@@ -1,7 +1,6 @@
 import { Injectable }     from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Observable }     from 'rxjs/Observable';
-import {IMAGES_URL} from "../../shared/data.service";
 
 @Injectable()
 export class ComicImageService {

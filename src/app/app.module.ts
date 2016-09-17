@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import { ComicsComponent } from './comics/comics.component';
+import { ComicsComponent } from './comics';
 
 @NgModule({
   declarations: [
