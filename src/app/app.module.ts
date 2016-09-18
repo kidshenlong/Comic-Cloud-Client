@@ -2,25 +2,34 @@ import {BrowserModule, Title} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
-import {routing}       from '../app/';
+import {routing} from './app.routing';
 
-import {
-    AppComponent,
-    NavigationComponent,
-    NavigationService,
+import { AppComponent } from './app.component';
+
+/*import {
+    //NavigationComponent,
+/!*    NavigationService,
     AuthenticationService,
     AuthenticationGuard,
-    UploadService,
+    UploadService,*!/
     LibraryComponent,
-    SeriesComponent,
+/!*    SeriesComponent,
     ComicNavigationComponent,
     ComicImageComponent,
     StackComponent,
     HomeComponent,
     RegisterComponent,
     LoginComponent,
-    ComicsComponent
-} from '../app';
+    ComicsComponent*!/
+} from '../app';*/
+
+import { LibraryComponent } from './library'
+import { NavigationComponent, NavigationService, StackComponent, AuthenticationService, AuthenticationGuard, UploadService } from './shared'
+import { ComicNavigationComponent, ComicImageComponent, ComicsComponent, ComicStateService, ComicsService } from './comics'
+import { SeriesComponent } from './series'
+import { HomeComponent } from './home'
+import { LoginComponent } from './login'
+import { RegisterComponent } from './register'
 
 @NgModule({
     declarations: [
@@ -47,9 +56,10 @@ import {
         NavigationService,
         AuthenticationService,
         AuthenticationGuard,
-        UploadService
+        UploadService,
+        ComicStateService,
+        ComicsService
     ],
     bootstrap: [AppComponent]
 })
-export class AppModule {
-}
+export class AppModule { }

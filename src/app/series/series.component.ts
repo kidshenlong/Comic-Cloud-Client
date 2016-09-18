@@ -5,15 +5,14 @@ import {Component, OnInit, OnDestroy} from "@angular/core";
 import {Title} from "@angular/platform-browser";
 import {ActivatedRoute, Router} from "@angular/router";
 import {Comic} from "../comics";
-import {SeriesService, Series} from "../series";
+import {Series} from "../series";
 import {Navigation, NavigationService, StackComponent} from "../shared";
 
 @Component({
     selector: 'library',
     host: { 'class' : "shelf" },
     templateUrl: "series.component.html",
-    providers: [Title, SeriesService],
-    //directives: [StackComponent]
+    providers: [Title],
 })
 
 export class SeriesComponent implements OnInit{
@@ -22,7 +21,7 @@ export class SeriesComponent implements OnInit{
     title: Title;
 
 
-    constructor(private _seriesService: SeriesService, title:Title, navigationService: NavigationService, private route: ActivatedRoute, private router: Router) {
+    constructor(title:Title, navigationService: NavigationService, private route: ActivatedRoute, private router: Router) {
         this.title = title;
         navigationService.changeMode(Navigation.Library);
     }

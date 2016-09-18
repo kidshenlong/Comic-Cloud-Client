@@ -7,7 +7,14 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {Navigation, NavigationService} from "../shared";
 import {ViewChildren, AfterViewInit, ElementRef, QueryList} from '@angular/core';
 
-import {ComicsService, ComicStateService, Comic, ComicStatus, ComicNavigationComponent, ComicImageComponent} from "../comics"
+import {ComicsService} from "./comics.service";
+import {ComicStateService} from "./comic/comic-state/comic-state.service";
+import {Comic} from "./comic/comic";
+import {ComicStatus} from "./comic/comic-status/comic-status.enum";
+import {ComicImageComponent} from "./comic/comic-image/comic-image.component";
+
+//import {ComicsService, ComicStateService, Comic, ComicStatus, ComicNavigationComponent, ComicImageComponent} from "../comics"
+//import {ComicsService} from "./comics.service";
 
 
 @Component({
