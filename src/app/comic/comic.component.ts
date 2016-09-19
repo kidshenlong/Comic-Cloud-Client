@@ -1,17 +1,19 @@
 /**
  * Created by Michael on 08/05/2016.
  */
-import {Component, OnInit} from "@angular/core";
 import {Title} from '@angular/platform-browser';
 import {ActivatedRoute, Router} from "@angular/router";
-import {Navigation, NavigationService} from "../shared";
-import {ViewChildren, AfterViewInit, ElementRef, QueryList} from '@angular/core';
+import {ViewChildren, AfterViewInit, ElementRef, QueryList, Component, OnInit} from '@angular/core';
+import {Location} from '@angular/common';
 
 import {ComicService} from "./comic.service";
 import {ComicStateService} from "./comic-state";
 import {Comic} from "./comic";
 import {ComicStatus} from "./comic-status";
 import {ComicImageComponent} from "./comic-image";
+import {Navigation, NavigationService} from "../shared";
+
+import {Subject} from "rxjs/Subject";
 
 @Component({
     selector: 'comic',
@@ -28,6 +30,8 @@ export class ComicComponent implements OnInit, AfterViewInit {
     comic: Comic;
     title: Title;
     comicStatus: ComicStatus = ComicStatus.Waiting;
+    comicLength: number;
+
     @ViewChildren(ComicImageComponent) private comicImageComponents: QueryList<ComicImageComponent>;
     private _currentPage: number = 0;
 
@@ -36,12 +40,9 @@ export class ComicComponent implements OnInit, AfterViewInit {
 
     loadedImages: number = 0;
 
-
-    @ViewChildren(ComicImageComponent) private comicImageComponents: QueryList<ComicImageComponent>;
-
     constructor(private comicService: ComicService, title:Title, private elementRef: ElementRef, private comicStateService: ComicStateService, navigationService: NavigationService, private route: ActivatedRoute, private router: Router, private location: Location) {
         this.title = title;
-        navigationService.changeMode(NavigationType.Disabled);
+        navigationService.changeMode(Navigation.Disabled);
         //this.currentPageSource.next(0);
 
         //console.log(this.currentPageSource.complete());

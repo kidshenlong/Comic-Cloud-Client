@@ -1,8 +1,7 @@
 /**
  * Created by Michael on 08/05/2016.
  */
-import {Component, OnInit, ElementRef, Renderer, Input} from "@angular/core";
-import {Title} from '@angular/platform-browser';
+import {Component, OnInit, ElementRef, Renderer, Input, Output, EventEmitter} from "@angular/core";
 import {ComicImageService} from "./comic-image.service";
 
 @Component({
