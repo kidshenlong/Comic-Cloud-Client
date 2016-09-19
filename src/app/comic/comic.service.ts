@@ -3,7 +3,7 @@ import {Http, Response} from '@angular/http';
 import {Observable}     from 'rxjs/Observable';
 
 @Injectable()
-export class ComicsService {
+export class ComicService {
     constructor (private http: Http) {}
 
     //private _comicsUrl = COMICS_URL;// URL to web api

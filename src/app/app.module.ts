@@ -5,27 +5,9 @@ import {HttpModule} from '@angular/http';
 import {routing} from './app.routing';
 
 import { AppComponent } from './app.component';
-
-/*import {
-    //NavigationComponent,
-/!*    NavigationService,
-    AuthenticationService,
-    AuthenticationGuard,
-    UploadService,*!/
-    LibraryComponent,
-/!*    SeriesComponent,
-    ComicNavigationComponent,
-    ComicImageComponent,
-    StackComponent,
-    HomeComponent,
-    RegisterComponent,
-    LoginComponent,
-    ComicsComponent*!/
-} from '../app';*/
-
 import { LibraryComponent } from './library'
 import { NavigationComponent, NavigationService, StackComponent, AuthenticationService, AuthenticationGuard, UploadService } from './shared'
-import { ComicNavigationComponent, ComicImageComponent, ComicsComponent, ComicStateService, ComicsService } from './comics'
+import { ComicNavigationComponent, ComicImageComponent, ComicComponent, ComicStateService, ComicService } from './comic'
 import { SeriesComponent } from './series'
 import { HomeComponent } from './home'
 import { LoginComponent } from './login'
@@ -36,7 +18,7 @@ import { RegisterComponent } from './register'
         AppComponent,
         LibraryComponent,
         SeriesComponent,
-        ComicsComponent,
+        ComicComponent,
         HomeComponent,
         LoginComponent,
         RegisterComponent,
@@ -58,8 +40,9 @@ import { RegisterComponent } from './register'
         AuthenticationGuard,
         UploadService,
         ComicStateService,
-        ComicsService
+        ComicService
     ],
     bootstrap: [AppComponent]
 })
+
 export class AppModule { }

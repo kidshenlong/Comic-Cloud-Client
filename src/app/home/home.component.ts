@@ -2,8 +2,9 @@
  * Created by Michael on 27/08/2016.
  */
 import {Component} from "@angular/core";
-import {NavigationService, Navigation} from "../shared";
 import {Title} from "@angular/platform-browser";
+
+import {NavigationService, Navigation} from "../shared";
 
 @Component({
     selector: 'home',

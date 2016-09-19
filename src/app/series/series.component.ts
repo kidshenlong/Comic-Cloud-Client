@@ -4,7 +4,8 @@
 import {Component, OnInit, OnDestroy} from "@angular/core";
 import {Title} from "@angular/platform-browser";
 import {ActivatedRoute, Router} from "@angular/router";
-import {Comic} from "../comics";
+
+import {Comic} from "../comic";
 import {Series} from "../series";
 import {Navigation, NavigationService, StackComponent} from "../shared";
 

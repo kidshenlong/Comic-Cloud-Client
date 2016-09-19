@@ -2,18 +2,16 @@
  * Created by Michael on 27/08/2016.
  */
 import {Component} from "@angular/core";
-import {Navigation, NavigationService} from "../shared";
-import {Title} from "@angular/platform-browser";
-import {AuthenticationService} from "../shared/authentication/authentication.service";
 import { CanActivate, Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import {Title} from "@angular/platform-browser";
 
+import {Navigation, NavigationService, AuthenticationService} from "../shared";
 
 @Component({
     selector: 'login',
     templateUrl: "login.component.html",
     styleUrls: ['login.component.css'],
     providers: [],
-    //directives: []
 })
 
 export class LoginComponent{

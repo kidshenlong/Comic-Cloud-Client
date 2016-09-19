@@ -4,9 +4,10 @@
 import {Component, OnInit} from "@angular/core";
 import {Title} from "@angular/platform-browser";
 import {SeriesService, Series} from "../series";
+
 import {FILE_UPLOAD_DIRECTIVES, FileUploader} from 'ng2-file-upload';
-import {UploadService} from "../shared/upload/upload.service";
-import {Navigation, NavigationService, StackComponent} from '../shared'
+
+import {Navigation, NavigationService, StackComponent, UploadService} from '../shared'
 
 @Component({
     selector: 'library',
@@ -14,7 +15,6 @@ import {Navigation, NavigationService, StackComponent} from '../shared'
     templateUrl: "library.component.html",
     styleUrls: ['library.component.css'],
     providers: [SeriesService, UploadService],
-    //directives: [StackComponent, FILE_UPLOAD_DIRECTIVES]
 })
 
 export class LibraryComponent implements OnInit {
