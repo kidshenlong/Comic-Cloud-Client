@@ -13,6 +13,8 @@ import { HomeComponent } from './home'
 import { LoginComponent } from './login'
 import { RegisterComponent } from './register'
 
+import { Logger } from "angular2-logger/core";
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -40,7 +42,8 @@ import { RegisterComponent } from './register'
         AuthenticationGuard,
         UploadService,
         ComicStateService,
-        ComicService
+        ComicService,
+        Logger
     ],
     bootstrap: [AppComponent]
 })
