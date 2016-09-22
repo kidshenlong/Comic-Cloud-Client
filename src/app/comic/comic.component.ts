@@ -40,19 +40,11 @@ export class ComicComponent implements OnInit, AfterViewInit {
 
     loadedImages: number = 0;
 
+
     constructor(private comicService: ComicService, title:Title, private elementRef: ElementRef, private comicStateService: ComicStateService, navigationService: NavigationService, private route: ActivatedRoute, private router: Router, private location: Location) {
         this.title = title;
         navigationService.changeMode(Navigation.Disabled);
-        //this.currentPageSource.next(0);
 
-        //console.log(this.currentPageSource.complete());
-        /*comicStateService.comicStatus$.subscribe(newStatus => this.comicStatus = newStatus);
-        navigationService.changeMode(Navigation.Reader);
-        comicStateService.comicStatus$.subscribe(newStatus => this.comicStatus = newStatus);
-        comicStateService.currentPage$.subscribe(page => {
-            this._currentPage = page;
-            this.viewPage(page);
-        });*/
 
         this.currentPage$.subscribe(page => {
             this._currentPage = page;
@@ -66,15 +58,10 @@ export class ComicComponent implements OnInit, AfterViewInit {
 
             this.elementRef.nativeElement.focus();
 
-            //this.comicImageComponents.toArray();
-
-            var from = 0;
-            var to = 2;//todo (mpm) 10/06/2016 Add constraint for if 3 doesn't exist
+            var from = 0; var to = 2;//todo move to config
 
             this.loadImages(from, to);
             this.viewPage(0);
-            console.log(this.comicImageComponents);
-
         }, 0);
     }
 
@@ -107,8 +94,9 @@ export class ComicComponent implements OnInit, AfterViewInit {
 
         //this.comicStateService.setComicStatus(ComicStatusType.Loading);
 
-        if(to > this.comicLength) to = this.comicLength;
+        if(to > this.comicLength) to = this.comicLength - 1;
 
+        console.log("from: " + from + " to: " + to);
         for(var i = from; i <= to; i++){
             componentsArray[i].enable();
         }
@@ -117,7 +105,6 @@ export class ComicComponent implements OnInit, AfterViewInit {
 
 
     get currentPage() {
-        //console.log(`[comic.component]getting value for text "${this._currentPage}"`);
         return this._currentPage;
     }
 
@@ -125,11 +112,12 @@ export class ComicComponent implements OnInit, AfterViewInit {
 
         if(value >= 0 && value < this.comicLength) {
 
+            this.updateLastPageRead(value);
+
             this.currentPageSource.next(value);
 
             if(value >= (this.loadedImages - 2)) this.loadImages(this.loadedImages - 1, this.loadedImages + 2);
 
-            //this._currentPage = value;
         }
     }
 
@@ -142,6 +130,10 @@ export class ComicComponent implements OnInit, AfterViewInit {
         for (let component of componentsArray) component.hidden = true;
         componentsArray[page].hidden = false;
 
+    }
+
+    updateLastPageRead(newPage: number){
+        console.log("post update to API");
     }
 
     private _keyup(event: KeyboardEvent) {
@@ -165,7 +157,8 @@ export class ComicComponent implements OnInit, AfterViewInit {
 
     onLoaded(event){
         this.loadedImages++;
-        console.log(event);
+        //console.log(event);
+        console.log("Image Loaded")
     }
 
 

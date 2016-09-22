@@ -1,1 +1,3 @@
-<img *ngIf="enabled" (load)="loaded($event)" [src]="srcToLoad" [hidden]="hidden">
+<img class="comic-image" *ngIf="enabled" (load)="loaded($event)" [src]="srcToLoad" [hidden]="hidden">
+<!--<div style="position: fixed; left:0; right: 0;  top: 0; bottom: 0; color: white;">LOADING...</div>-->
+<img class="comic-image-loader" *ngIf="!hidden && !isLoaded" src="../../../assets/images/loading.gif">
