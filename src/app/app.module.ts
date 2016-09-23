@@ -8,11 +8,13 @@ import { AppComponent } from './app.component';
 import { LibraryComponent } from './library'
 import { NavigationComponent, NavigationService, StackComponent, AuthenticationService, AuthenticationGuard, UploadService } from './shared'
 import { ComicNavigationComponent, ComicImageComponent, ComicComponent, ComicStateService, ComicService } from './comic'
-import { SeriesComponent } from './series'
+import { SeriesComponent, SortBySeriesTitlePipe } from './series'
 import { HomeComponent } from './home'
 import { LoginComponent } from './login'
 import { RegisterComponent } from './register';
 import { SettingsComponent } from './settings/settings.component'
+
+import {FileSelectDirective, FileDropDirective, FileUploader} from 'ng2-file-upload/ng2-file-upload';
 
 @NgModule({
     declarations: [
@@ -27,7 +29,10 @@ import { SettingsComponent } from './settings/settings.component'
         StackComponent,
         ComicImageComponent,
         ComicNavigationComponent,
-        SettingsComponent
+        SettingsComponent,
+        FileSelectDirective,
+        FileDropDirective,
+        SortBySeriesTitlePipe
     ],
     imports: [
         BrowserModule,
