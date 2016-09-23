@@ -1,0 +1,10 @@
+.settings{
+    padding: 75px 0;
+    width: 80%;
+    margin: auto;
+}
+.settings h1{
+    border-bottom: 1px solid #CCC;
+    font-weight: normal;
+    padding-bottom: 10px;
+}

@@ -6,6 +6,16 @@ body{
     transition: all 3s ease-out;/*todo vendor prefix*/
 }
 
+/*
+https://css-tricks.com/couple-takes-sticky-footer/
+*/
+.content {
+    min-height: calc(100vh - 70px);
+}
+.footer {
+    height: 50px;
+}
+
 .shelf {
     padding: 75px 0;
     display: flex;
