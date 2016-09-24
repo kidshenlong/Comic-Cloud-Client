@@ -10,7 +10,7 @@
 
 #navigation ul {
     padding: 0;
-    width: 280px;
+    width: 350px;
     float: right;
     list-style: none;
 }
@@ -20,8 +20,12 @@
     float: left;
 }
 
-#navigation ul li a{
+#navigation ul li a, #navigation ul li label{
     text-decoration: none;
     color: black;
     cursor: pointer;
+}
+
+#file_input_id{
+    display:none;
 }

@@ -1,6 +1,10 @@
 <div id="navigation" *ngIf="mode!=navigationType.Disabled">
     <ul>
         <li><a routerLink="/library">Library</a></li>
+        <li>
+            <label for="file_input_id">Upload</label>
+            <input type="file" ng2FileSelect [uploader]="uploadService.uploader" multiple id="file_input_id">
+        </li>
         <li><a routerLink="/settings">Settings</a></li>
         <li><a href="#" (click)="logout()">Logout</a></li>
     </ul>

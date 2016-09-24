@@ -16,7 +16,7 @@ import {SortBySeriesTitlePipe} from "../series/sort-by-series-title.pipe";
     host: { 'class' : "shelf2" },
     templateUrl: "library.component.html",
     styleUrls: ['library.component.css'],
-    providers: [SeriesService, UploadService]
+    providers: [SeriesService]
 })
 
 export class LibraryComponent implements OnInit {

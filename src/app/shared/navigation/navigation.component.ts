@@ -1,5 +1,6 @@
 import {Component} from "@angular/core";
 import {NavigationService} from "./navigation.service";
+import {UploadService} from "../upload/upload.service";
 import {Navigation} from "./navigation.enum";
 import {AuthenticationService} from "../authentication/authentication.service";
 import {Router} from "@angular/router";
@@ -15,7 +16,7 @@ export class NavigationComponent {
     mode: Navigation;
 
 
-    constructor(private navigationService: NavigationService, public authenticationService: AuthenticationService,  private router: Router) {
+    constructor(private navigationService: NavigationService, public authenticationService: AuthenticationService, public uploadService: UploadService, private router: Router) {
         navigationService.navigationMode$.subscribe(newMode => {
             //Type assertions: ttps://github.com/Microsoft/TypeScript/blob/master/doc/spec.md#416-type-assertions
             //http://stackoverflow.com/questions/17380845/how-to-convert-string-to-enum-in-typescript
