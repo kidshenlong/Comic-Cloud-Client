@@ -12,7 +12,8 @@ import { SeriesComponent } from './series'
 import { HomeComponent } from './home'
 import { LoginComponent } from './login'
 import { RegisterComponent } from './register';
-import { SettingsComponent } from './settings/settings.component'
+import { SettingsComponent } from './settings/settings.component';
+import { EditComponent } from './shared/edit/edit.component'
 
 @NgModule({
     declarations: [
@@ -27,7 +28,8 @@ import { SettingsComponent } from './settings/settings.component'
         StackComponent,
         ComicImageComponent,
         ComicNavigationComponent,
-        SettingsComponent
+        SettingsComponent,
+        EditComponent
     ],
     imports: [
         BrowserModule,

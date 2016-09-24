@@ -13,6 +13,7 @@ import {LibraryComponent} from "./library";
 import {SeriesComponent} from "./series";
 import {ComicComponent} from "./comic";
 import {SettingsComponent} from "./settings/settings.component";
+import {EditComponent} from "./shared/edit/edit.component";
 
 const appRoutes: Routes = [
     {
@@ -39,8 +40,18 @@ const appRoutes: Routes = [
         canActivate: [AuthenticationGuard]
     },
     {
+        path: 'series/:id/edit',
+        component: EditComponent,
+        canActivate: [AuthenticationGuard]
+    },
+    {
         path: 'comic/:id',
         component: ComicComponent,
+        canActivate: [AuthenticationGuard]
+    },
+    {
+        path: 'comic/:id/edit',
+        component: EditComponent,
         canActivate: [AuthenticationGuard]
     },
     {
