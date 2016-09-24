@@ -85,7 +85,8 @@ export class ComicComponent implements OnInit, AfterViewInit {
             "http://www.coverbrowser.com/image/ultimate-spider-man/1-6.jpg",
             "http://www.coverbrowser.com/image/ultimate-spider-man/2-4.jpg",
             "http://www.coverbrowser.com/image/ultimate-spider-man/3-2.jpg",
-            "http://www.coverbrowser.com/image/ultimate-spider-man/4-20.jpg"
+            "http://www.coverbrowser.com/image/ultimate-spider-man/4-20.jpg",
+            "http://www.quirkbooks.com/sites/default/files/u1165/Doctor%20who%20comic.jpg"
         ], "8C3D3E48-155D-11E6-8248-564E36676F51", "1", "complete");
     }
 
@@ -97,7 +98,7 @@ export class ComicComponent implements OnInit, AfterViewInit {
         if(to > this.comicLength) to = this.comicLength - 1;
 
         console.log("from: " + from + " to: " + to);
-        for(var i = from; i <= to; i++){
+        for(var i = from; i < to; i++){
             componentsArray[i].enable();
         }
 
@@ -118,6 +119,9 @@ export class ComicComponent implements OnInit, AfterViewInit {
 
             if(value >= (this.loadedImages - 2)) this.loadImages(this.loadedImages - 1, this.loadedImages + 2);
 
+        } else if(value == this.comicLength){
+            console.log("last page");
+            //callLastPageModal
         }
     }
 
