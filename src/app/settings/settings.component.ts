@@ -7,20 +7,32 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SettingsComponent implements OnInit {
 
-  accountName: string = "Michael Patterson-Muir";
-
-  accountEmail: string = "michaelpm91@googlemail.com";
-
-  comicCloudTier: string = "Comic Cloud Basic";
-
-  remainingStorage: number = 70;
-
-  maxStorage: number = 100;
+  accountName: string;
+  accountEmail: string;
+  comicCloudTier: string;
+  remainingStorage: number;
+  maxStorage: number;
 
   constructor() { }
 
   ngOnInit() {
 
+    this.getAccountInformation();
+
   }
 
+  getAccountInformation() {
+
+    this.accountName = "Michael Patterson-Muir";
+
+    this.accountEmail = "michaelpm91@googlemail.com";
+
+    this.comicCloudTier = "Comic Cloud Beta";
+
+    this.remainingStorage = 70;
+
+    this.maxStorage = 100;
+
+
+  }
 }
