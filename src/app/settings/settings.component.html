@@ -1,0 +1,15 @@
+<div class="settings">
+  <h1>Settings</h1>
+  <div>
+    Name: {{accountName}}
+  </div>
+  <div>
+    Tier: {{comicCloudTier}}
+  </div>
+  <div>
+    Email: {{accountEmail}}
+  </div>
+  <div>
+    Space: <progress [value]="remainingStorage" [max]="maxStorage"></progress>
+  </div>
+</div>

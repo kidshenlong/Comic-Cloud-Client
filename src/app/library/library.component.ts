@@ -5,8 +5,6 @@ import {Component, OnInit} from "@angular/core";
 import {Title} from "@angular/platform-browser";
 import {SeriesService, Series} from "../series";
 
-import {FILE_UPLOAD_DIRECTIVES, FileUploader} from 'ng2-file-upload';
-
 import {Navigation, NavigationService, StackComponent, UploadService} from '../shared'
 
 @Component({

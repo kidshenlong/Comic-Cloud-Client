@@ -12,6 +12,7 @@ import {RegisterComponent} from "./register";
 import {LibraryComponent} from "./library";
 import {SeriesComponent} from "./series";
 import {ComicComponent} from "./comic";
+import {SettingsComponent} from "./settings/settings.component";
 
 const appRoutes: Routes = [
     {
@@ -40,6 +41,11 @@ const appRoutes: Routes = [
     {
         path: 'comic/:id',
         component: ComicComponent,
+        canActivate: [AuthenticationGuard]
+    },
+    {
+        path: 'settings',
+        component: SettingsComponent,
         canActivate: [AuthenticationGuard]
     }
 ];

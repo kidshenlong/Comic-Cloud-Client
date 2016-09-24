@@ -11,7 +11,8 @@ import { ComicNavigationComponent, ComicImageComponent, ComicComponent, ComicSta
 import { SeriesComponent } from './series'
 import { HomeComponent } from './home'
 import { LoginComponent } from './login'
-import { RegisterComponent } from './register'
+import { RegisterComponent } from './register';
+import { SettingsComponent } from './settings/settings.component'
 
 @NgModule({
     declarations: [
@@ -25,7 +26,8 @@ import { RegisterComponent } from './register'
         NavigationComponent,
         StackComponent,
         ComicImageComponent,
-        ComicNavigationComponent
+        ComicNavigationComponent,
+        SettingsComponent
     ],
     imports: [
         BrowserModule,
