@@ -1,6 +1,6 @@
 <!--<div class="shelf" ng2FileDrop [uploader]="uploadService.uploader" (fileOver)="fileOver($event)" [class.transparent]="isTransparent">-->
 <div class="shelf" (fileOver)="fileOver($event)" [class.transparent]="isTransparent">
-    <stack *ngFor="let thisSeries of series" [stackType]="'series'" [stackData]="thisSeries" [stackImage]="thisSeries.cover_image"></stack>
+    <stack *ngFor="let thisSeries of series | async" [stackType]="'series'" [stackData]="thisSeries" [stackImage]="thisSeries.cover_image"></stack>
 </div>
 
 

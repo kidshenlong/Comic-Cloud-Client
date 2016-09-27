@@ -4,11 +4,13 @@
   "license": "MIT",
   "angular-cli": {},
   "scripts": {
-    "start": "ng serve",
+    "start": "concurrently -r \"node mock-upstream/server.js\" \"ng serve\"",
+    "serve": "ng serve",
     "lint": "tslint \"src/**/*.ts\"",
     "test": "ng test",
     "pree2e": "webdriver-manager update",
-    "e2e": "protractor"
+    "e2e": "protractor",
+    "mock": "json-server mock-upstream/db.json --quiet"
   },
   "private": true,
   "dependencies": {
@@ -30,8 +32,10 @@
     "@types/jasmine": "^2.2.30",
     "angular-cli": "1.0.0-beta.14",
     "codelyzer": "~0.0.26",
+    "concurrently": "^3.0.0",
     "jasmine-core": "2.4.1",
     "jasmine-spec-reporter": "2.5.0",
+    "json-server": "^0.8.21",
     "karma": "1.2.0",
     "karma-chrome-launcher": "^2.0.0",
     "karma-cli": "^1.0.1",

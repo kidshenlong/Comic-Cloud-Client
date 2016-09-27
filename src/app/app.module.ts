@@ -14,6 +14,8 @@ import { LoginComponent } from './login'
 import { RegisterComponent } from './register';
 import { SettingsComponent } from './settings/settings.component'
 
+import './rxjs-extensions';
+
 @NgModule({
     declarations: [
         AppComponent,

@@ -1,14 +1,38 @@
 import {Injectable}     from '@angular/core';
 import {Http, Response} from '@angular/http';
+
 import {Series}           from './series';
+
 import {Observable}     from 'rxjs/Observable';
+import 'rxjs/add/operator/toPromise';
 //import {SERIES_URL} from "../shared/data.service";
+
 
 @Injectable()
 export class SeriesService {
+
+
     constructor (private http: Http) {}
 
-    //private _seriesUrl = SERIES_URL;  // URL to web api
+    private _seriesUrl = "http://localhost:3000/series";//SERIES_URL;  // URL to web api
+
+    getSeries(): Observable<Series[]> {
+        return this.http
+            .get(this._seriesUrl)
+            .map((r:Response) => r.json().data as Series[])
+            .catch(error => {
+                // TODO: real error handling
+                console.log(error);
+                return Observable.of<Series[]>([]);
+            });
+    }
+
+    /*getSeries(): Promise<Series[]> {
+    return this.http.get(this._seriesUrl)
+        //.toPromise()
+        .then(response => response.json().data as Series[])
+        .catch(this.handleError);
+    }*/
 
     /*getAllSeries(){
         return this.http.get(this._seriesUrl)

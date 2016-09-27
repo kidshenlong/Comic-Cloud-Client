@@ -7,6 +7,8 @@ import {SeriesService, Series} from "../series";
 
 import {Navigation, NavigationService, StackComponent, UploadService} from '../shared'
 
+import {Observable} from "rxjs/Observable";
+
 @Component({
     selector: 'library',
     host: { 'class' : "shelf2" },
@@ -19,10 +21,10 @@ export class LibraryComponent implements OnInit {
 
     //stackType = "series";//todo consider making stack type a parameter set by component
 
-    series: Series[];
+    //series: Series[];
+    series: Observable<Series[]>;
 
     isTransparent: boolean = false;
-
 
     fileOver(e){
         this.isTransparent = e;
@@ -40,10 +42,12 @@ export class LibraryComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.series = this.getSeries();
+        //this.series = this.getSeries();
+
+        this.series = this._seriesService.getSeries();
     }
 
-    getSeries(){
+    /*getSeries(){
         console.log("series call");
         //this._seriesService.getAllSeries().subscribe(series => this.series = series);
         return [
@@ -61,5 +65,5 @@ export class LibraryComponent implements OnInit {
             new Series("8C3D3E48-155D-11E6-8248-564E36676F51", "Spider-Man", 2014, "Marvel", "1", "http://cdn1-www.superherohype.com/assets/uploads/2014/01/file_181109_0_amazingspidey1.jpg"),
         ];
         //error =>  this.errorMessage = <any>error);
-    }
+    }*/
 }
