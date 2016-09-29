@@ -16,7 +16,7 @@ export class ComicService {
 
     }
 
-    getSeries(id: string){
+    getAllSeries(id: string){
         return this.http.get(this._seriesUrl + "/" + id)
             .map(res => <Series> res.json())
             .do(data => console.log(data)) // eyeball results in the console

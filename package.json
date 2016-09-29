@@ -31,8 +31,10 @@
   "devDependencies": {
     "@types/jasmine": "^2.2.30",
     "angular-cli": "1.0.0-beta.14",
+    "body-parser": "^1.15.2",
     "codelyzer": "~0.0.26",
     "concurrently": "^3.0.0",
+    "express": "^4.14.0",
     "jasmine-core": "2.4.1",
     "jasmine-spec-reporter": "2.5.0",
     "json-server": "^0.8.21",

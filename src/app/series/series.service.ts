@@ -1,24 +1,27 @@
-import {Injectable}     from '@angular/core';
-import {Http, Response} from '@angular/http';
+import {Injectable} from "@angular/core";
+import {Http, Response, Headers, RequestOptions} from "@angular/http";
 
-import {Series}           from './series';
-
-import {Observable}     from 'rxjs/Observable';
-import 'rxjs/add/operator/toPromise';
+import {Series} from "./series";
+import {Observable} from "rxjs/Observable";
+import "rxjs/add/operator/toPromise";
 //import {SERIES_URL} from "../shared/data.service";
 
 
 @Injectable()
 export class SeriesService {
 
-
     constructor (private http: Http) {}
 
     private _seriesUrl = "http://localhost:3000/series";//SERIES_URL;  // URL to web api
 
-    getSeries(): Observable<Series[]> {
+    getAllSeries(): Observable<Series[]> {
+
+        let headers = new Headers({ 'Content-Type': 'application/json', 'Authorization' : 'Bearer 1ec62627-e09c-4b94-85ce-1343a19bb74e'});
+        let options = new RequestOptions({ headers: headers });
+
+
         return this.http
-            .get(this._seriesUrl)
+            .get(this._seriesUrl, options)
             .map((r:Response) => r.json().data as Series[])
             .catch(error => {
                 // TODO: real error handling
@@ -27,33 +30,14 @@ export class SeriesService {
             });
     }
 
-    /*getSeries(): Promise<Series[]> {
-    return this.http.get(this._seriesUrl)
-        //.toPromise()
-        .then(response => response.json().data as Series[])
-        .catch(this.handleError);
-    }*/
-
-    /*getAllSeries(){
-        return this.http.get(this._seriesUrl)
-            .map(res => <Series[]> res.json().data)
-            .do(data => console.log(data)) // eyeball results in the console
-            .catch(this.handleError);
-
+    getSeries(id: string): Observable<Series> {
+        return this.http
+            .get(this._seriesUrl + "/" + id)
+            .map((r:Response) => r.json() as Series)
+            .catch(error => {
+                // TODO: real error handling
+                console.log(error);
+                return Observable.of<Series>();
+            });
     }
-
-    getSeries(id: string){
-        return this.http.get(this._seriesUrl + "/" + id)
-            .map(res => <Series> res.json())
-            .do(data => console.log(data)) // eyeball results in the console
-            .catch(this.handleError);
-
-    }
-
-    private handleError (error: Response) {
-        // in a real world app, we may send the error to some remote logging infrastructure
-        // instead of just logging it to the console
-        console.error(error);
-        return Observable.throw(error.json().error || 'Server error');
-    }*/
 }
