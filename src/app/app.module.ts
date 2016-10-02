@@ -15,6 +15,7 @@ import { RegisterComponent } from './register';
 import { SettingsComponent } from './settings/settings.component'
 
 import './rxjs-extensions';
+import { UploadComponent } from './upload/upload.component';
 
 @NgModule({
     declarations: [
@@ -29,7 +30,8 @@ import './rxjs-extensions';
         StackComponent,
         ComicImageComponent,
         ComicNavigationComponent,
-        SettingsComponent
+        SettingsComponent,
+        UploadComponent
     ],
     imports: [
         BrowserModule,

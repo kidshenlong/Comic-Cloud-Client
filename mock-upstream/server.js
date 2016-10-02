@@ -4,17 +4,6 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 
-app.post('/auth', (req, res) => {
-
-        let auth = {
-            "access_token": "08f36324-f5f7-4447-9903-6f5a495b0b2a",
-            "refresh_token": "72a97d6f-44fc-4150-bfdb-3c24a19b9dc1",
-            "expires_in": 3600
-        };
-        res.json(auth);
-});
-
-
 app.get('/comics', (req, res) => {
     if(!req.headers.hasOwnProperty('authorization')){
         res.sendStatus(401)
@@ -101,7 +90,6 @@ app.get('/series/:series_id', (req, res) => {
     }
 });
 
-
 app.get('/series/:series_id/comics', (req, res) => {
     if(!req.headers.hasOwnProperty('authorization')){
         res.sendStatus(401)
@@ -142,6 +130,32 @@ app.get('/series/:series_id/comics', (req, res) => {
     }
 });
 
+app.get('/uploads', (req, res) => {
+    if(!req.headers.hasOwnProperty('authorization')){
+        res.sendStatus(401)
+    } else {
+        let uploads = {
+            "total": 1,
+            "per_page": "20",
+            "current_page": 1,
+            "last_page": 1,
+            "next_page_url": null,
+            "prev_page_url": null,
+            "from": 1,
+            "to": 1,
+            "data": [
+                {
+                    "id": "03deb771-0814-31f1-b381-00d09bee4f27",
+                    "file_name": "Amazing Spider-Man(2016) #1.cbz",
+                    "file_size": 16
+                }
+            ]
+        };
+
+        res.json(uploads);
+    }
+});
+
 app.post('/uploads', (req, res) => {
     if (!req.headers.hasOwnProperty('authorization')) {
         res.sendStatus(401)
@@ -151,6 +165,15 @@ app.post('/uploads', (req, res) => {
     }
 });
 
+app.post('/auth', (req, res) => {
+
+    let auth = {
+        "access_token": "08f36324-f5f7-4447-9903-6f5a495b0b2a",
+        "refresh_token": "72a97d6f-44fc-4150-bfdb-3c24a19b9dc1",
+        "expires_in": 3600
+    };
+    res.json(auth);
+});
 
 app.listen(3000);
 console.log('Mock Server running on localhost:3000');
