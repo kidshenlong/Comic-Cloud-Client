@@ -3,8 +3,8 @@ import {ComicStateService} from "../comic-state/comic-state.service";
 
 @Component({
     selector: 'comic-navigation',
-    templateUrl: '/app/comic/comic-navigation/comic-navigation.component.html',
-    styleUrls: ['app/comic/comic-navigation/comic-navigation.component.css'],
+    templateUrl: 'comic-navigation.component.html',
+    styleUrls: ['comic-navigation.component.css'],
     providers: [],
     host: {
         '(mouseenter)': 'onMouseEnter()',

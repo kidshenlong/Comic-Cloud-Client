@@ -7,8 +7,8 @@ import {ComicImageService} from "./comic-image.service";
 
 @Component({
     selector: 'comic-image',
-    templateUrl: "/app/comic/comic-image/comic-image.component.html",
-    styleUrls: ['app/comic/comic-image/comic-image.component.css'],
+    templateUrl: "comic-image.component.html",
+    styleUrls: ['comic-image.component.css'],
     providers: [ComicImageService]
 })
 

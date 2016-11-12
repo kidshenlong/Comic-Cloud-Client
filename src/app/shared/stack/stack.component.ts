@@ -2,8 +2,8 @@ import {Component, Input} from '@angular/core';
 
 @Component({
     selector: 'stack',
-    templateUrl: '/app/shared/stack/stack.component.html',//todo Refactor to be relative
-    styleUrls: ['app/shared/stack/stack.component.css'],
+    templateUrl: 'stack.component.html',//todo Refactor to be relative
+    styleUrls: ['stack.component.css'],
     host: {
         'class': 'stack'
     },

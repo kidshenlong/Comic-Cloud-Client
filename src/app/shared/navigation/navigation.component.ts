@@ -6,8 +6,8 @@ import {Router} from "@angular/router";
 
 @Component({
     selector: 'navigation',
-    templateUrl: "/app/shared/navigation/navigation.component.html",
-    styleUrls: ["app/shared/navigation/navigation.component.css"], //todo styleUrls doesn't currently support absolute paths.
+    templateUrl: "navigation.component.html",
+    styleUrls: ["navigation.component.css"], //todo styleUrls doesn't currently support absolute paths.
 })
 export class NavigationComponent {
 

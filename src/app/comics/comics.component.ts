@@ -12,8 +12,8 @@ import {ComicsService, ComicStateService, Comic, ComicStatus, ComicNavigationCom
 
 @Component({
     selector: 'comics',
-    templateUrl: "app/comics/comics.component.html",
-    styleUrls: ['app/comics/comics.component.css'],
+    templateUrl: "comics.component.html",
+    styleUrls: ['comics.component.css'],
     providers: [Title, ComicsService, ComicStateService],
     host: {
         '(document:keyup)': '_keyup($event)'
