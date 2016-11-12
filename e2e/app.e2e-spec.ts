@@ -1,10 +1,10 @@
-import { ComicCloudClientPage } from './app.po';
+import { ComicCloudClientAngular2Page } from './app.po';
 
-describe('comic-cloud-client App', function() {
-  let page: ComicCloudClientPage;
+describe('comic-cloud-client-angular-2 App', function() {
+  let page: ComicCloudClientAngular2Page;
 
   beforeEach(() => {
-    page = new ComicCloudClientPage();
+    page = new ComicCloudClientAngular2Page();
   });
 
   it('should display message saying app works', () => {

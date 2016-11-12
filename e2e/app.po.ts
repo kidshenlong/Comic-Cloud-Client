@@ -1,6 +1,6 @@
 import { browser, element, by } from 'protractor/globals';
 
-export class ComicCloudClientPage {
+export class ComicCloudClientAngular2Page {
   navigateTo() {
     return browser.get('/');
   }
