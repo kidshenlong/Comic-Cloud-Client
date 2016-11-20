@@ -4,6 +4,7 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
 import { LibraryComponent } from './library.component';
+import {NavService} from "../core/nav/shared/nav.service";
 
 describe('LibraryComponent', () => {
   let component: LibraryComponent;
@@ -11,7 +12,10 @@ describe('LibraryComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LibraryComponent ]
+      declarations: [ LibraryComponent ],
+      providers: [
+        { provide: NavService }
+      ]
     })
     .compileComponents();
   }));

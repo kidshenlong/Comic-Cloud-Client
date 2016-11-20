@@ -8,6 +8,7 @@ import {CoreModule} from "./core/core.module";
 import {LibraryModule} from "./library/library.module";
 import {Routes, RouterModule} from "@angular/router";
 import {LibraryComponent} from "./library/library.component";
+import {NavService} from "./core/nav/shared/nav.service";
 
 const appRoutes: Routes = [
   {
@@ -30,7 +31,7 @@ const appRoutes: Routes = [
     LibraryModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [],
+  providers: [NavService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

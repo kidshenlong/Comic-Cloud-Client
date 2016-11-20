@@ -4,6 +4,7 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
 import { NavComponent } from './nav.component';
+import {NavService} from "./shared/nav.service";
 
 describe('NavComponent', () => {
   let component: NavComponent;
@@ -11,7 +12,10 @@ describe('NavComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NavComponent ]
+      declarations: [ NavComponent ],
+      providers: [
+        { provide: NavService }
+      ]
     })
     .compileComponents();
   }));

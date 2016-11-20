@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {NavService} from "../core/nav/shared/nav.service";
+import {NavState} from "../core/nav/shared/nav-state.enum";
 
 @Component({
   selector: 'app-library',
@@ -7,9 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LibraryComponent implements OnInit {
 
-  constructor() { }
+  constructor(private navServivce: NavService) { }
 
   ngOnInit() {
+    this.navServivce.changeState(NavState.Authorised);
   }
 
 }
