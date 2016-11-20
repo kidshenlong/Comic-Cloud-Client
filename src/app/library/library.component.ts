@@ -9,10 +9,10 @@ import {NavState} from "../core/nav/shared/nav-state.enum";
 })
 export class LibraryComponent implements OnInit {
 
-  constructor(private navServivce: NavService) { }
+  constructor(private navService: NavService) { }
 
   ngOnInit() {
-    this.navServivce.changeState(NavState.Authorised);
+    this.navService.navState = NavState.Authorised;
   }
 
 }

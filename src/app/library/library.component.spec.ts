@@ -5,16 +5,21 @@ import { DebugElement } from '@angular/core';
 
 import { LibraryComponent } from './library.component';
 import {NavService} from "../core/nav/shared/nav.service";
+import {NavState} from "../core/nav/shared/nav-state.enum";
 
 describe('LibraryComponent', () => {
   let component: LibraryComponent;
   let fixture: ComponentFixture<LibraryComponent>;
 
   beforeEach(async(() => {
+    let navServiceStub = {
+      navState: NavState.Authorised
+    };
+
     TestBed.configureTestingModule({
       declarations: [ LibraryComponent ],
       providers: [
-        { provide: NavService }
+        { provide: NavService, useValue: navServiceStub }
       ]
     })
     .compileComponents();
