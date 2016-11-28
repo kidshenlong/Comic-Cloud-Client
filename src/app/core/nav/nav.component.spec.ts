@@ -6,13 +6,14 @@ import { DebugElement } from '@angular/core';
 import { NavComponent } from './nav.component';
 import {NavService} from "./shared/nav.service";
 import {NavState} from "./shared/nav-state.enum";
-import {CommonModule} from "@angular/common";
+import {CommonModule, NgIf} from "@angular/common";
+import {CoreModule} from "../core.module";
 
 describe('NavComponent', () => {
   let component: NavComponent;
   let fixture: ComponentFixture<NavComponent>;
   let de:      DebugElement;
-  let el:      HTMLElement;
+  //let el:      HTMLElement;
 
   beforeEach(async(() => {
     let navServiceStub = {
@@ -20,8 +21,8 @@ describe('NavComponent', () => {
     };
 
     TestBed.configureTestingModule({
-      //imports: [CommonModule],
-      declarations: [ NavComponent ],
+      imports: [CoreModule],
+      //declarations: [ NavComponent],
       providers: [
         { provide: NavService, useValue: navServiceStub }
       ]
@@ -33,7 +34,8 @@ describe('NavComponent', () => {
     fixture = TestBed.createComponent(NavComponent);
     component = fixture.componentInstance;
     de = fixture.debugElement.query(By.css('.ribbon'));
-    el = de.nativeElement;
+
+    //el = de.nativeElement;
 
     fixture.detectChanges();
   });
@@ -41,4 +43,15 @@ describe('NavComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('first test', () => {
+    //    expect(heroEl.nativeElement.textContent).toContain(expectedPipedName);
+    expect(de.nativeElement.children.length).toBeGreaterThan(0)
+
+  });
+  /*it('should display original title', () => {
+    fixture.detectChanges();
+    expect(fixture).toContain("");
+  });*/
+
 });
