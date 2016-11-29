@@ -1,5 +1,5 @@
 /* tslint:disable:no-unused-variable */
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed, fakeAsync, tick} from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
@@ -30,25 +30,49 @@ describe('NavComponent', () => {
     .compileComponents();
   }));
 
-  beforeEach(() => {
+  beforeEach(async(() => {
     fixture = TestBed.createComponent(NavComponent);
     component = fixture.componentInstance;
     de = fixture.debugElement.query(By.css('.ribbon'));
 
+    //console.log("value " + component.navStateType);
+
     //el = de.nativeElement;
 
-    fixture.detectChanges();
-  });
+    //fixture.detectChanges();
+  }));
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
 
-  it('first test', () => {
+  it('first test', fakeAsync(() => {
     //    expect(heroEl.nativeElement.textContent).toContain(expectedPipedName);
-    expect(de.nativeElement.children.length).toBeGreaterThan(0)
 
-  });
+    /*
+     fixture.detectChanges();
+     //fixture.whenStable().then(() => { // wait for async getQuote
+     fixture.detectChanges();        // update view with quote
+     //expect(el.textContent).toBe(testQuote);
+     expect(debug.nativeElement.children.length).toBeGreaterThan(0)
+     //});
+     */
+    /*fixture.detectChanges();
+    fixture.whenStable().then(() => {
+      fixture.detectChanges();
+      expect(de.nativeElement.children.length).toBeGreaterThan(0)
+    });*/
+
+    fixture.detectChanges();
+    tick();
+    fixture.detectChanges();
+    tick();tick();tick();
+    fixture.detectChanges();
+
+    expect(de.nativeElement.children.length).toBeGreaterThan(0);
+
+  }));
+
   /*it('should display original title', () => {
     fixture.detectChanges();
     expect(fixture).toContain("");
