@@ -9,6 +9,8 @@ import {NavState} from "./shared/nav-state.enum";
 import {CommonModule, NgIf} from "@angular/common";
 import {CoreModule} from "../core.module";
 
+import { ComponentFixtureAutoDetect } from '@angular/core/testing';
+
 describe('NavComponent', () => {
   let component: NavComponent;
   let fixture: ComponentFixture<NavComponent>;
@@ -17,65 +19,33 @@ describe('NavComponent', () => {
 
   beforeEach(async(() => {
     let navServiceStub = {
-      navState: NavState.Authorised
+      navState: NavState.Unauthorised
     };
 
     TestBed.configureTestingModule({
       imports: [CoreModule],
       //declarations: [ NavComponent],
       providers: [
-        { provide: NavService, useValue: navServiceStub }
+        { provide: NavService, useValue: navServiceStub },
+        { provide: ComponentFixtureAutoDetect, useValue: true }
       ]
     })
     .compileComponents();
+
   }));
 
-  beforeEach(async(() => {
+  beforeEach(() => {
     fixture = TestBed.createComponent(NavComponent);
     component = fixture.componentInstance;
     de = fixture.debugElement.query(By.css('.ribbon'));
 
-    //console.log("value " + component.navStateType);
-
-    //el = de.nativeElement;
-
-    //fixture.detectChanges();
-  }));
+  });
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
 
-  it('first test', fakeAsync(() => {
-    //    expect(heroEl.nativeElement.textContent).toContain(expectedPipedName);
-
-    /*
-     fixture.detectChanges();
-     //fixture.whenStable().then(() => { // wait for async getQuote
-     fixture.detectChanges();        // update view with quote
-     //expect(el.textContent).toBe(testQuote);
-     expect(debug.nativeElement.children.length).toBeGreaterThan(0)
-     //});
-     */
-    /*fixture.detectChanges();
-    fixture.whenStable().then(() => {
-      fixture.detectChanges();
-      expect(de.nativeElement.children.length).toBeGreaterThan(0)
-    });*/
-
-    fixture.detectChanges();
-    tick();
-    fixture.detectChanges();
-    tick();tick();tick();
-    fixture.detectChanges();
-
+  it('first test', async(() => {
     expect(de.nativeElement.children.length).toBeGreaterThan(0);
-
   }));
-
-  /*it('should display original title', () => {
-    fixture.detectChanges();
-    expect(fixture).toContain("");
-  });*/
-
 });
