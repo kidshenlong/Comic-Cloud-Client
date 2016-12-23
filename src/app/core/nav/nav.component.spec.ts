@@ -16,6 +16,7 @@ describe('NavComponent', () => {
   let fixture: ComponentFixture<NavComponent>;
   let de:      DebugElement;
   //let el:      HTMLElement;
+  let navService: NavService;
 
   beforeEach(async(() => {
     let navServiceStub = {
@@ -39,13 +40,88 @@ describe('NavComponent', () => {
     component = fixture.componentInstance;
     de = fixture.debugElement.query(By.css('.ribbon'));
 
+    //navService = fixture.debugElement.injector.get(NavService);
+    navService = TestBed.get(NavService);
+
+    fixture.detectChanges();
   });
 
-  it('should create', () => {
+/*  it('should create', () => {
     expect(component).toBeTruthy();
   });
 
-  it('first test', async(() => {
+  it('first test', () => {
     expect(de.nativeElement.children.length).toBeGreaterThan(0);
+  });*/
+
+  /*it(' test', () => {
+    expect("").toBe("");
+  });*/
+
+  it('second test', async(() => {
+    navService.navState = NavState.Disabled;
+    fixture.detectChanges();
+    fixture.whenStable().then(() => {
+      fixture.detectChanges();
+      fixture.whenStable().then(() => {
+
+
+        fixture.detectChanges();
+        console.log(de.nativeElement.children.length);
+        console.log(de.nativeElement);
+        expect(de.nativeElement.children.length).toBe(0);
+      });
+    });
   }));
+
+  it('second test', () => {
+    navService.navState = NavState.Disabled;
+    fixture.detectChanges();
+
+    console.log(de.nativeElement.children.length);
+    console.log(de.nativeElement);
+    expect(de.nativeElement.children.length).toBe(0);
+
+  });
+
+
+/*  it('first test', fakeAsync(() => {
+
+    fixture.detectChanges();
+    tick();
+    fixture.detectChanges();
+    tick();tick();tick();
+    fixture.detectChanges();
+
+    expect(de.nativeElement.children.length).toBeGreaterThan(0);
+
+  }));*/
+
+  /*it('third test', fakeAsync(() => {
+    console.log(navService.navState);
+    navService.navState = NavState.Disabled;
+    console.log(navService.navState);
+
+    //expect(de.nativeElement.children.length).toBe(0);
+    /!*fixture.whenStable().then(() => {
+      fixture.detectChanges();
+      fixture.whenStable().then(() => {
+        console.log(de.nativeElement.children.length);
+        expect(de.nativeElement.children.length).toBe(0);
+      });
+    });*!/
+
+    console.log(de.nativeElement);
+    //fixture.detectChanges();
+    tick();                  // wait for async getQuote
+    fixture.detectChanges(); // update view with quote
+    //tick();
+    //tick();
+    //tick();
+    //fixture.detectChanges();
+    console.log(de.nativeElement);
+    expect(de.nativeElement.children.length).toBe(0);
+  }));*/
+
+
 });
