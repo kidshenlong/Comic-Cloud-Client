@@ -1,6 +1,6 @@
 {
   "project": {
-    "version": "1.0.0-beta.19-3",
+    "version": "1.0.0-beta.26",
     "name": "comic-cloud-client-angular-2"
   },
   "apps": [
@@ -20,18 +20,13 @@
       "styles": [
         "styles.scss"
       ],
-      "scripts": [
-      ],
+      "scripts": [],
       "environments": {
         "source": "environments/environment.ts",
         "dev": "environments/environment.ts",
         "prod": "environments/environment.prod.ts"
       }
     }
-  ],
-  "addons": [
-  ],
-  "packages": [
   ],
   "e2e": {
     "protractor": {
