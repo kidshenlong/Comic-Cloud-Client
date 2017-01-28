@@ -9,6 +9,13 @@
   width: 100%;
   height: 50px;
   .container{
+    .upload_container {
+      color: white;
+      position: absolute;
+      right: 260px;
+      top: 18px;
+      font-size: 12px;
+    }
     input {
       border: none;
       height: 28px;
