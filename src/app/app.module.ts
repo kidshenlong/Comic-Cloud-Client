@@ -9,10 +9,15 @@ import {LibraryModule} from "./library/library.module";
 import {Routes, RouterModule} from "@angular/router";
 import {LibraryComponent} from "./library/library.component";
 import {NavService} from "./core/nav/shared/nav.service";
+import {SearchComponent} from "./search/search.component";
+import {SearchModule} from "./search/search.module";
 
 const appRoutes: Routes = [
   {
     path: 'library', component: LibraryComponent
+  },
+  {
+    path: 'search', component: SearchComponent
   },
   {
     path: '', redirectTo: '/library', pathMatch: 'full'
@@ -29,6 +34,7 @@ const appRoutes: Routes = [
     HttpModule,
     CoreModule,
     LibraryModule,
+    SearchModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [NavService],
