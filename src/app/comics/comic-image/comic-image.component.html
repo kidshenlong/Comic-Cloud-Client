@@ -1,3 +1,3 @@
-<img [hidden]="!isImageLoaded" [src]="image" (load)="imageLoaded($event)">
+<img class='comic-image' [hidden]="!isImageLoaded" [src]="image" (load)="imageLoaded($event)">
 <img *ngIf="!isImageLoaded" src="https://placeimg.com/216/324/any">
 

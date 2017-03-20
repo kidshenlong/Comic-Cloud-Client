@@ -16,15 +16,10 @@ describe('SearchComponent', () => {
       navState: NavState.Authorised
     };
 
-    let activatedRoute = new ActivatedRouteStub();
-
-    activatedRoute.testParams = { query: "superman" };
-
     TestBed.configureTestingModule({
       declarations: [ SearchComponent ],
       providers: [
         { provide: NavService, useValue: navServiceStub },
-        //{ provide: ActivatedRoute, useValue:  }
         {
           provide: ActivatedRoute,
           useValue: {

@@ -8,6 +8,7 @@ import {NavService} from "../core/nav/shared/nav.service";
 import {NavState} from "../core/nav/shared/nav-state.enum";
 import {LibraryFeaturedComponent} from "./library-featured/library-featured.component";
 import {ComicComponent} from "../comics/comic/comic.component";
+import {ComicImageComponent} from "../comics/comic-image/comic-image.component";
 
 describe('LibraryComponent', () => {
   let component: LibraryComponent;
@@ -19,7 +20,7 @@ describe('LibraryComponent', () => {
     };
 
     TestBed.configureTestingModule({
-      declarations: [ LibraryComponent, LibraryFeaturedComponent, ComicComponent ],
+      declarations: [ LibraryComponent, LibraryFeaturedComponent, ComicComponent, ComicImageComponent ],
       providers: [
         { provide: NavService, useValue: navServiceStub }
       ]

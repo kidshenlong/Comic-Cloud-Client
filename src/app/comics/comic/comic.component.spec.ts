@@ -4,6 +4,7 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
 import { ComicComponent } from './comic.component';
+import {ComicImageComponent} from "../comic-image/comic-image.component";
 
 describe('ComicComponent', () => {
   let component: ComicComponent;
@@ -11,7 +12,7 @@ describe('ComicComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ComicComponent ]
+      declarations: [ ComicComponent, ComicImageComponent ]
     })
     .compileComponents();
   }));
@@ -24,5 +25,9 @@ describe('ComicComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should display description', () => {
+
   });
 });
