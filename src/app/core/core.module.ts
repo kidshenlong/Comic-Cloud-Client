@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { throwIfAlreadyLoaded } from './module-import-guard';
 import { NavComponent } from './nav/nav.component';
+import {FooterComponent} from "./footer/footer.component";
 
 
 @NgModule({
@@ -11,9 +12,10 @@ import { NavComponent } from './nav/nav.component';
   ],
   exports: [
     CommonModule,
-    NavComponent
+    NavComponent,
+    FooterComponent
   ],
-  declarations: [NavComponent]
+  declarations: [NavComponent, FooterComponent]
 })
 export class CoreModule {
   constructor( @Optional() @SkipSelf() parentModule: CoreModule) {

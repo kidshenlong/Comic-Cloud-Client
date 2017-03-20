@@ -7,7 +7,7 @@ import { LibraryComponent } from './library.component';
 import {NavService} from "../core/nav/shared/nav.service";
 import {NavState} from "../core/nav/shared/nav-state.enum";
 import {LibraryFeaturedComponent} from "./library-featured/library-featured.component";
-import {ComicComponent} from "../shared/comic/comic.component";
+import {ComicComponent} from "../comics/comic/comic.component";
 
 describe('LibraryComponent', () => {
   let component: LibraryComponent;
