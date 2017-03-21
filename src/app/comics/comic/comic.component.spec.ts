@@ -9,6 +9,7 @@ import {ComicImageComponent} from "../comic-image/comic-image.component";
 describe('ComicComponent', () => {
   let component: ComicComponent;
   let fixture: ComponentFixture<ComicComponent>;
+  let el:      HTMLElement;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -27,7 +28,15 @@ describe('ComicComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should display description', () => {
+  it('should correctly display description', () => {
+
+    component.description = "Test Value";
+
+    fixture.detectChanges();
+
+    el = fixture.debugElement.query(By.css('.comic-description')).nativeElement;
+
+    expect(el.textContent).toContain('Test Value');
 
   });
 });

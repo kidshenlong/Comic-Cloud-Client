@@ -12,7 +12,7 @@ import {Observable} from "rxjs";
 export class SearchComponent implements OnInit {
 
   //query: Observable<string>;
-  query: string = "spider-man";
+  query: string;
 
   constructor(private navService: NavService, private route: ActivatedRoute) { }
 
