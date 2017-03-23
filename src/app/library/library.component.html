@@ -1,5 +1,8 @@
 <div class="container">
   <!---library-featured></app-library-featured>-->
+<!--
+  <app-comic [navigateTo]="'/series/series_id'" [description]="'Deadpool & the Mercs for Money #4 (2015)'" [image]="'https://i.annihil.us/u/prod/marvel/i/mg/d/a0/5351659262b83/portrait_incredible.jpg'"></app-comic>
+-->
  <!-- <app-comic [description]="'Deadpool & the Mercs for Money #4 (2015)'" [image]="'https://i.annihil.us/u/prod/marvel/i/mg/d/a0/5351659262b83/portrait_incredible.jpg'"></app-comic>
   <app-comic [description]="'Deadpool & the Mercs for Money #4 (2015)'" [image]="'https://i.annihil.us/u/prod/marvel/i/mg/d/a0/5351659262b83/portrait_incredible.jpg'"></app-comic>
   <app-comic [description]="'Deadpool & the Mercs for Money #4 (2015)'" [image]="'https://i.annihil.us/u/prod/marvel/i/mg/d/a0/5351659262b83/portrait_incredible.jpg'"></app-comic>
@@ -12,4 +15,5 @@
 <div class="divider"></div>
 <div class="container">
   <h1>My Library</h1>
+  <app-series-list [series]="series"></app-series-list>
 </div>

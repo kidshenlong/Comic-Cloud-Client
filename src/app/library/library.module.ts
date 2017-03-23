@@ -4,12 +4,14 @@ import { LibraryComponent } from './library.component';
 import {SharedModule} from "../shared/shared.module";
 import {LibraryFeaturedComponent} from "./library-featured/library-featured.component";
 import {ComicsModule} from "../comics/comics.module";
+import {SeriesModule} from "../series/series.module";
 
 @NgModule({
   imports: [
     CommonModule,
     SharedModule,
-    ComicsModule
+    ComicsModule,
+    SeriesModule
   ],
   declarations: [LibraryComponent, LibraryFeaturedComponent]
 })

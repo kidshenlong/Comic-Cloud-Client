@@ -8,8 +8,8 @@ import {Comic} from "../shared/comic";
 })
 export class ComicComponent implements OnInit {
 
-  //@Input() private thisComic: Comic;
   @Input() description: string;
+  @Input() navigateTo: string;
   @Input() image: string;
 
   constructor() { }

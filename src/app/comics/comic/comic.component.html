@@ -1,4 +1,6 @@
 <div class="comic">
-  <app-comic-image [image]="image"></app-comic-image>
-  <div class="comic-description">{{description}}</div>
+  <a [routerLink]="navigateTo">
+    <app-comic-image [image]="image"></app-comic-image>
+    <div class="comic-description">{{description}}</div>
+  </a>
 </div>

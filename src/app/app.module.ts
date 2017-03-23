@@ -13,21 +13,8 @@ import {SearchComponent} from "./search/search.component";
 import {SearchModule} from "./search/search.module";
 import { SeriesComponent } from './series/series.component';
 import {SeriesModule} from "./series/series.module";
+import {AppRoutingModule} from "./app-routing.module";
 
-const appRoutes: Routes = [
-  {
-    path: 'library', component: LibraryComponent
-  },
-  {
-    path: 'series/:id', component: SeriesComponent
-  },
-  {
-    path: 'search', component: SearchComponent
-  },
-  {
-    path: '', redirectTo: '/library', pathMatch: 'full'
-  }
-];
 
 @NgModule({
   declarations: [
@@ -41,7 +28,7 @@ const appRoutes: Routes = [
     LibraryModule,
     SeriesModule,
     SearchModule,
-    RouterModule.forRoot(appRoutes)
+    AppRoutingModule
   ],
   providers: [NavService],
   bootstrap: [AppComponent]

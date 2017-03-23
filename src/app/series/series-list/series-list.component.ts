@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
+import {Series} from "../shared/series";
 
 @Component({
   selector: 'app-series-list',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./series-list.component.scss']
 })
 export class SeriesListComponent implements OnInit {
+
+  @Input() private series: [Series];
 
   constructor() { }
 

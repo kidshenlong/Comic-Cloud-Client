@@ -12,6 +12,9 @@ import { SeriesListComponent } from './series-list/series-list.component';
   declarations: [
     SeriesComponent,
     SeriesListComponent
+  ],
+  exports: [
+    SeriesListComponent
   ]
 })
 export class SeriesModule { }
