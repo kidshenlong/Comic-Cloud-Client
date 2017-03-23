@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {SeriesComponent} from "./series.component";
 import {ComicsModule} from "../comics/comics.module";
+import { SeriesListComponent } from './series-list/series-list.component';
 
 @NgModule({
   imports: [
@@ -9,7 +10,8 @@ import {ComicsModule} from "../comics/comics.module";
     ComicsModule
   ],
   declarations: [
-    SeriesComponent
+    SeriesComponent,
+    SeriesListComponent
   ]
 })
 export class SeriesModule { }
