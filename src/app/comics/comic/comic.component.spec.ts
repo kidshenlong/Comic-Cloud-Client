@@ -1,10 +1,9 @@
 /* tslint:disable:no-unused-variable */
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
-
-import { ComicComponent } from './comic.component';
+import {async, ComponentFixture, TestBed} from "@angular/core/testing";
+import {By} from "@angular/platform-browser";
+import {ComicComponent} from "./comic.component";
 import {ComicImageComponent} from "../comic-image/comic-image.component";
+import {RouterLinkStubDirective} from "../../testing/router-stubs";
 
 describe('ComicComponent', () => {
   let component: ComicComponent;
@@ -13,7 +12,7 @@ describe('ComicComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ComicComponent, ComicImageComponent ]
+      declarations: [ ComicComponent, ComicImageComponent, RouterLinkStubDirective ]
     })
     .compileComponents();
   }));

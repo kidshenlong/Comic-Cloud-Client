@@ -1,6 +1,8 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { SeriesListComponent } from './series-list.component';
+import {async, ComponentFixture, TestBed} from "@angular/core/testing";
+import {SeriesListComponent} from "./series-list.component";
+import {ComicComponent} from "../../comics/comic/comic.component";
+import {RouterLinkStubDirective} from "../../testing/router-stubs";
+import {ComicImageComponent} from "../../comics/comic-image/comic-image.component";
 
 describe('SeriesListComponent', () => {
   let component: SeriesListComponent;
@@ -8,7 +10,7 @@ describe('SeriesListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SeriesListComponent ]
+      declarations: [ SeriesListComponent, ComicComponent, RouterLinkStubDirective, ComicImageComponent]
     })
     .compileComponents();
   }));

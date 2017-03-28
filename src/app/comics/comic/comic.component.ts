@@ -1,5 +1,4 @@
-import {Component, OnInit, Input} from '@angular/core';
-import {Comic} from "../shared/comic";
+import {Component, OnInit, Input} from "@angular/core";
 
 @Component({
   selector: 'app-comic',
@@ -9,6 +8,7 @@ import {Comic} from "../shared/comic";
 export class ComicComponent implements OnInit {
 
   @Input() description: string;
+  @Input() subDescription: string;
   @Input() navigateTo: string;
   @Input() image: string;
 

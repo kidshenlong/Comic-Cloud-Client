@@ -1,3 +1,3 @@
 <div>
-  <app-comic *ngFor="let thisSeries of series" [description]="thisSeries.title + ' ' + '[' + thisSeries.start_year + ']'" [image]="thisSeries.cover_image" [navigateTo]="'series/' + series.id"></app-comic>
+  <app-comic *ngFor="let thisSeries of series" [description]="thisSeries.title" [subDescription]="'[' + thisSeries.start_year + ']'" [image]="thisSeries.cover_image" [navigateTo]="'series/' + series.id"></app-comic>
 </div>

@@ -1,6 +1,6 @@
 <div class="comic">
   <a [routerLink]="navigateTo">
     <app-comic-image [image]="image"></app-comic-image>
-    <div class="comic-description">{{description}}</div>
+    <div class="comic-description">{{description}} <span *ngIf="subDescription" class="comic-sub-description">{{subDescription}}</span></div>
   </a>
 </div>
