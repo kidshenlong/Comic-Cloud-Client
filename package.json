@@ -9,7 +9,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "test-once" : "ng test --single-run"
+    "test-once" : "ng test --single-run",
+    "coverage" : "ng test --single-run --code-coverage"
   },
   "private": true,
   "dependencies": {

@@ -2,19 +2,19 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import {AppRoutingModule} from './app-routing.module';
-import {PageNotFoundComponent} from './not-found.component';
-import {LibraryModule} from './library/library.module';
-import { NavComponent } from './core/nav/nav.component';
+import { CoreModule } from './core/core/core.module';
+import { PageNotFoundComponent } from './not-found.component';
+import { LibraryModule } from './library/library.module';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PageNotFoundComponent,
-    NavComponent
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
+    CoreModule,
     LibraryModule,
     AppRoutingModule
   ],
