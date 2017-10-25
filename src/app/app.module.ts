@@ -6,6 +6,7 @@ import { CoreModule } from './core/core/core.module';
 import { PageNotFoundComponent } from './not-found.component';
 import { LibraryModule } from './library/library.module';
 import { AppRoutingModule } from './app-routing.module';
+import { NavService } from './core/nav/shared/nav.service';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,7 @@ import { AppRoutingModule } from './app-routing.module';
     LibraryModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [NavService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
