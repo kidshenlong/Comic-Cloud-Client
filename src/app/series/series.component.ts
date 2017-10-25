@@ -1,19 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import { NavService } from '../core/nav/shared/nav.service';
 import { NavState } from '../core/nav/shared/nav-state.enum';
 import { Title } from '@angular/platform-browser';
+import { NavService } from '../core/nav/shared/nav.service';
 
 @Component({
-  selector: 'app-library',
-  templateUrl: './library.component.html',
-  styleUrls: ['./library.component.css']
+  selector: 'app-series',
+  templateUrl: './series.component.html',
+  styleUrls: ['./series.component.scss']
 })
-export class LibraryComponent implements OnInit {
+export class SeriesComponent implements OnInit {
 
   constructor(private navService: NavService, private titleService: Title ) { }
 
   ngOnInit() {
-    this.titleService.setTitle( 'Comic Cloud - Library' );
+    this.titleService.setTitle( 'Comic Cloud - Series' );
     this.navService.navState = NavState.Authorised;
   }
 
