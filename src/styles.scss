@@ -2,8 +2,76 @@
 @import 'reset';
 @import 'helpers';
 
+@font-face {
+  font-family: 'Eurostile';
+  src: url('./assets/fonts/Eurostile/EurostileBold.eot');
+  src: url('./assets/fonts/Eurostile/EurostileBold.eot?#iefix') format('embedded-opentype'),
+  url('./assets/fonts/Eurostile/EurostileBold.woff') format('woff'),
+  url('./assets/fonts/Eurostile/EurostileBold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Eurostile';
+  src: url('./assets/fonts/Eurostile/EurostileRegular.eot');
+  src: url('./assets/fonts/Eurostile/EurostileRegular.eot?#iefix') format('embedded-opentype'),
+  url('./assets/fonts/Eurostile/EurostileRegular.woff') format('woff'),
+  url('./assets/fonts/Eurostile/EurostileRegular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Eurostile';
+  src: url('./assets/fonts/Eurostile/Eurostile-Medium.eot');
+  src: url('./assets/fonts/Eurostile/Eurostile-Medium.eot?#iefix') format('embedded-opentype'),
+  url('./assets/fonts/Eurostile/Eurostile-Medium.woff') format('woff'),
+  url('./assets/fonts/Eurostile/Eurostile-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+
 body {
   margin: 0;
   height: 100vh;
   font-family: 'Eurostile', 'arial', 'sans-serif';
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  font-family: 'Eurostile', 'arial', 'sans-serif';
+}
+
+h1{
+  text-transform: uppercase;
+  font-weight: bold;
+  margin: 30px 5px;
+  color: #5d5d5d;
+  font-size: 22px;
+}
+
+a{
+  color: #497099;
+  text-decoration: none;
+}
+
+.container{
+  position: relative;
+}
+
+.divider{
+  width: 100%;
+  height: 1px;
+  background: $comic-cloud-orange;
+  overflow: hidden;
+}
+
+@media #{$desktop} {
+  .container{
+    max-width: $container-max-width;
+    margin: 0 auto;
+    height: inherit;
+  }
 }
