@@ -4,7 +4,7 @@ import {RouterModule, Routes} from '@angular/router';
 import { SeriesComponent } from './series.component';
 
 const seriesRoutes: Routes = [
-  { path: 'series',  component: SeriesComponent },
+  { path: 'series/:id',  component: SeriesComponent },
 ];
 
 

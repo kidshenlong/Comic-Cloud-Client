@@ -1,6 +1,6 @@
 import { AppPage } from './app.po';
 
-describe('comic-cloud-client App', () => {
+describe('comics-cloud-client App', () => {
   let page: AppPage;
 
   beforeEach(() => {

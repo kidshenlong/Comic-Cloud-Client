@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LibraryFeaturedComponent } from './library-featured.component';
+import { SeriesListComponent } from './series-list.component';
 
-describe('LibraryFeaturedComponent', () => {
-  let component: LibraryFeaturedComponent;
-  let fixture: ComponentFixture<LibraryFeaturedComponent>;
+describe('SeriesListComponent', () => {
+  let component: SeriesListComponent;
+  let fixture: ComponentFixture<SeriesListComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LibraryFeaturedComponent ]
+      declarations: [ SeriesListComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LibraryFeaturedComponent);
+    fixture = TestBed.createComponent(SeriesListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
