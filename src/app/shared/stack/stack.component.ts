@@ -8,19 +8,22 @@ import { Component, Input, OnInit } from '@angular/core';
 export class StackComponent implements OnInit {
 
   @Input() description: string;
-  @Input() subDescription: string;
   @Input() navigateTo: string;
   @Input() image: string;
 
-  isImageLoaded = false;
+  private _imageLoaded = false;
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  imageLoaded(event) {
-    this.isImageLoaded = true;
+  get imageLoaded(): boolean {
+    return this._imageLoaded;
+  }
+
+  set imageLoaded(value: boolean) {
+    this._imageLoaded = value;
   }
 
 }
