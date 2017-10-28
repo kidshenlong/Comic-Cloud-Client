@@ -1,0 +1,9 @@
+<div class="comic">
+  <a [routerLink]="navigateTo">
+    <div>
+      <img class='comic-image' [hidden]="!isImageLoaded" [src]="image" (load)="imageLoaded($event)">
+      <img *ngIf="!isImageLoaded" src="https://placeimg.com/216/324/any"> <!-- todo refactor this for testing. Src shouldn't be remote. Or should at least be swappable-->
+    </div>
+    <div class="comic-description">{{description}} <span *ngIf="subDescription" class="comic-sub-description">{{subDescription}}</span></div>
+  </a>
+</div>
