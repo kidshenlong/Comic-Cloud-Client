@@ -1,0 +1,9 @@
+//noinspection CssInvalidPseudoSelector
+:host ::ng-deep .stack{
+  width: 20%;
+}
+
+.container{
+  display: grid;
+  grid-template-columns: 20% 20% 20% 20% 20%;
+}

@@ -1,32 +1,30 @@
 import { Injectable } from '@angular/core';
-import { Headers, Http } from '@angular/http';
 import { Series } from './series.model';
 
 import 'rxjs/add/operator/toPromise';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable()
 export class SeriesService {
 
-  private headers = new Headers({'Content-Type': 'application/json'});
+  private headers = new HttpHeaders({'Content-Type': 'application/json'});
   private seriesUrl = 'series'; // todo raise to configuration
 
-  constructor(private http: Http) { }
+  constructor(private http: HttpClient) { }
 
   getSingleSeries(id: string): Promise<Series> {
 
     const url = `${this.seriesUrl}/${id}`;
-    return this.http.get(url)
+    return this.http.get<Series>(url)
       .toPromise()
-      .then(response => response.json().data as Series)
       .catch(this.handleError);
 
   }
 
   getAllSeries(): Promise<Series[]>  {
 
-    return this.http.get(this.seriesUrl)
+    return this.http.get<Series[]>(this.seriesUrl)
       .toPromise()
-      .then(response => response.json().data as Series[])
       .catch(this.handleError);
 
   }
@@ -41,9 +39,8 @@ export class SeriesService {
 
   create(name: string): Promise<Series> {
     return this.http
-      .post(this.seriesUrl, JSON.stringify({name: name}), {headers: this.headers})
+      .post<Series>(this.seriesUrl, JSON.stringify({name: name}), {headers: this.headers})
       .toPromise()
-      .then(res => res.json().data as Series)
       .catch(this.handleError);
   }
 

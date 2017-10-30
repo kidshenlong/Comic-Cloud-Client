@@ -1,7 +1,7 @@
-<div class="comic">
+<div class="stack">
   <a [routerLink]="navigateTo">
-    <img class='comic-image' [hidden]="!imageLoaded" [src]="image" (load)="imageLoaded=true">
+    <img class="stack-image" [hidden]="!imageLoaded" [src]="image" (load)="imageLoaded=true">
     <img *ngIf="!imageLoaded" src="../../../assets/comic-cloud-image-holder.png">
-    <div class="comic-description">{{description}}</div>
+    <div class="stack-description">{{description}}</div>
   </a>
 </div>

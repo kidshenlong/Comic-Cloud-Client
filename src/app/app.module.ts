@@ -1,5 +1,7 @@
 import { BrowserModule, Title } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {HttpClientModule} from '@angular/common/http';
+
 
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
@@ -17,6 +19,7 @@ import { SearchModule } from './search/search.module';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     CoreModule,
     LibraryModule,
     SeriesModule,

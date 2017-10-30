@@ -1,30 +1,30 @@
 import { Injectable } from '@angular/core';
 import { Headers, Http } from '@angular/http';
 import { Comic } from './comic.model';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable()
 export class ComicsService {
 
-  private headers = new Headers({'Content-Type': 'application/json'});
+  private headers = new HttpHeaders({'Content-Type': 'application/json'});
   private comicsUrl = 'comics'; // todo raise to configuration
 
-  constructor(private http: Http) { }
+  constructor(private http: HttpClient) { }
 
-  getSingleSeries(id: string): Promise<Comic> {
+  getComic(id: string): Promise<Comic> {
 
     const url = `${this.comicsUrl}/${id}`;
-    return this.http.get(url)
+
+    return this.http.get<Comic>(url)
       .toPromise()
-      .then(response => response.json().data as Comic)
       .catch(this.handleError);
 
   }
 
-  getAllSeries(): Promise<Comic[]>  {
+  getComics(): Promise<Comic[]>  {
 
-    return this.http.get(this.comicsUrl)
+    return this.http.get<Comic[]>(this.comicsUrl)
       .toPromise()
-      .then(response => response.json().data as Comic[])
       .catch(this.handleError);
 
   }
@@ -39,9 +39,8 @@ export class ComicsService {
 
   create(name: string): Promise<Comic> {
     return this.http
-      .post(this.comicsUrl, JSON.stringify({name: name}), {headers: this.headers})
+      .post<Comic>(this.comicsUrl, JSON.stringify({name: name}), {headers: this.headers})
       .toPromise()
-      .then(res => res.json().data as Comic)
       .catch(this.handleError);
   }
 

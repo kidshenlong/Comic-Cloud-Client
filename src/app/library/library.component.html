@@ -1,14 +1,8 @@
 <div class="container">
-  <app-library-featured></app-library-featured>
+  <app-library-featured-list></app-library-featured-list>
 </div>
 <div class="divider"></div>
 <div class="container">
   <h1>My Library</h1>
-  <div style="width:150px;">
-    <app-stack
-      [description]="'Test'"
-      [image]="'http://cdn2-www.superherohype.com/assets/uploads/gallery/the-15-best-superhero-comic-book-covers/x-men_vol_1_141.jpg'"
-      [navigateTo]="'/address'"
-    ></app-stack>
-  </div>
+  <app-library-list [series]="library"></app-library-list>
 </div>
