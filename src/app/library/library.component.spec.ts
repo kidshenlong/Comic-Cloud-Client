@@ -8,6 +8,7 @@ import { LibraryListComponent } from './library-list/library-list.component';
 import { LibraryModule } from './library.module';
 import { PageNotFoundComponent } from '../not-found.component';
 import { APP_BASE_HREF } from '@angular/common';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('LibraryComponent', () => {
   let component: LibraryComponent;
@@ -19,7 +20,7 @@ describe('LibraryComponent', () => {
     };
     TestBed.configureTestingModule({
       declarations: [ PageNotFoundComponent ],
-      imports: [ LibraryModule ],
+      imports: [ LibraryModule, RouterTestingModule ],
       providers : [
         { provide: NavService, useValue: navServiceStub },
         { provide: APP_BASE_HREF, useValue : '/' }

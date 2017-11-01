@@ -4,11 +4,12 @@ import { StackComponent } from './stack/stack.component';
 import { AppRoutingModule } from '../app-routing.module';
 import { ComicsService } from './comics/comics.service';
 import { SeriesService } from './series/series.service';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [
     CommonModule,
-    AppRoutingModule
+    RouterModule
   ],
   declarations: [StackComponent],
   exports: [CommonModule, StackComponent],

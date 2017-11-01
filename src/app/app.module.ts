@@ -21,8 +21,8 @@ import { SearchModule } from './search/search.module';
     BrowserModule,
     HttpClientModule,
     CoreModule,
-    SeriesModule,
     LibraryModule,
+    SeriesModule,
     SearchModule,
     AppRoutingModule
   ],
