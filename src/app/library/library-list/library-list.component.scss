@@ -1,9 +1,12 @@
 //noinspection CssInvalidPseudoSelector
 :host ::ng-deep .stack{
-  width: 20%;
+  //width: 20%;
 }
 
-.container{
+.stack-container{
+  $column-size: 18%;
   display: grid;
-  grid-template-columns: 20% 20% 20% 20% 20%;
+  grid-template-columns: $column-size $column-size $column-size $column-size $column-size;
+  grid-column-gap: 2%;
+  grid-row-gap: 75px;
 }

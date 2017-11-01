@@ -1,3 +1,10 @@
-<p>
-  library-featured-list works!
-</p>
+<div class="stack-container">
+  <!-- todo comic description from source -->
+  <app-stack
+    *ngFor="let thisComic of featuredComics"
+    [description]="'Comic Description'"
+    [image]="thisComic.image"
+    [navigateTo]="'/comic/' + thisComic.id"
+  ></app-stack>
+</div>
+

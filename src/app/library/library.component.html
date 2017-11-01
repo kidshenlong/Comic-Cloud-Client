@@ -1,8 +1,9 @@
-<div class="container">
-  <app-library-featured-list></app-library-featured-list>
+<div class="stack-container">
+  <h1>Latest Uploads</h1>
+  <app-library-featured-list [featuredComics]="featuredComics"></app-library-featured-list>
 </div>
 <div class="divider"></div>
-<div class="container">
+<div class="stack-container">
   <h1>My Library</h1>
   <app-library-list [series]="library"></app-library-list>
 </div>

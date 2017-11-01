@@ -57,7 +57,7 @@ a{
   text-decoration: none;
 }
 
-.container{
+.stack-container{
   position: relative;
 }
 
@@ -69,7 +69,7 @@ a{
 }
 
 @media #{$desktop} {
-  .container{
+  .stack-container{
     max-width: $container-max-width;
     margin: 0 auto;
     height: inherit;

@@ -1,0 +1,8 @@
+.stack-container{
+  $column-size: 23%;
+  display: grid;
+  grid-template-columns: $column-size $column-size $column-size $column-size $column-size;
+  grid-column-gap: 2%;
+  //grid-row-gap: 75px;
+  margin-bottom: 75px;
+}
