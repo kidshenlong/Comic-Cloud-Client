@@ -11,7 +11,7 @@ import { SeriesService } from './series/series.service';
     AppRoutingModule
   ],
   declarations: [StackComponent],
-  exports: [StackComponent],
+  exports: [CommonModule, StackComponent],
   providers: [ComicsService, SeriesService]
 })
 export class SharedModule { }

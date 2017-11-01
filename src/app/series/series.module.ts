@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { SeriesComponent } from './series.component';
 import { SeriesRoutingModule } from './series-routing.module';
 import { SeriesListComponent } from './series-list/series-list.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   imports: [
-    CommonModule,
-    SeriesRoutingModule
+    SeriesRoutingModule,
+    SharedModule
   ],
   declarations: [SeriesComponent, SeriesListComponent]
 })
