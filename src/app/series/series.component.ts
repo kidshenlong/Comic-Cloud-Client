@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavState } from '../core/nav/shared/nav-state.enum';
 import { Title } from '@angular/platform-browser';
 import { NavService } from '../core/nav/shared/nav.service';
+import { Comic } from '../shared/comics/comic.model';
 
 @Component({
   selector: 'app-series',
@@ -9,6 +10,8 @@ import { NavService } from '../core/nav/shared/nav.service';
   styleUrls: ['./series.component.scss']
 })
 export class SeriesComponent implements OnInit {
+
+  series: Comic[];
 
   constructor(private navService: NavService, private titleService: Title ) { }
 

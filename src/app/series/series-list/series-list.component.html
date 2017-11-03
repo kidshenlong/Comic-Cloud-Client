@@ -1,3 +1,9 @@
-<p>
-  series-list works!
-</p>
+<div class="stack-container">
+  <!-- todo comic description from source -->
+  <app-stack
+    *ngFor="let thisSeries of series"
+    [description]="'Comic Description'"
+    [image]="thisSeries.image"
+    [navigateTo]="'/series/' + thisSeries.id"
+  ></app-stack>
+</div>
