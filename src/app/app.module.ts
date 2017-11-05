@@ -11,6 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { NavService } from './core/nav/shared/nav.service';
 import { SeriesModule } from './series/series.module';
 import { SearchModule } from './search/search.module';
+import { ComicModule } from './comic/comic.module';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { SearchModule } from './search/search.module';
     CoreModule,
     LibraryModule,
     SeriesModule,
+    ComicModule,
     SearchModule,
     AppRoutingModule
   ],
