@@ -1,9 +1,9 @@
 <div class="stack-container">
   <!-- todo comic description from source -->
   <app-stack
-    *ngFor="let thisSeries of series"
+    *ngFor="let thisComic of comics"
     [description]="'Comic Description'"
-    [image]="thisSeries.image"
-    [navigateTo]="'/series/' + thisSeries.id"
+    [image]="thisComic.image"
+    [navigateTo]="'/comic/' + thisComic.id"
   ></app-stack>
 </div>
