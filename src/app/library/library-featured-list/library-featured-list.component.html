@@ -3,7 +3,7 @@
   <app-stack
     *ngFor="let thisComic of featuredComics"
     [description]="'Comic Description'"
-    [image]="thisComic.image"
+    [image]="thisComic.images[0]"
     [navigateTo]="'/comic/' + thisComic.id"
   ></app-stack>
 </div>

@@ -1,5 +1,16 @@
+@import './../../helpers';
+
 #reader{
-  background-color: black;
+  //background-color: black;
   height: 100%;
   width: 100%;
+
+}
+
+* {
+  //border: red 1px solid;
+}
+
+@media #{$desktop} {
+
 }

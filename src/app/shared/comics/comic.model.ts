@@ -1,4 +1,6 @@
 export class Comic {
   id: string;
-  image: string; // todo is image a concise enough name?
+  series_id: string;
+  issue: number;
+  images: string[]; // todo is images a concise enough name?
 }

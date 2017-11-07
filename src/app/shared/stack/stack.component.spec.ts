@@ -45,7 +45,7 @@ describe('StackComponent', () => {
 
     expect(component.imageLoaded).toBeFalsy();
 
-    fixture.debugElement.query(By.css('.stack-image')).triggerEventHandler('load', null);
+    fixture.debugElement.query(By.css('.stack-images')).triggerEventHandler('load', null);
 
     expect(component.imageLoaded).toBeTruthy();
 
