@@ -1,5 +1,9 @@
 @import './../../../helpers';
 
+.comic-image{
+  transition: all 3s ease-out;/*todo vendor prefix*/
+}
+
 @media #{$desktop} {
   .comic-image {
     height: 100vh;
@@ -8,4 +12,3 @@
     margin: auto;
   }
 }
-

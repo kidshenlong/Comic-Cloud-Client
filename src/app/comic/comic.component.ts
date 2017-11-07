@@ -1,20 +1,31 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { AfterViewInit, Component, HostListener, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { NavService } from '../core/nav/shared/nav.service';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { NavState } from '../core/nav/shared/nav-state.enum';
 import { Comic } from '../shared/comics/comic.model';
 import { Series } from '../shared/series/series.model';
+import { ComicImageState } from './comic-image-state';
+import { ComicImageComponent } from './comic-image/comic-image.component';
+import { Subject } from 'rxjs/Subject';
 
 @Component({
   selector: 'app-comic',
   templateUrl: './comic.component.html',
   styleUrls: ['./comic.component.scss']
 })
-export class ComicComponent implements OnInit {
+export class ComicComponent implements OnInit, AfterViewInit {
+
 
   comic: Comic;
   series: Series;
+  private _currentPage = 1;
+
+  private _currentPageSource = new Subject<Number>();
+
+  comicLength = 1;
+  comicImageStates: ComicImageState[] = [];
+  @ViewChildren(ComicImageComponent) private comicImageComponents: QueryList<ComicImageComponent>;
 
   constructor(private navService: NavService, private titleService: Title, private route: ActivatedRoute) { }
 
@@ -25,7 +36,43 @@ export class ComicComponent implements OnInit {
       this.comic = this.getComic(comicId);
       this.series = this.getSeries(this.comic.series_id);
       this.titleService.setTitle( 'Comic Cloud - ' + this.series.title );
+      this.comicLength = this.comic.images.length;
     });
+  }
+
+  ngAfterViewInit() {
+    // Wait a tick first to avoid one-time devMode
+    // unidirectional-data-flow-violation error
+    const comicImageComponets = this.comicImageComponents.toArray();
+    comicImageComponets.forEach((comicImageComponent, index) => {
+      //comicImageComponent.enabled = true;
+      //comicImageComponent.hidden = false;
+    });
+  }
+
+  private initComic(images: ComicImageComponent[]) {
+    // create comicState
+    // this.comicImageStates = new ComicImageState()[];
+    images.forEach( imageUrl => {
+
+      /*const comicImageState = new ComicImageState();
+      comicImageState.url = imageUrl;
+      comicImageState.state = 'not-loaded';
+      this.comicImageStates.push(comicImageState);*/
+    });
+
+  }
+
+  get currentPage(): number {
+    return this._currentPage;
+  }
+
+  set currentPage(value: number) {
+    if (value > 0 && value <= this.comicLength) {
+      this._currentPage = value;
+    } else {
+      console.log('out of bounds');
+    }
   }
 
   getComic(id: string): Comic {
@@ -56,8 +103,19 @@ export class ComicComponent implements OnInit {
   }
 
   @HostListener('document:keydown', ['$event']) onKey(event: KeyboardEvent) {
-    console.log('trigger');
-    console.log(event);
+    this._keyup(event);
+  }
+
+  private _keyup(event: KeyboardEvent) {
+    if (event.keyCode === 37) {
+      this.currentPage--;
+    } else if (event.keyCode === 39) {
+      this.currentPage++;
+    }
+  }
+
+  private viewPage(page: number){
+
   }
 
 }

@@ -1,2 +1,1 @@
-<img class="comic-image" [hidden]="hidden" [src]="image" (load)="imageLoaded=true">
-<!--<img *ngIf="!imageLoaded" src="../../../assets/comic-cloud-images-holder.png">-->
+<img class="comic-image" *ngIf="enabled" [hidden]="hidden" [src]="image" (load)="imageLoaded=true">

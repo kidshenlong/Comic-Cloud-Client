@@ -68,6 +68,10 @@ a{
   overflow: hidden;
 }
 
+[hidden] {
+  display: none !important;
+}
+
 @media #{$desktop} {
   .stack-container{
     max-width: $container-max-width;

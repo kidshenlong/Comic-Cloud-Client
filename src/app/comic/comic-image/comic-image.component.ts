@@ -6,13 +6,11 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./comic-image.component.scss']
 })
 export class ComicImageComponent implements OnInit {
-
-
   @Input() image: string;
-
   hidden = true;
-  private _imageLoaded = false;
 
+  private _enabled = false;
+  private _imageLoaded = false;
   constructor() { }
 
   ngOnInit() {
@@ -26,5 +24,12 @@ export class ComicImageComponent implements OnInit {
     this._imageLoaded = value;
   }
 
+  get enabled(): boolean {
+    return this._enabled;
+  }
+
+  set enabled(value: boolean) {
+    this._enabled = value;
+  }
 
 }
