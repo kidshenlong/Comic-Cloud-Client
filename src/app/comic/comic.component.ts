@@ -1,4 +1,7 @@
-import { AfterViewInit, Component, HostListener, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
+import {
+  AfterViewInit, ChangeDetectorRef, Component, HostListener, OnInit, QueryList, ViewChild,
+  ViewChildren
+} from '@angular/core';
 import { NavService } from '../core/nav/shared/nav.service';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, ParamMap } from '@angular/router';
@@ -8,6 +11,7 @@ import { Series } from '../shared/series/series.model';
 import { ComicImageState } from './comic-image-state';
 import { ComicImageComponent } from './comic-image/comic-image.component';
 import { Subject } from 'rxjs/Subject';
+import index from '@angular/cli/lib/cli';
 
 @Component({
   selector: 'app-comic',
@@ -20,14 +24,18 @@ export class ComicComponent implements OnInit, AfterViewInit {
   comic: Comic;
   series: Series;
   private _currentPage = 1;
-
   private _currentPageSource = new Subject<Number>();
 
   comicLength = 1;
   comicImageStates: ComicImageState[] = [];
   @ViewChildren(ComicImageComponent) private comicImageComponents: QueryList<ComicImageComponent>;
 
-  constructor(private navService: NavService, private titleService: Title, private route: ActivatedRoute) { }
+  constructor(
+    private navService: NavService,
+    private titleService: Title,
+    private route: ActivatedRoute,
+    private ref: ChangeDetectorRef
+  ) { }
 
   ngOnInit() {
     this.navService.navState = NavState.Disabled;
@@ -38,6 +46,11 @@ export class ComicComponent implements OnInit, AfterViewInit {
       this.titleService.setTitle( 'Comic Cloud - ' + this.series.title );
       this.comicLength = this.comic.images.length;
     });
+
+    this._currentPageSource.subscribe( (page: number) => {
+      this._currentPage = page;
+      this.viewPage(page);
+    });
   }
 
   ngAfterViewInit() {
@@ -45,21 +58,10 @@ export class ComicComponent implements OnInit, AfterViewInit {
     // unidirectional-data-flow-violation error
     const comicImageComponets = this.comicImageComponents.toArray();
     comicImageComponets.forEach((comicImageComponent, index) => {
-      //comicImageComponent.enabled = true;
-      //comicImageComponent.hidden = false;
+      comicImageComponent.enabled = true;
+      this.ref.detectChanges(); // todo https://github.com/angular/angular/issues/6005 revisit this
     });
-  }
-
-  private initComic(images: ComicImageComponent[]) {
-    // create comicState
-    // this.comicImageStates = new ComicImageState()[];
-    images.forEach( imageUrl => {
-
-      /*const comicImageState = new ComicImageState();
-      comicImageState.url = imageUrl;
-      comicImageState.state = 'not-loaded';
-      this.comicImageStates.push(comicImageState);*/
-    });
+    this.viewPage(1);
 
   }
 
@@ -69,9 +71,7 @@ export class ComicComponent implements OnInit, AfterViewInit {
 
   set currentPage(value: number) {
     if (value > 0 && value <= this.comicLength) {
-      this._currentPage = value;
-    } else {
-      console.log('out of bounds');
+      this._currentPageSource.next(value);
     }
   }
 
@@ -114,7 +114,18 @@ export class ComicComponent implements OnInit, AfterViewInit {
     }
   }
 
-  private viewPage(page: number){
+  private viewPage(page: number) {
+
+    this.comicImageComponents.forEach((comicImageComponent, index) => {
+      if (index + 1 === page) {
+        console.log(page);
+        comicImageComponent.hidden = false;
+        this.ref.detectChanges(); // todo https://github.com/angular/angular/issues/6005 revisit this
+      } else {
+        comicImageComponent.hidden = true;
+        this.ref.detectChanges(); // todo https://github.com/angular/angular/issues/6005 revisit this
+      }
+    });
 
   }
 

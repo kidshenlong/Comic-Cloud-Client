@@ -1,1 +1,1 @@
-<img class="comic-image" *ngIf="enabled" [hidden]="hidden" [src]="image" (load)="imageLoaded=true">
+<img [ngStyle]="{'visibility': hidden?'hidden':'visible'}" [ngClass]="{'visible': !hidden}" class="comic-image" *ngIf="enabled"  [src]="image" (load)="imageLoaded=true">

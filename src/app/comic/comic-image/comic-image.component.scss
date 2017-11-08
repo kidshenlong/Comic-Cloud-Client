@@ -1,14 +1,26 @@
 @import './../../../helpers';
 
 .comic-image{
-  transition: all 3s ease-out;/*todo vendor prefix*/
+  //transition: all 3s ease-out;/*todo vendor prefix*/
+  opacity:0;
+  transition:visibility 0.3s linear,opacity 0.3s linear;
+
+}
+.comic-image.visible{
+  visibility:visible;
+  opacity:1;
 }
 
 @media #{$desktop} {
   .comic-image {
     height: 100vh;
-    width: auto;
+    //width: auto;
     display: block;
-    margin: auto;
+    //margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
   }
 }
