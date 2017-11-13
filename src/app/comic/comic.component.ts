@@ -8,7 +8,6 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 import { NavState } from '../core/nav/shared/nav-state.enum';
 import { Comic } from '../shared/comics/comic.model';
 import { Series } from '../shared/series/series.model';
-import { ComicImageState } from './comic-image-state';
 import { ComicImageComponent } from './comic-image/comic-image.component';
 import { Subject } from 'rxjs/Subject';
 import index from '@angular/cli/lib/cli';
@@ -27,7 +26,6 @@ export class ComicComponent implements OnInit, AfterViewInit {
   private _currentPageSource = new Subject<Number>();
 
   comicLength = 1;
-  comicImageStates: ComicImageState[] = [];
   @ViewChildren(ComicImageComponent) private comicImageComponents: QueryList<ComicImageComponent>;
 
   constructor(
