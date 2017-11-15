@@ -12,6 +12,7 @@ import { NavService } from './core/nav/shared/nav.service';
 import { SeriesModule } from './series/series.module';
 import { SearchModule } from './search/search.module';
 import { ComicModule } from './comic/comic.module';
+import { UploadService } from './core/upload/upload.service';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,7 @@ import { ComicModule } from './comic/comic.module';
     SearchModule,
     AppRoutingModule
   ],
-  providers: [NavService, Title],
+  providers: [NavService, UploadService, Title],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

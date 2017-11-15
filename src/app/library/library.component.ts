@@ -4,6 +4,7 @@ import { NavState } from '../core/nav/shared/nav-state.enum';
 import { Title } from '@angular/platform-browser';
 import { Series } from '../shared/series/series.model';
 import { Comic } from '../shared/comics/comic.model';
+import { UploadService } from '../core/upload/upload.service';
 
 @Component({
   selector: 'app-library',
@@ -15,13 +16,14 @@ export class LibraryComponent implements OnInit {
   library: Series[];
   featuredComics: Comic[];
 
-  constructor(private navService: NavService, private titleService: Title ) { }
+  constructor(private navService: NavService, private titleService: Title, private uploadService: UploadService ) { }
 
   ngOnInit() {
     this.titleService.setTitle( 'Comic Cloud - Library' );
     this.navService.navState = NavState.Authorised;
     this.library = this.getSeries();
     this.featuredComics = this.getFeaturedComics();
+    this.uploadService.numberWang++;
   }
 
   private getSeries(): Series[] {
