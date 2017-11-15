@@ -11,6 +11,7 @@ import { Series } from '../shared/series/series.model';
 import { ComicImageComponent } from './comic-image/comic-image.component';
 import { Subject } from 'rxjs/Subject';
 import index from '@angular/cli/lib/cli';
+import { ComicStateService } from './shared/comic-state.service';
 
 @Component({
   selector: 'app-comic',
@@ -19,11 +20,10 @@ import index from '@angular/cli/lib/cli';
 })
 export class ComicComponent implements OnInit, AfterViewInit {
 
+  private _currentPage = 1;
 
   comic: Comic;
   series: Series;
-  private _currentPage = 1;
-  private _currentPageSource = new Subject<Number>();
 
   comicLength = 1;
   @ViewChildren(ComicImageComponent) private comicImageComponents: QueryList<ComicImageComponent>;
@@ -31,6 +31,7 @@ export class ComicComponent implements OnInit, AfterViewInit {
   constructor(
     private navService: NavService,
     private titleService: Title,
+    private comicStateService: ComicStateService,
     private route: ActivatedRoute,
     private ref: ChangeDetectorRef
   ) { }
@@ -44,9 +45,7 @@ export class ComicComponent implements OnInit, AfterViewInit {
       this.titleService.setTitle( 'Comic Cloud - ' + this.series.title );
       this.comicLength = this.comic.images.length;
     });
-
-    this._currentPageSource.subscribe( (page: number) => {
-      this._currentPage = page;
+    this.comicStateService.currentPage$.subscribe( (page: number) => {
       this.viewPage(page);
     });
   }
@@ -59,7 +58,7 @@ export class ComicComponent implements OnInit, AfterViewInit {
       comicImageComponent.enabled = true;
       this.ref.detectChanges(); // todo https://github.com/angular/angular/issues/6005 revisit this
     });
-    this.viewPage(1);
+    this.currentPage = 1;
 
   }
 
@@ -69,7 +68,8 @@ export class ComicComponent implements OnInit, AfterViewInit {
 
   set currentPage(value: number) {
     if (value > 0 && value <= this.comicLength) {
-      this._currentPageSource.next(value);
+      this._currentPage = value;
+      this.comicStateService.setPage(value);
     }
   }
 
@@ -116,7 +116,6 @@ export class ComicComponent implements OnInit, AfterViewInit {
 
     this.comicImageComponents.forEach((comicImageComponent, index) => {
       if (index + 1 === page) {
-        console.log(page);
         comicImageComponent.hidden = false;
         this.ref.detectChanges(); // todo https://github.com/angular/angular/issues/6005 revisit this
       } else {

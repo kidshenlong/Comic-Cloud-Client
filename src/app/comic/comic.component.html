@@ -1,9 +1,8 @@
 <div id="reader">
 
-  <!--<pre style="position: absolute; top: 0; left: 0; border: solid black 1px; width: 20%; height: 100vh;">
+  <!--<pre style="position: absolute; top: 0; left: 0; border: solid black 1px; width: 20%; height: 100vh; color: white;">
     {{currentPage}}
-    {{comic.toString()|| json}}
-    {{series || json}}
+    {{comicStateService.currentPage$ | async}}
   </pre>-->
   <app-comic-image
     *ngFor="let image of comic.images"

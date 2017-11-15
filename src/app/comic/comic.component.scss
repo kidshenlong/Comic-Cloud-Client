@@ -7,6 +7,8 @@
 }
 * {
   //border: red 1px solid;
+
+  user-select: none;
 }
 
 @media #{$desktop} {
