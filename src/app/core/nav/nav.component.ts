@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavService } from './shared/nav.service';
 import { NavState } from './shared/nav-state.enum';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nav',
@@ -11,5 +12,5 @@ export class NavComponent {
 
   navStateType = NavState;
 
-  constructor(public navService: NavService) { }
+  constructor(public navService: NavService, private router: Router) { }
 }
