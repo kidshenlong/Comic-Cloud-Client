@@ -6,18 +6,21 @@ import { UploadService } from '../../core/upload/upload.service';
 })
 export class FileDropDirective {
 
-  constructor(private uploadService: UploadService) {
-    console.log('lolz');
+  constructor(private uploadService: UploadService) {}
+
+  @HostListener('dragover', [ '$event' ]) onDragOver(event: any): void {
+
+    event.preventDefault();
+    event.stopPropagation();
   }
 
-  @HostListener('drop', [ '$event' ])
-  public onDrop(event: any): void {
+  @HostListener('drop', [ '$event' ]) onDrop(event: any): void {
 
     event.preventDefault();
     event.stopPropagation();
 
     console.log(event);
-    let fileList: FileList = event.target.files;
+    const fileList: FileList = event.dataTransfer.files;
 
     // https://stackoverflow.com/questions/40902437/cant-use-foreach-with-filelist
     Array.prototype.forEach.call(fileList, (file: File)  => {
@@ -25,18 +28,6 @@ export class FileDropDirective {
       this.uploadService.uploadList.push(file.name);
     });
 
-  }
-
-  @HostListener('mouseenter') onMouseEnter() {
-    console.log("enter");
-  }
-
-  @HostListener('mouseleave') onMouseLeave() {
-    console.log("leave");
-  }
-
-  @HostListener('click') click() {
-    console.log("click");
   }
 
 }
