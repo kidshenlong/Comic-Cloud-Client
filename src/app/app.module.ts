@@ -13,11 +13,13 @@ import { SeriesModule } from './series/series.module';
 import { SearchModule } from './search/search.module';
 import { ComicModule } from './comic/comic.module';
 import { UploadService } from './core/upload/upload.service';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

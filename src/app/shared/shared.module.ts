@@ -13,7 +13,6 @@ import { FileDropComponent } from './file-drop/file-drop.component';
     RouterModule
   ],
   declarations: [StackComponent, FileDropComponent],
-  exports: [CommonModule, StackComponent, FileDropComponent],
-  providers: [ComicsService, SeriesService]
+  exports: [CommonModule, StackComponent, FileDropComponent]
 })
 export class SharedModule { }
