@@ -1,20 +1,26 @@
-import { Directive, HostListener } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { UploadService } from '../../core/upload/upload.service';
 
-@Directive({
-  selector: '[appFileDrop]'
+@Component({
+  selector: 'app-file-drop',
+  templateUrl: './file-drop.component.html',
+  styleUrls: ['./file-drop.component.scss']
 })
-export class FileDropDirective {
+export class FileDropComponent implements OnInit {
 
-  constructor(private uploadService: UploadService) {}
+  constructor(private uploadService: UploadService) {
 
-  @HostListener('dragover', [ '$event' ]) onDragOver(event: any): void {
+  }
+  ngOnInit() {
+  }
+
+  @HostListener('window:dragover', [ '$event' ]) onDragOver(event: any): void {
 
     event.preventDefault();
     event.stopPropagation();
   }
 
-  @HostListener('drop', [ '$event' ]) onDrop(event: any): void {
+  @HostListener('window:drop', [ '$event' ]) onDrop(event: any): void {
 
     event.preventDefault();
     event.stopPropagation();
@@ -29,5 +35,6 @@ export class FileDropDirective {
     });
 
   }
+
 
 }

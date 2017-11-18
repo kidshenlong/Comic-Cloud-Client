@@ -5,16 +5,15 @@ import { AppRoutingModule } from '../app-routing.module';
 import { ComicsService } from './comics/comics.service';
 import { SeriesService } from './series/series.service';
 import { RouterModule } from '@angular/router';
-import { FileDropDirective } from './file-drop/file-drop.directive';
-import { FileDropPaneComponent } from './file-drop-pane/file-drop-pane.component';
+import { FileDropComponent } from './file-drop/file-drop.component';
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule
   ],
-  declarations: [StackComponent, FileDropDirective, FileDropPaneComponent],
-  exports: [CommonModule, StackComponent, FileDropDirective, FileDropPaneComponent],
+  declarations: [StackComponent, FileDropComponent],
+  exports: [CommonModule, StackComponent, FileDropComponent],
   providers: [ComicsService, SeriesService]
 })
 export class SharedModule { }
